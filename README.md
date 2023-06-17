@@ -1,6 +1,4 @@
 # TypeScript_Inventory_Management
-# -TypeScript_-Inventory_Management
-**hello world**
 
 ## 프로젝트명 :  
 warehouse(재고 관리 프로그램)  
