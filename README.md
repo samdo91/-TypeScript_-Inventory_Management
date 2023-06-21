@@ -71,8 +71,8 @@ CI/CD : github actions
 
 1. [기능명세서 만들기](https://github.com/samdo91/TypeScript_Inventory_Management/blob/master/client/%EA%B8%B0%EB%8A%A5%EB%AA%85%EC%84%B8%EC%84%9C.md)
 2. API 명세서 
-  - [notion](https://amusing-side-256.notion.site/API-63c1a3c2d99b475fa8b61da97f73b593?pvs=4)
-  - [swagger](https://app.swaggerhub.com/apis/samdo91/wareHouse_API/1.0.0#/)
+    - [notion](https://amusing-side-256.notion.site/API-63c1a3c2d99b475fa8b61da97f73b593?pvs=4)
+    - [swagger](https://app.swaggerhub.com/apis/samdo91/wareHouse_API/1.0.0#/)
 
 ## 일지
 
