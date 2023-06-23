@@ -1,7 +1,5 @@
 # -TypeScript\_-Inventory_Management
 
-**hello world**
-
 ## 프로젝트명 :
 
 warehouse(재고 관리 프로그램)
@@ -17,13 +15,19 @@ warehouse(재고 관리 프로그램)
 
 로그인
 
-프로덕트(상품) 등록  
-등록된 프로덕트 수정  
-거래처 등록  
-등록된 거래처 수정  
-오더(출고)  
-입고  
-프로덕트 수정(입출고와 다르게 프로덕트 재고를 변환한다.)
+프로덕트(상품) 등록
+
+등록된 프로덕트 수정
+
+거래처 등록
+
+등록된 거래처 수정
+
+오더(출고)
+
+입고
+
+# 프로덕트 수정(입출고와 다르게 프로덕트 재고를 변환한다.)
 
 추가 적으로 통계 적용
 
@@ -34,13 +38,16 @@ frontend : react, javaScript, typescript
 backend : java, spring boot, JPA, spring security  
 Database : mongoDB  
 CI/CD : github actions
+
 =======
 추가 적으로 통계 적용
+=======
 
 ## 협의 내용
 
 목표 사내 원활한 재고관리를 위해 관리 프로그램을 만든다.
 
+= 즉 혼자 쓰는 것이 아니다.
 꼭 들어가야할 것들:
 
 1. 사내 사원의 아이디나 사원명, 사원번호 등 재고를 등록 혹은 소진한 인원의 정보가 나와야한다. 누가 등록했고 누가 사용했는지 -로그인 기능을 만들어야한다.
@@ -55,7 +62,6 @@ CI/CD : github actions
    10 재고 보고서 기능 - 상품의 입고수나 판매량 데이터를 그래프나 통계로 보여줄 수 있어야한다.
    <br>  
    \*\* 협의는 노션이나 단톡방에서 합니다.
-   =======
 
 ## ERD
 
@@ -63,4 +69,16 @@ CI/CD : github actions
 
 ## 스탭바이스텝
 
-1. # [기능명세서 만들기](https://github.com/samdo91/TypeScript_Inventory_Management/blob/master/client/%EA%B8%B0%EB%8A%A5%EB%AA%85%EC%84%B8%EC%84%9C.md)
+1. [기능명세서 만들기](https://github.com/samdo91/TypeScript_Inventory_Management/blob/master/client/%EA%B8%B0%EB%8A%A5%EB%AA%85%EC%84%B8%EC%84%9C.md)
+2. API 명세서
+   - [notion](https://amusing-side-256.notion.site/API-63c1a3c2d99b475fa8b61da97f73b593?pvs=4)
+   - [swagger](https://app.swaggerhub.com/apis/samdo91/wareHouse_API/1.0.0#/)
+
+## 일지
+
+1. 6월 17일 프로젝트 시작
+2. 6월 20일 기획명세서 완성
+3. 6월 21일 API명세서 작성
+4. 6월 22일 API명세서 swagger 버전 만듬
+
+---
