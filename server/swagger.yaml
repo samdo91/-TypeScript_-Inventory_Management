@@ -1,0 +1,10 @@
+openapi: 3.0.0
+info:
+  title: wareHouse (Inventory Management Program)
+  description: API for inventory management.
+  version: 1.0.0
+servers:
+  - url: "https://virtserver.swaggerhub.com/samdo91/wareHouse_API/1.0.0"
+    description: SwaggerHub API Auto Mocking
+  - url: "http://localhost:4000"
+paths: null
