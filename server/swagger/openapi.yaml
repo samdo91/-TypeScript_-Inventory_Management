@@ -1,0 +1,540 @@
+openapi: 3.0.0
+info:
+  title: wareHouse (Inventory Management Program)
+  description: API for inventory management.
+  version: 1.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/samdo91/wareHouse_API/1.0.0
+    description: SwaggerHub API Auto Mocking
+  - url: http://localhost:4000/
+
+paths:
+  /sign-up:
+    post:
+      summary: 회원 가입
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ID:
+                  type: string
+                  description: 직원 ID
+                password:
+                  type: string
+                  description: 비밀번호
+                name:
+                  type: string
+                  description: 이름
+                phoneNumber:
+                  type: string
+                  description: 전화번호
+                organizationTeam:
+                  type: string
+                  description: 소속 팀
+                position:
+                  type: string
+                  description: 직책
+                email:
+                  type: string
+                  description: 이메일
+                note:
+                  type: string
+                  description: 비고
+      responses:
+        "200":
+          description: 회원 가입 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_id:
+                    type: string
+                  ID:
+                    type: string
+                  password:
+                    type: string
+                  name:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  organizationTeam:
+                    type: string
+                  position:
+                    type: string
+                  email:
+                    type: string
+                  note:
+                    type: string
+
+  /login:
+    get:
+      summary: 로그인
+      description: 직원 로그인을 위한 API입니다.
+      parameters:
+        - name: ID
+          in: query
+          description: 직원 ID
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: 비밀번호
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 로그인 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_id:
+                    type: string
+                  ID:
+                    type: string
+                  password:
+                    type: string
+                  name:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  organizationTeam:
+                    type: string
+                  position:
+                    type: string
+                  email:
+                    type: string
+                  note:
+                    type: string
+
+  /add-product:
+    post:
+      summary: 상품 추가
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productName:
+                  type: string
+                  description: 상품명
+                firstStock:
+                  type: number
+                  description: 초기 재고
+                wholesalePrice:
+                  type: number
+                  description: 도매 가격
+                retailPrice:
+                  type: number
+                  description: 소매 가격
+                date:
+                  type: string
+                  description: 날짜
+                warehouseManager:
+                  type: string
+                  description: 창고 관리자
+                receivingStock:
+                  type: number
+                  description: 입고 재고
+                receivingEvent:
+                  type: array
+                  description: 입고 이벤트
+                  items:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        description: 날짜
+                      warehouseManager:
+                        type: string
+                        description: 입고자_id
+                      receivingStock:
+                        type: number
+                        description: 입고 재고
+                shippingEvent:
+                  type: array
+                  description: 출고 이벤트
+                  items:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        description: 날짜
+                      warehouseManager:
+                        type: string
+                        description: 입고자_id
+                      shippingStock:
+                        type: number
+                        description: 출고 재고
+                totalAmountReceived:
+                  type: number
+                  description: 총 입고량
+                totalAmountShipped:
+                  type: number
+                  description: 총 출고량
+                stock:
+                  type: number
+                  description: 현재 재고량 (총입고량- 총출고량)
+      responses:
+        "200":
+          description: 상품 추가 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_id:
+                    type: string
+                    description: 상품 ID
+                  productName:
+                    type: string
+                    description: 상품명
+                  firstStock:
+                    type: number
+                    description: 초기 재고
+                  wholesalePrice:
+                    type: number
+                    description: 도매 가격
+                  retailPrice:
+                    type: number
+                    description: 소매 가격
+                  date:
+                    type: string
+                    description: 날짜
+                  warehouseManager:
+                    type: string
+                    description: 입고자_id
+                  receivingEvent:
+                    type: array
+                    description: 입고 이벤트
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          description: 날짜
+                        warehouseManager:
+                          type: string
+                          description: 입고자_id
+                        receivingStock:
+                          type: number
+                          description: 입고 재고
+                  shippingEvent:
+                    type: array
+                    description: 출고 이벤트
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          description: 날짜
+                        businessPartner_id:
+                          type: string
+                          description: 비즈니스 파트너의 고유 아이디
+                        product_id:
+                          type: string
+                          description: 주문 물품의 고유 id
+                        employee_id:
+                          type: string
+                          description: 주문을 받은 사원의 고유 id
+                        orderedProductQuantity:
+                          type: number
+                          description: 주문 수량
+                        totalAmount:
+                          type: number
+                          description: 총액 (도매가 * 주문 수량)
+                  totalAmountReceived:
+                    type: number
+                    description: 총 입고량
+                  totalAmountShipped:
+                    type: number
+
+  /get-product:
+    get:
+      summary: 상품 조회
+      parameters:
+        - name: key
+          in: query
+          description: 조회할 상품의 필드명
+          required: false
+          schema:
+            type: string
+        - name: value
+          in: query
+          description: 조회할 상품의 필드 값
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 상품 조회 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    product_id:
+                      type: string
+                    productName:
+                      type: string
+                    firstStock:
+                      type: number
+                    wholesalePrice:
+                      type: number
+                    retailPrice:
+                      type: number
+                    date:
+                      type: string
+                    warehouseManager:
+                      type: string
+                    receivingEvent:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                          warehouseManager:
+                            type: string
+                          receivingStock:
+                            type: number
+                    shippingEvent:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                          warehouseManager:
+                            type: string
+                          shippingStock:
+                            type: number
+                    totalAmountReceived:
+                      type: number
+                    totalAmountShipped:
+                      type: number
+                    stock:
+                      type: number
+  /add-business-partner:
+    post:
+      summary: Add New Business Partner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                BusinessPartnerName:
+                  type: string
+                  description: 비즈니스 파트너명
+                owner:
+                  type: string
+                  description: 소유자
+                email:
+                  type: string
+                  description: 이메일
+                telephoneNumber:
+                  type: string
+                  description: 전화번호
+                manager:
+                  type: string
+                  description: 매니저
+                credit:
+                  type: number
+                  description: 줄돈
+      responses:
+        "200":
+          description: Business Partner Added Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  BusinessPartner_id:
+                    type: string
+                    description: 비즈니스 파트너 ID
+                  BusinessPartnerName:
+                    type: string
+                    description: 비즈니스 파트너명
+                  owner:
+                    type: string
+                    description: 소유자
+                  email:
+                    type: string
+                    description: 이메일
+                  telephoneNumber:
+                    type: string
+                    description: 전화번호
+                  manager:
+                    type: string
+                    description: 매니저
+                  credit:
+                    type: number
+                    description: 줄돈
+
+  /get-business-partner:
+    get:
+      summary: Get Business Partner
+      description: Business Partners를 불러오는 API
+      parameters:
+        - name: key
+          in: query
+          description: 조회할 상품의 필드명
+          schema:
+            type: string
+        - name: value
+          in: query
+          description: 조회할 상품의 필드 값
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Business Partner Lookup Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  BusinessPartner_id:
+                    type: string
+                    description: 비즈니스 파트너 ID
+                  BusinessPartnerName:
+                    type: string
+                    description: 비즈니스 파트너명
+                  owner:
+                    type: string
+                    description: 소유자
+                  email:
+                    type: string
+                    description: 이메일
+                  telephoneNumber:
+                    type: string
+                    description: 전화번호
+                  manager:
+                    type: string
+                    description: 매니저
+                  credit:
+                    type: number
+                    description: 줄돈
+
+  /product/order:
+    post:
+      summary: 주문 받기
+      description: Business Partner에서 주문을 받습니다.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessPartner_id:
+                  type: string
+                  description: 비즈니스 파트너의 고유 아이디
+                product_id:
+                  type: string
+                  description: 주문 물품의 고유 id
+                employee_id:
+                  type: string
+                  description: 주문을 받은 사원의 고유 id
+                orderedProductQuantity:
+                  type: number
+                  description: 주문 수량
+                totalAmount:
+                  type: number
+                  description: 총액 (도매가 * 주문 수량)
+      responses:
+        "200":
+          description: 주문이 성공적으로 접수되었습니다.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_id:
+                    type: string
+                    description: 고유 프로덕트 id
+                  shippingEvent:
+                    type: array
+                    description: 불러온 데이터의 shippingEvent에 주문 정보 저장
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          description: 날짜
+                        businessPartner_id:
+                          type: string
+                          description: 비즈니스 파트너의 고유 아이디
+                        product_id:
+                          type: string
+                          description: 주문 물품의 고유 id
+                        employee_id:
+                          type: string
+                          description: 주문을 받은 사원의 고유 id
+                        orderedProductQuantity:
+                          type: number
+                          description: 주문 수량
+                        totalAmount:
+                          type: number
+                          description: 총액 (도매가 * 주문 수량)
+  /product/receiving:
+    post:
+      summary: 상품 입고
+      description: 상품을 입고 시킵니다.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                  description: 상품의 고유 ID
+                employee_id:
+                  type: string
+                  description: 입고를 담당한 사원의 고유 ID
+                date:
+                  type: string
+                  description: 입고 날짜
+                receivingStock:
+                  type: number
+                  description: 입고된 재고량
+      responses:
+        "200":
+          description: 상품 입고 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_id:
+                    type: string
+                    description: 고유 상품 ID
+                  receivingEvent:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          description: 날짜
+                        warehouseManager:
+                          type: string
+                          description: 입고 시킨 사원의 ID
+                        receivingStock:
+                          type: number
+                          description: 입고량
