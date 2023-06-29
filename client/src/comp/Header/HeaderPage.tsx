@@ -111,5 +111,3 @@ const CompanyName = styled.div`
 `;
 
 const MyName = styled.div``;
-
-const NavSection = styled.div``;
