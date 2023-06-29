@@ -4,6 +4,7 @@ import { UserSignUPDataTY } from "../comp/page/SignUpPage/SignUpPage";
 // 로그인창을 모달로 띄우기로 되어있다. 트루가 되면 모달이 뜬다.
 export const loginModals = atom<boolean>(false);
 
+// 로그인이 되어 있는 지 안되고 있는지
 export const loginStateAtom = atom<boolean>(false);
 
 type UserDataTY = UserSignUPDataTY & {
@@ -24,4 +25,5 @@ export const userDataAtom = atom<UserDataTY>({
   phoneNumber: "",
   companyDepartment: "",
   position: "",
+  note: "",
 });
