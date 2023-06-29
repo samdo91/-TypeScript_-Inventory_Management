@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import MainPage from "./comp/page/mainPage/mainPage";
+import MainPage from "./comp/page/MainPage/MainPage";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./store/router/router";
+import { router } from "./router/router";
 import "./App.css";
 import axios from "axios";
 

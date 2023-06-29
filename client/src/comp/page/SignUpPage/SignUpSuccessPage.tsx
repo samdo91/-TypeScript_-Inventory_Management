@@ -3,8 +3,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAtom } from "jotai";
-import { loginModals } from "../../../store/globalStateManagement";
-import LoginPage from "../loginPage/loginPage";
+import { loginModals } from "../../../globalStateManagement";
+import LoginPage from "../LoginPage/LoginPage";
 function SignUpSuccessPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals);
   const handleLoginModal = () => {

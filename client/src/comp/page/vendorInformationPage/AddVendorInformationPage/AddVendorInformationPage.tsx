@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
-import { TableItemTY } from "../vendorInformationPage";
+import { TableItemTY } from "../VendorInformationPage";
 
 interface VendorTableTY extends TableItemTY {
   eMail: string;
