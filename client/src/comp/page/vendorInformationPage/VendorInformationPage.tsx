@@ -2,65 +2,58 @@ import styled from "@emotion/styled";
 import React from "react";
 import VendorInformationSearching from "./VendorInformationSearching";
 import { Link } from "react-router-dom";
+import Header from "../../Header/HeaderPage";
+import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 
 export type TableItemTY = {
   vendorCode: string;
-  vendorName: string;
-  transactionAmount: number;
+  BusinessPartnerName: string;
+  credit: number;
 };
 
 const data: TableItemTY[] = [
   {
     vendorCode: "001",
-    vendorName: "Item 1",
-    transactionAmount: 2222,
+    BusinessPartnerName: "Item 1",
+    credit: 2222,
   },
   {
     vendorCode: "002",
-    vendorName: "Item 2",
-    transactionAmount: 333,
+    BusinessPartnerName: "Item 2",
+    credit: 333,
   },
   {
     vendorCode: "003",
-    vendorName: "Item 3",
-    transactionAmount: 22222,
+    BusinessPartnerName: "Item 3",
+    credit: 22222,
   },
 ];
 
 function VendorInformationPage() {
   return (
-    <VendorInformationPageBody>
-      <HeaderSection>
-        <Button>메일전송</Button>
-        <Link to="/AddVendorInformation">
-          <Button>신규업체 등록</Button>
-        </Link>
-      </HeaderSection>
-      <Tittle>거래처 정보</Tittle>
-      <VendorSection>
-        <table>
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>transaction Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.vendorCode}>
-                <td>{item.vendorCode}</td>
-                <td>{item.vendorName}</td>
-                <td>{item.transactionAmount}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </VendorSection>
-      <SearchingSection>
-        <VendorInformationSearching />
-      </SearchingSection>
-    </VendorInformationPageBody>
+    <div>
+      <header>
+        <Header />
+      </header>
+      <VendorInformationPageBody>
+        <HeaderSection>
+          <Button>메일전송</Button>
+          <Link to="/AddVendorInformation">
+            <Button>신규업체 등록</Button>
+          </Link>
+        </HeaderSection>
+        <Tittle>거래처 정보</Tittle>
+        <VendorSection>
+          <BulletinBoardComponent
+            data={data}
+            rowKey={["vendorCode", "BusinessPartnerName", "credit"]}
+          />
+        </VendorSection>
+        <SearchingSection>
+          <VendorInformationSearching />
+        </SearchingSection>
+      </VendorInformationPageBody>
+    </div>
   );
 }
 

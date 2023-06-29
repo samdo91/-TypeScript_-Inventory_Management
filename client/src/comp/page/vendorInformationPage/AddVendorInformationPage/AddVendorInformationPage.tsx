@@ -10,18 +10,18 @@ interface VendorTableTY extends TableItemTY {
 }
 
 function AddVendorInformationPage() {
-  const [currentCode, setCurrentCode] = useState<string>(""); // 제품번호
-  const [currentName, setCurrentName] = useState<string>(""); // 제품 이름
-  const [currentTransactionAmount, setCurrentTransactionAmount] =
-    useState<number>(0); //줄 돈
+  const [currentCode, setCurrentCode] = useState<string>(""); // 거래처번호
+  const [currentBusinessPartnerName, setCurrentBusinessPartnerName] =
+    useState<string>(""); // 거래처 이름
+  const [currentCredit, setCurrentCredit] = useState<number>(0); //줄 돈
   const [currentBusinessName, setCurrentBusinessName] = useState<string>(""); // 사업주
   const [currentRemarks, setCurrentRemarks] = useState<string>(""); //비고
   const [currentEMail, setCurrentEMail] = useState<string>(""); //이메일
   const addVendor = () => {
     const NewItemInformation: VendorTableTY = {
       vendorCode: currentCode,
-      vendorName: currentName,
-      transactionAmount: currentTransactionAmount,
+      BusinessPartnerName: currentBusinessPartnerName,
+      credit: currentCredit,
       eMail: currentEMail,
       remarks: currentRemarks,
       businessName: currentBusinessName,
@@ -53,9 +53,9 @@ function AddVendorInformationPage() {
           <Input
             type="text"
             placeholder=" 거래처 이름 입력"
-            value={currentName}
+            value={currentBusinessPartnerName}
             onChange={(e) => {
-              setCurrentName(e.target.value);
+              setCurrentBusinessPartnerName(e.target.value);
             }}
           />
         </div>
@@ -97,9 +97,9 @@ function AddVendorInformationPage() {
           <Input
             type="text"
             placeholder="transaction Amount"
-            value={currentTransactionAmount}
+            value={currentCredit}
             onChange={(e) => {
-              setCurrentTransactionAmount(parseInt(e.target.value));
+              setCurrentCredit(parseInt(e.target.value));
             }}
           />
         </div>
