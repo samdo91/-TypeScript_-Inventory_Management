@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TableItemTY } from "../itemInformationPage";
+import { TableItemTY } from "../ItemInformationPage";
 import styled from "@emotion/styled";
 
 function AddItemInformationPage() {

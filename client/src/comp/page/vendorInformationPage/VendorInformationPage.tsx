@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import VendorInformationSearching from "./vendorInformationSearching";
+import VendorInformationSearching from "./VendorInformationSearching";
 import { Link } from "react-router-dom";
 
 export type TableItemTY = {
