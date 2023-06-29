@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TableItemTY } from "../ItemInformationPage";
 import styled from "@emotion/styled";
+import { Form } from "react-bootstrap";
 
 function AddItemInformationPage() {
   const [currentCode, setCurrentCode] = useState<number>(0); // 제품번호
@@ -27,9 +28,9 @@ function AddItemInformationPage() {
         <Tittle>신규 품목 정보</Tittle>
       </HeaderSection>
       <ItemSection>
-        <div>
+        <InputFieldWrapper>
           <div>code</div>
-          <Input
+          <InputField
             type="text"
             placeholder=" 제품 번호 입력"
             value={currentCode}
@@ -37,10 +38,10 @@ function AddItemInformationPage() {
               setCurrentCode(parseInt(e.target.value));
             }}
           />
-        </div>
-        <div>
+        </InputFieldWrapper>
+        <InputFieldWrapper>
           <div>name</div>
-          <Input
+          <InputField
             type="text"
             placeholder=" 제품 이름 입력"
             value={currentName}
@@ -48,10 +49,10 @@ function AddItemInformationPage() {
               setCurrentName(e.target.value);
             }}
           />
-        </div>
-        <div>
+        </InputFieldWrapper>
+        <InputFieldWrapper>
           <div>quantity</div>
-          <Input
+          <InputField
             type="text"
             placeholder=" 재고 수량 입력"
             value={currentQuantity}
@@ -59,10 +60,10 @@ function AddItemInformationPage() {
               setCurrentQuantity(parseInt(e.target.value));
             }}
           />
-        </div>
-        <div>
+        </InputFieldWrapper>
+        <InputFieldWrapper>
           <div>unitPrice</div>
-          <Input
+          <InputField
             type="text"
             placeholder="입고가 입력"
             value={currentUnitPrice}
@@ -70,10 +71,10 @@ function AddItemInformationPage() {
               setCurrentUnitPrice(parseInt(e.target.value));
             }}
           />
-        </div>
-        <div>
+        </InputFieldWrapper>
+        <InputFieldWrapper>
           <div>purchasePrice</div>
-          <Input
+          <InputField
             type="text"
             placeholder="출고가 입력"
             value={currentPurchasePrice}
@@ -81,7 +82,7 @@ function AddItemInformationPage() {
               setCurrentPurchasePrice(parseInt(e.target.value));
             }}
           />
-        </div>
+        </InputFieldWrapper>
       </ItemSection>
     </AddItemInformationPageBody>
   );
@@ -93,5 +94,18 @@ const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Button = styled.button``;
 const Tittle = styled.title``;
-const ItemSection = styled.section``;
-const Input = styled.input``;
+const ItemSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+const InputField = styled(Form.Control)`
+  width: 300px;
+  margin: 0 auto;
+`;
+const InputFieldWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+`;
