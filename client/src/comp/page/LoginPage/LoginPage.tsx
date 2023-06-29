@@ -5,7 +5,7 @@ import {
   loginModals,
   userDataAtom,
   loginStateAtom,
-} from "../../../store/globalStateManagement";
+} from "../../../globalStateManagement";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -22,6 +22,10 @@ function LoginPage() {
   const [loginState, setLoginState] = useAtom(loginStateAtom);
   const handleClose = () => setLoginModal(false); //모달 창 닫기 함수
 
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
   const handleLoginButton = async () => {
     const loginData: LoginDataTY = {
       ID: ID,
@@ -29,11 +33,9 @@ function LoginPage() {
     };
     console.log(loginData);
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:4000/login",
-        loginData,
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${PROXY}/login`, loginData, {
+        withCredentials: true,
+      });
       console.log("response", response);
       if (response) {
         setUserData({ loginState: true, token: true, ...response.data });

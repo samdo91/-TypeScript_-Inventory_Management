@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { InboundOutboundTY } from "../inboundOutboundpage";
+import { InboundOutboundTY } from "../InboundOutboundpage";
 
 function AddInboundOutboundpage() {
   const [selectedOption, setSelectedOption] = useState<string>(""); // 라디오

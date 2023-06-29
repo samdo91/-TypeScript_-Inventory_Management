@@ -25,6 +25,11 @@ function SignUpPage() {
   const [companyDepartment, setCompanyDepartment] = useState<string>(""); // 회사부서
   const [position, setPosition] = useState<string>(""); // 직책
 
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
+  // 로그인
   const validateFields = () => {
     if (ID === "") {
       alert("ID가 비어있습니다.");
@@ -84,13 +89,9 @@ function SignUpPage() {
       companyDepartment: companyDepartment,
       position: position,
     };
-    console.log(SignUpData);
 
     try {
-      let response = await axios.post(
-        "http://127.0.0.1:4000/signUp",
-        SignUpData
-      );
+      let response = await axios.post(`{PROXY}/signUp`, SignUpData);
       console.log(response);
       if (response) {
         window.location.href = "/";
