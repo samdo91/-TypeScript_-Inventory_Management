@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import React, { useEffect } from "react";
-import NavPage from "../page/navPage";
-import LoginPage from "../page/loginPage/loginPage";
+import NavPage from "./NavPage";
+import LoginPage from "../page/LoginPage/LoginPage";
 import { useAtom } from "jotai";
 import {
   loginModals,
   userDataAtom,
   loginStateAtom,
-} from "../../store/globalStateManagement";
+} from "../../globalStateManagement";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -19,6 +19,10 @@ function Header() {
   const handleLoginModal = () => {
     setLoginModal(!loginModal);
   };
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
 
   //쿠키가 있나 없나 검증하며 있다면 쿠키를 불러온다.
   const logincookie = async () => {
@@ -31,7 +35,7 @@ function Header() {
         return; // 토큰이 없으면 함수 종료
       }
 
-      response = await axios.post(`http://127.0.0.1:4000/profile`, {});
+      response = await axios.post(`${PROXY}/profile`, {});
       console.log("response", response);
       if (response.data === false) {
         return;

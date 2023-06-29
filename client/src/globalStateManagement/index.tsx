@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { UserSignUPDataTY } from "../../comp/page/signUpPage/signUpPage";
+import { UserSignUPDataTY } from "../comp/page/SignUpPage/SignUpPage";
 
 // 로그인창을 모달로 띄우기로 되어있다. 트루가 되면 모달이 뜬다.
 export const loginModals = atom<boolean>(false);
