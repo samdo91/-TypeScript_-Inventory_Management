@@ -12,6 +12,7 @@ export type UserSignUPDataTY = {
   companyDepartment: String;
   position: String;
   companyName: String;
+  note: string;
 };
 
 function SignUpPage() {
@@ -24,6 +25,7 @@ function SignUpPage() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [companyDepartment, setCompanyDepartment] = useState<string>(""); // 회사부서
   const [position, setPosition] = useState<string>(""); // 직책
+  const [note, setNote] = useState<string>(""); // 비고
 
   const PROXY =
     window.location.hostname === "localhost"
@@ -88,10 +90,11 @@ function SignUpPage() {
       phoneNumber: phoneNumber,
       companyDepartment: companyDepartment,
       position: position,
+      note: note,
     };
 
     try {
-      let response = await axios.post(`{PROXY}/signUp`, SignUpData);
+      let response = await axios.post(`${PROXY}/signUp`, SignUpData);
       console.log(response);
       if (response) {
         window.location.href = "/";
@@ -219,6 +222,17 @@ function SignUpPage() {
             <option value="teamLeader">팀장</option>
             <option value="director">부장</option>
           </Form.Control>
+        </FormGroup>
+        <FormGroup controlId="exampleForm.ControlInput1">
+          <Form.Label>비고</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="비고 및 특이 사항을 적어주세요"
+            value={note}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setNote(e.target.value);
+            }}
+          />
         </FormGroup>
         <Button variant="primary" onClick={postSignUpData}>
           회원가입

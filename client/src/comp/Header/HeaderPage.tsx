@@ -31,10 +31,6 @@ function Header() {
       const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰을 가져옵니다.
 
       console.log(token);
-      if (!token) {
-        return; // 토큰이 없으면 함수 종료
-      }
-
       response = await axios.post(`${PROXY}/profile`, {});
       console.log("response", response);
       if (response.data === false) {
@@ -49,7 +45,7 @@ function Header() {
   };
 
   useEffect(() => {
-    if (!userData.loginState) {
+    if (userData.token === false) {
       // userData.loginState가 false가 아닌 경우에 실행되도록 수정합니다.
       logincookie(); // 반환된 response는 사용하지 않으므로 변수 할당을 제거합니다.
     }

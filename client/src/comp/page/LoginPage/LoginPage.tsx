@@ -27,19 +27,32 @@ function LoginPage() {
       ? "http://127.0.0.1:4000"
       : "/proxy";
   const handleLoginButton = async () => {
+    if (!ID) {
+      alert("id를 적어주세요.");
+      return;
+    }
+    if (!password) {
+      alert("Password를 적어주세요.");
+      return;
+    }
+
     const loginData: LoginDataTY = {
       ID: ID,
       password: password,
     };
-    console.log(loginData);
+
     try {
       const response = await axios.post(`${PROXY}/login`, loginData, {
         withCredentials: true,
       });
-      console.log("response", response);
-      if (response) {
+      console.log("response", response.data);
+
+      if (response.data) {
         setUserData({ loginState: true, token: true, ...response.data });
         setLoginState(true);
+      } else {
+        alert("올바른 ID와 페스워드가 아닙니다");
+        return;
       }
     } catch (e) {
       alert("제출이 제대로 되지 않았음 왜일까?");
