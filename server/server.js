@@ -38,6 +38,7 @@ mongoose
     console.error("MongoDB 연결 에러:", error);
   });
 
+// 회원가입
 app.post(`/signUp`, async (req, res) => {
   const {
     ID,
@@ -47,6 +48,7 @@ app.post(`/signUp`, async (req, res) => {
     phoneNumber,
     companyDepartment,
     position,
+    note,
   } = req.body;
 
   try {
@@ -58,6 +60,7 @@ app.post(`/signUp`, async (req, res) => {
       phoneNumber,
       companyDepartment,
       position,
+      note,
     });
 
     console.log(userDoc);
@@ -67,13 +70,15 @@ app.post(`/signUp`, async (req, res) => {
   }
 });
 
+// 로그인
 app.post(`/login`, async (req, res) => {
   const { ID, password } = req.body;
   console.log(ID, password);
 
   const userDoc = await User.findOne({ ID });
 
-  if (!userDoc) {
+  console.log("userDoc", userDoc);
+  if (userDoc === null) {
     return res.json(false);
   }
 
@@ -103,6 +108,7 @@ app.post(`/login`, async (req, res) => {
   }
 });
 
+// 페이지 로그인 후 만들어진 토큰으로 다시 회원 가입
 app.post(`/profile`, (req, res) => {
   const { token } = req.cookies;
 
