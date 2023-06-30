@@ -6,6 +6,9 @@ import Header from "../../Header/HeaderPage";
 import { Container, Table, Pagination } from "react-bootstrap";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 import { TableItemTY } from "../../../types/product";
+import { useAtom } from "jotai";
+import { loginStateAtom, loginModals } from "../../../globalStateManagement";
+import { useNavigate } from "react-router-dom";
 
 const data: TableItemTY[] = [
   {
@@ -46,6 +49,10 @@ const data: TableItemTY[] = [
 ];
 
 function ItemInformationPage() {
+  const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
+  const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
+  const navigate = useNavigate();
+
   return (
     <div>
       <header>
@@ -54,9 +61,18 @@ function ItemInformationPage() {
       <ItemInformationPageBody>
         <HeaderSection>
           <Button>메일전송</Button>
-          <Link to="/AddItemInformation">
-            <Button>신규 품목</Button>
-          </Link>
+
+          <Button
+            onClick={() => {
+              if (loginState) {
+                navigate("/AddItemInformation"); // loginState가 true인 경우 /AddItemInformation로 라우팅
+              } else {
+                setLoginModal(true); // loginState가 false인 경우 setLoginModal(true) 실행
+              }
+            }}
+          >
+            신규 품목
+          </Button>
         </HeaderSection>
         <Tittle>품목 정보</Tittle>
         <ItemSection>
