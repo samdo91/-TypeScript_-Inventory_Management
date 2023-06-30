@@ -1,22 +1,45 @@
 import React, { useState } from "react";
-import { TableItemTY } from "../ItemInformationPage";
 import styled from "@emotion/styled";
 import { Form } from "react-bootstrap";
+import {
+  AddProductTY,
+  ReceivingEventTY,
+  ShippingEventTY,
+} from "../../../../types/product";
 
 function AddItemInformationPage() {
-  const [currentCode, setCurrentCode] = useState<number>(0); // 제품번호
-  const [currentName, setCurrentName] = useState<string>(""); // 제품 이름
-  const [currentQuantity, setCurrentQuantity] = useState<number>(0); //제품 수량
-  const [currentUnitPrice, setCurrentUnitPrice] = useState<number>(0); // 제품 입고가
-  const [currentPurchasePrice, setCurrentPurchasePrice] = useState<number>(0); // 제품 출고가
+  const [currentProductName, setCurrentProductName] = useState<string>(""); //제품 이름
+  const [currentWholesalePrice, setCurrentWholesalePrice] = useState<number>(0); // 제품 입고가
+  const [currentRetailPrice, setCurrentRetailPrice] = useState<number>(0); // 제품 출고가
+  const [currentFirstStock, setCurrentFirstStock] = useState<number>(0); // 첫 입고 수량
+  const [currentDate, setCurrentDate] = useState<string>(""); // 첫입고 날짜
+  const [currentWarehouseManager, setCurrentWarehouseManager] =
+    useState<string>(""); // 입고자 id
+  const [currentReceivingEventList, setCurrentReceivingEventList] = useState<
+    ReceivingEventTY[]
+  >([]); // 입고 이밴트
+  const [currentShippingEventList, setCurrentShippingEventList] = useState<
+    ShippingEventTY[]
+  >([]); // 출고 이밴트
+  const [currentTotalAmountReceived, setCurrentTotalAmountReceived] =
+    useState<number>(0); // 총입고량
+  const [currentTotalAmountShipped, setCurrentTotalAmountShipped] =
+    useState<number>(0); // 총출고량
+  const [currentStock, setCurrentStock] = useState<number>(0); //제품 수량
 
   const addItem = () => {
-    const NewItemInformation: TableItemTY = {
-      productCode: currentCode,
-      productName: currentName,
-      quantity: currentQuantity,
-      unitPrice: currentUnitPrice,
-      purchasePrice: currentPurchasePrice,
+    const NewItemInformation: AddProductTY = {
+      productName: currentProductName,
+      wholesalePrice: currentWholesalePrice,
+      retailPrice: currentRetailPrice,
+      firstStock: currentFirstStock,
+      date: currentDate,
+      warehouseManager: currentWarehouseManager,
+      receivingEventList: currentReceivingEventList,
+      shippingEventList: currentShippingEventList,
+      totalAmountReceived: currentTotalAmountReceived,
+      totalAmountShipped: currentTotalAmountShipped,
+      stock: currentStock,
     };
     console.log(NewItemInformation);
   };
@@ -28,17 +51,6 @@ function AddItemInformationPage() {
         <Tittle>신규 품목 정보</Tittle>
       </HeaderSection>
       <ItemSection>
-        <InputFieldWrapper>
-          <div>code</div>
-          <InputField
-            type="text"
-            placeholder=" 제품 번호 입력"
-            value={currentCode}
-            onChange={(e) => {
-              setCurrentCode(parseInt(e.target.value));
-            }}
-          />
-        </InputFieldWrapper>
         <InputFieldWrapper>
           <div>name</div>
           <InputField
@@ -80,6 +92,17 @@ function AddItemInformationPage() {
             value={currentPurchasePrice}
             onChange={(e) => {
               setCurrentPurchasePrice(parseInt(e.target.value));
+            }}
+          />
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <div>code</div>
+          <InputField
+            type="text"
+            placeholder=" 제품 번호 입력"
+            value={currentCode}
+            onChange={(e) => {
+              setCurrentCode(parseInt(e.target.value));
             }}
           />
         </InputFieldWrapper>
