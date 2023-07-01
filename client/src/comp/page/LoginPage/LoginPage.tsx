@@ -72,7 +72,7 @@ function LoginPage() {
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>ID</Form.Label>
               <Form.Control
-                type="password"
+                type="text"
                 placeholder="아이디를 입력해줘"
                 value={ID}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +85,7 @@ function LoginPage() {
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>password</Form.Label>
               <Form.Control
-                type="text"
+                type="password"
                 placeholder="페스워드를 입력해줘"
                 value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
