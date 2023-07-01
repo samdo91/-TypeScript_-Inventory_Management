@@ -10,6 +10,7 @@ import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
 const data: TableItemTY[] = [
   {
     productCode: 1,
@@ -51,6 +52,7 @@ const data: TableItemTY[] = [
 function ItemInformationPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
+
   const navigate = useNavigate();
 
   return (
@@ -81,9 +83,9 @@ function ItemInformationPage() {
             rowKey={[
               "productCode",
               "productName",
-              "quantity",
-              "unitPrice",
-              "purchasePrice",
+              "stock",
+              "wholesalePrice",
+              "retailPrice",
             ]}
           />
         </ItemSection>
