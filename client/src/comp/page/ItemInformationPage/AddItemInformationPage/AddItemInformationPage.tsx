@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import {
   AddProductTY,
   ReceivingEventTY,
@@ -91,8 +92,8 @@ function AddItemInformationPage() {
       </header>
       <AddItemInformationPageBody>
         <HeaderSection>
-          <Button>품목삭제</Button>
-          <Button onClick={addItem}>품목추가</Button>
+          <Buttons>품목삭제</Buttons>
+          <Buttons onClick={addItem}>품목추가</Buttons>
 
           <Tittle>신규 품목 정보</Tittle>
         </HeaderSection>
@@ -154,7 +155,7 @@ export default AddItemInformationPage;
 
 const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
-const Button = styled.button``;
+const Buttons = styled(Button)``;
 const Tittle = styled.div``;
 const ItemSection = styled.div`
   display: flex;
