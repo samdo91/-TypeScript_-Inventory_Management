@@ -9,7 +9,7 @@ import { TableItemTY } from "../../../types/product";
 import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
-
+import { Button } from "react-bootstrap";
 const data: TableItemTY[] = [
   {
     productCode: 1,
@@ -99,7 +99,6 @@ export default ItemInformationPage;
 
 const ItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
-const Button = styled.button``;
 const Tittle = styled.h1``;
 const ItemSection = styled.section``;
 const SearchingSection = styled.section``;
