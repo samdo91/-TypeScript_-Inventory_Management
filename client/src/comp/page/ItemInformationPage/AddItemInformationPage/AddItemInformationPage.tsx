@@ -103,6 +103,12 @@ function AddItemInformationPage() {
         `${PROXY}/addProduct`,
         newItemInformation
       );
+
+      setCurrentProductName("");
+      setCurrentWholesalePrice(0);
+      setCurrentRetailPrice(0);
+      setCurrentFirstStock(0);
+      setCurrentNote("");
       console.log(response.data);
     } catch (error) {
       console.error("Failed to add item:", error);
@@ -171,7 +177,7 @@ function AddItemInformationPage() {
           </InputFieldWrapper>
 
           <InputFieldWrapper>
-            <div>첫 입고 재고</div>
+            <div>상품 비고</div>
             <InputField
               type="text"
               placeholder="상품 비고"
