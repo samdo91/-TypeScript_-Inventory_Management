@@ -171,6 +171,7 @@ app.post(`/addProduct`, async (req, res) => {
     totalAmountReceived,
     totalAmountShipped,
     stock,
+    note,
   } = req.body;
   try {
     // 스키마에 따라서 새로운 상품을 생성하고 저장하는 로직을 작성합니다.
@@ -186,6 +187,7 @@ app.post(`/addProduct`, async (req, res) => {
       totalAmountReceived,
       totalAmountShipped,
       stock,
+      note,
     });
     console.log(product);
 

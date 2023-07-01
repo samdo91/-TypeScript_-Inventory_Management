@@ -26,6 +26,7 @@ const ProductSchema = mongoose.Schema({
   totalAmountReceived: Number,
   totalAmountShipped: Number,
   stock: Number,
+  note: String,
 });
 
 const ProductModel = mongoose.model("Product", ProductSchema);

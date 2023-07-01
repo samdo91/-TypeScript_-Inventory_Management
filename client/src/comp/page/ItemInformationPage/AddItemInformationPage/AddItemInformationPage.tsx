@@ -22,12 +22,11 @@ function AddItemInformationPage() {
   const [currentWholesalePrice, setCurrentWholesalePrice] = useState<number>(0); // 제품 입고가
   const [currentRetailPrice, setCurrentRetailPrice] = useState<number>(0); // 제품 출고가
   const [currentFirstStock, setCurrentFirstStock] = useState<number>(0); // 첫 입고 수량
-  const [currentDate, setCurrentDate] = useState<string>(""); // 첫입고 날짜
-
+  const [currentNote, setCurrentNote] = useState<string>(""); // 제품 비고
   // --------------------------------------------------------------------
   //여기부터는 직접 입력되는 값이 아닌 입력된 데이터를 조합해서 만듬
 
-  const [date, setDate] = useState(new Date()); //시간
+  const [date, setDate] = useState<Date>(new Date()); //시간
   const [currentWarehouseManager, setCurrentWarehouseManager] =
     useState<string>(""); // 입고자 id
 
@@ -47,38 +46,63 @@ function AddItemInformationPage() {
     setCurrentWarehouseManager(userData._id);
   }, []);
 
-  const addItem = async () => {
-    const receivingEventList: ReceivingEventTY[] = [
-      {
-        date: currentDate,
-        employee_id: currentWarehouseManager,
-        addProductQuantity: currentFirstStock,
-      },
-    ];
+  const handleException = (): void => {
+    if (!currentProductName) {
+      alert("Product가 비어있어요");
+      throw new Error("Product가 비어있습니다.");
+    }
+    if (currentWholesalePrice === 0) {
+      alert("입고가를 적어주세요.");
+      throw new Error("입고가를 적어주세요.");
+    }
+    if (currentRetailPrice === 0) {
+      alert("출고가를 적어주세요.");
+      throw new Error("출고가를 적어주세요.");
+    }
+    if (currentFirstStock === 0) {
+      alert("재고를 입력해주세요.");
+      throw new Error("재고를 입력해주세요.");
+    }
+    if (!currentNote) {
+      alert("비고를 입력해주세요.");
+      throw new Error("비고를 입력해주세요.");
+    }
+  };
 
-    const totalAmountReceived: number = currentFirstStock;
-    const stock: number = totalAmountReceived - currentTotalAmountShipped;
-
-    const newItemInformation: AddProductTY = {
-      productName: currentProductName,
-      wholesalePrice: currentWholesalePrice,
-      retailPrice: currentRetailPrice,
-      firstStock: currentFirstStock,
-      date: currentDate,
-      warehouseManager: currentWarehouseManager,
-      receivingEventList: receivingEventList,
-      shippingEventList: currentShippingEventList,
-      totalAmountReceived: totalAmountReceived,
-      totalAmountShipped: currentTotalAmountShipped,
-      stock: stock,
-    };
-
+  const addItem = async (): Promise<void> => {
     try {
+      handleException();
+
+      const receivingEventList: ReceivingEventTY[] = [
+        {
+          date: date,
+          employee_id: currentWarehouseManager,
+          addProductQuantity: currentFirstStock,
+        },
+      ];
+
+      const totalAmountReceived: number = currentFirstStock;
+      const stock: number = totalAmountReceived - currentTotalAmountShipped;
+
+      const newItemInformation: AddProductTY = {
+        productName: currentProductName,
+        wholesalePrice: currentWholesalePrice,
+        retailPrice: currentRetailPrice,
+        firstStock: currentFirstStock,
+        date: date,
+        warehouseManager: currentWarehouseManager,
+        receivingEventList: receivingEventList,
+        shippingEventList: currentShippingEventList,
+        totalAmountReceived: totalAmountReceived,
+        totalAmountShipped: currentTotalAmountShipped,
+        stock: stock,
+        note: currentNote,
+      };
+
       const response = await axios.post(
         `${PROXY}/addProduct`,
         newItemInformation
       );
-
       console.log(response.data);
     } catch (error) {
       console.error("Failed to add item:", error);
@@ -142,6 +166,19 @@ function AddItemInformationPage() {
               onChange={(e) => {
                 const value = e.target.value;
                 setCurrentFirstStock(value === "" ? 0 : parseInt(value));
+              }}
+            />
+          </InputFieldWrapper>
+
+          <InputFieldWrapper>
+            <div>첫 입고 재고</div>
+            <InputField
+              type="text"
+              placeholder="상품 비고"
+              value={currentNote}
+              onChange={(e) => {
+                const value = e.target.value;
+                setCurrentNote(value);
               }}
             />
           </InputFieldWrapper>
