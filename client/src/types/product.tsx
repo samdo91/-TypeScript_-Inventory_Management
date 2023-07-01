@@ -7,17 +7,15 @@ export type TableItemTY = {
 };
 export type ReceivingEventTY = {
   date: string; // 날짜
-  businessPartner_id: string; // 주문 거래처
-  employee_id: string; // 출고자
-  orderedProductQuantity: 0; // 오더 품목 수
-  totalAmount: 0; // 총 비용
+  employee_id: string; // 입고자
+  addProductQuantity: number; // 오더 품목 수
 };
 export type ShippingEventTY = {
   date: string; // 날짜
   businessPartner_id: string; // 주문 거래처
   employee_id: string; // 출고자
-  orderedProductQuantity: 0; // 오더 품목 수
-  totalAmount: 0; // 총 비용
+  orderedProductQuantity: Number; // 오더 품목 수
+  totalAmount: number; // 총 비용
 };
 
 export type AddProductTY = {

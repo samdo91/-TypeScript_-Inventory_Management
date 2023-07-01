@@ -11,6 +11,7 @@ const localhost = "127.0.0.1";
 
 const mongoose = require("mongoose");
 const User = require("./models/user.js");
+const Product = require("./models/product.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -155,4 +156,20 @@ app.post(`/logout`, (req, res) => {
         .json("logoutSuccess");
     });
   }
+});
+
+app.post(`/addProduct`, (req, res) => {
+  const newItemInformation = req.body;
+
+  // 스키마에 따라서 새로운 상품을 생성하고 저장하는 로직을 작성합니다.
+  const newProduct = new ProductModel(newItemInformation);
+  newProduct
+    .save()
+    .then((product) => {
+      res.json(product); // 새로 생성된 상품 정보를 응답합니다.
+    })
+    .catch((error) => {
+      console.error("Failed to add product:", error);
+      res.status(500).json({ error: "Failed to add product" });
+    });
 });
