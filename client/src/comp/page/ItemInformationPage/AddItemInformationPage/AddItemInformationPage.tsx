@@ -9,7 +9,12 @@ import {
 import Header from "../../../Header/HeaderPage";
 import { useAtom } from "jotai";
 import { userDataAtom } from "../../../../globalStateManagement";
+import axios from "axios";
 function AddItemInformationPage() {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
   const [userData] = useAtom(userDataAtom);
 
   const [currentProductName, setCurrentProductName] = useState<string>(""); //제품 이름
@@ -17,6 +22,13 @@ function AddItemInformationPage() {
   const [currentRetailPrice, setCurrentRetailPrice] = useState<number>(0); // 제품 출고가
   const [currentFirstStock, setCurrentFirstStock] = useState<number>(0); // 첫 입고 수량
   const [currentDate, setCurrentDate] = useState<string>(""); // 첫입고 날짜
+
+  // --------------------------------------------------------------------
+  //여기부터는 직접 입력되는 값이 아닌 입력된 데이터를 조합해서 만듬
+
+  const [date, setDate] = useState(new Date()); //시간
+  const [currentWarehouseManager, setCurrentWarehouseManager] =
+    useState<string>(""); // 입고자 id
 
   const [currentReceivingEventList, setCurrentReceivingEventList] = useState<
     ReceivingEventTY[]
@@ -30,33 +42,48 @@ function AddItemInformationPage() {
     useState<number>(0); // 총출고량
   const [currentStock, setCurrentStock] = useState<number>(0); //제품 수량
 
-  // --------------------------------------------------------------------
-  //여기부터는 직접 입력되는 값이 아닌 입력된 데이터를 조합해서 만듬
-
-  const [date, setDate] = useState(new Date()); //시간
-  const [currentWarehouseManager, setCurrentWarehouseManager] =
-    useState<string>(""); // 입고자 id
-
   useEffect(() => {
-    setCurrentWarehouseManager(userData.ID);
+    setCurrentWarehouseManager(userData._id);
   }, []);
 
-  const addItem = () => {
-    const NewItemInformation: AddProductTY = {
+  const addItem = async () => {
+    const receivingEventList: ReceivingEventTY[] = [
+      {
+        date: currentDate,
+        employee_id: currentWarehouseManager,
+        addProductQuantity: currentFirstStock,
+      },
+    ];
+
+    const totalAmountReceived: number = currentFirstStock;
+    const stock: number = totalAmountReceived - currentTotalAmountShipped;
+
+    const newItemInformation: AddProductTY = {
       productName: currentProductName,
       wholesalePrice: currentWholesalePrice,
       retailPrice: currentRetailPrice,
       firstStock: currentFirstStock,
       date: currentDate,
       warehouseManager: currentWarehouseManager,
-      receivingEventList: currentReceivingEventList,
+      receivingEventList: receivingEventList,
       shippingEventList: currentShippingEventList,
-      totalAmountReceived: currentTotalAmountReceived,
+      totalAmountReceived: totalAmountReceived,
       totalAmountShipped: currentTotalAmountShipped,
-      stock: currentStock,
+      stock: stock,
     };
-    console.log(NewItemInformation);
+
+    try {
+      const response = await axios.post(
+        `${PROXY}/addProduct`,
+        newItemInformation
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.error("Failed to add item:", error);
+    }
   };
+
   return (
     <div>
       <header>
@@ -66,6 +93,7 @@ function AddItemInformationPage() {
         <HeaderSection>
           <Button>품목삭제</Button>
           <Button onClick={addItem}>품목추가</Button>
+
           <Tittle>신규 품목 정보</Tittle>
         </HeaderSection>
         <ItemSection>
@@ -87,7 +115,8 @@ function AddItemInformationPage() {
               placeholder="입고가 입력"
               value={currentWholesalePrice}
               onChange={(e) => {
-                setCurrentWholesalePrice(parseInt(e.target.value));
+                const value = e.target.value;
+                setCurrentWholesalePrice(value === "" ? 0 : parseInt(value));
               }}
             />
           </InputFieldWrapper>
@@ -98,7 +127,8 @@ function AddItemInformationPage() {
               placeholder="출고가 입력"
               value={currentRetailPrice}
               onChange={(e) => {
-                setCurrentRetailPrice(parseInt(e.target.value));
+                const value = e.target.value;
+                setCurrentRetailPrice(value === "" ? 0 : parseInt(value));
               }}
             />
           </InputFieldWrapper>
@@ -109,23 +139,12 @@ function AddItemInformationPage() {
               placeholder="출고가 입력"
               value={currentFirstStock}
               onChange={(e) => {
-                setCurrentFirstStock(parseInt(e.target.value));
+                const value = e.target.value;
+                setCurrentFirstStock(value === "" ? 0 : parseInt(value));
               }}
             />
           </InputFieldWrapper>
         </ItemSection>
-        <button
-          onClick={() => {
-            const year = date.getFullYear().toString().padStart(4, "0");
-            const month = (date.getMonth() + 1).toString().padStart(2, "0");
-            const day = date.getDate().toString().padStart(2, "0");
-            const hour = date.getHours().toString().padStart(2, "0");
-            const minute = date.getMinutes().toString().padStart(2, "0");
-
-            const formattedTime = `${year}/${month}/${day}/${hour}/${minute}`;
-            console.log(formattedTime);
-          }}
-        />
       </AddItemInformationPageBody>
     </div>
   );
@@ -136,7 +155,7 @@ export default AddItemInformationPage;
 const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Button = styled.button``;
-const Tittle = styled.title``;
+const Tittle = styled.div``;
 const ItemSection = styled.div`
   display: flex;
   flex-direction: column;
