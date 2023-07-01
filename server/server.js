@@ -157,19 +157,42 @@ app.post(`/logout`, (req, res) => {
     });
   }
 });
-
-app.post(`/addProduct`, (req, res) => {
-  const newItemInformation = req.body;
-
-  // 스키마에 따라서 새로운 상품을 생성하고 저장하는 로직을 작성합니다.
-  const newProduct = new ProductModel(newItemInformation);
-  newProduct
-    .save()
-    .then((product) => {
-      res.json(product); // 새로 생성된 상품 정보를 응답합니다.
-    })
-    .catch((error) => {
-      console.error("Failed to add product:", error);
-      res.status(500).json({ error: "Failed to add product" });
+// 프로덕트 추가
+app.post(`/addProduct`, async (req, res) => {
+  const {
+    productName,
+    wholesalePrice,
+    retailPrice,
+    firstStock,
+    date,
+    warehouseManager,
+    receivingEventList,
+    shippingEventList,
+    totalAmountReceived,
+    totalAmountShipped,
+    stock,
+    note,
+  } = req.body;
+  try {
+    // 스키마에 따라서 새로운 상품을 생성하고 저장하는 로직을 작성합니다.
+    const product = await Product.create({
+      productName,
+      wholesalePrice,
+      retailPrice,
+      firstStock,
+      date,
+      warehouseManager,
+      receivingEventList,
+      shippingEventList,
+      totalAmountReceived,
+      totalAmountShipped,
+      stock,
+      note,
     });
+    console.log(product);
+
+    res.json(true);
+  } catch (error) {
+    res.status(422).json(error);
+  }
 });
