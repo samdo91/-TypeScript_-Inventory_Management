@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, Form, Navbar } from "react-bootstrap";
 import styled from "@emotion/styled";
-
-export type UserSignUPDataTY = {
-  ID: string;
-  name: String;
-  eMail: String;
-  password: String;
-  phoneNumber: string;
-  companyDepartment: String;
-  position: String;
-  companyName: String;
-  note: string;
-};
+import { UserSignUPDataTY } from "../../../types/userData";
 
 function SignUpPage() {
   const [companyName, setCompanyName] = useState<string>(""); //회사명
