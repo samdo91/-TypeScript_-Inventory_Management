@@ -130,3 +130,29 @@ const PORT = 4000 || process.env.PORT;
 app.listen(PORT, localhost, () => {
   console.log(`${localhost} ${PORT} 연결 완료`);
 });
+
+//토큰의 유무를 검사하는 함수
+function verifyToken(token) {
+  try {
+    const decoded = jwt.verify(token, jwtSecret);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+// 로그아웃
+app.post(`/logout`, (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  const { token } = req.cookies;
+  const tokens = verifyToken(token);
+  if (tokens) {
+    jwt.sign({}, jwtSecret, { expiresIn: "1s" }, (err, token) => {
+      if (err) throw err;
+
+      res
+        .cookie(`token`, token, { sameSite: "none", secure: true })
+        .json("logoutSuccess");
+    });
+  }
+});
