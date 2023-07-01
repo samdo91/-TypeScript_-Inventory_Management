@@ -62,9 +62,17 @@ function Header({ setDate }: HeaderPropsTY) {
         <Link to="/">
           <Logo>WareHouse!</Logo>
         </Link>
-        <CompanyName>회사이름</CompanyName>
+        {loginState ? (
+          <CompanyName>{userData.companyName}</CompanyName>
+        ) : (
+          <CompanyName>회사이름</CompanyName>
+        )}
+        {loginState ? (
+          <MyName>{userData.name}</MyName>
+        ) : (
+          <MyName>내이름 </MyName>
+        )}
 
-        <MyName>내이름 + 최종 로그인 시간 </MyName>
         <Clock setDate={setDate} />
         <section>
           {loginState ? (
