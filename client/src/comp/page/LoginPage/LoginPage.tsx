@@ -57,6 +57,7 @@ function LoginPage() {
     } catch (e) {
       alert("제출이 제대로 되지 않았음 왜일까?");
     }
+    console.log(userData);
     handleClose();
   };
 
@@ -71,7 +72,7 @@ function LoginPage() {
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>ID</Form.Label>
               <Form.Control
-                type="text"
+                type="password"
                 placeholder="아이디를 입력해줘"
                 value={ID}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
