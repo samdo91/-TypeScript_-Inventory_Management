@@ -6,7 +6,7 @@ export type TableItemTY = {
   retailPrice: number; //소매가격
 };
 export type ReceivingEventTY = {
-  date: string; // 날짜
+  date: Date; // 날짜
   employee_id: string; // 입고자
   addProductQuantity: number; // 오더 품목 수
 };
@@ -23,13 +23,14 @@ export type AddProductTY = {
   wholesalePrice: number; //도매가격
   retailPrice: number; //소매가격
   firstStock: number; // 첫 입고
-  date: string; // 날짜 기록 날짜 / 분까지만
+  date: Date; // 날짜 기록 날짜 / 분까지만
   warehouseManager: string; // 입고자 - 유저 정보에서 가져와야함
   receivingEventList: ReceivingEventTY[]; //입고 이밴트
   shippingEventList: ShippingEventTY[]; //출고 이밴트;
   totalAmountReceived: number; // 총입고량
   totalAmountShipped: number; // 총출고량
   stock: number; // 재고 총입고량 - 총 출고량
+  note: string; //상품 비고
 };
 
 export type productTY = AddProductTY & {
