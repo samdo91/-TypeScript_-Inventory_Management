@@ -34,19 +34,50 @@ function Header({ setDate }: HeaderPropsTY) {
   //쿠키가 있나 없나 검증하며 있다면 쿠키를 불러온다.
   const logincookie = async () => {
     try {
-      const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰을 가져옵니다.
-      if (!token) return;
-
       const response = await axios.post(`${PROXY}/profile`, {});
 
       if (response.data === false) {
         return;
       } else {
-        setUserData({ loginState: true, token: token, ...response.data }); // token을 추가로 설정합니다.
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          loginState: true,
+          token: true,
+          ...response.data,
+        }));
         setLoginState(true);
       }
-    } catch (e) {
-      console.error("Failed to fetch profile:", e);
+    } catch (error) {
+      console.error("Failed to fetch profile:", error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(`${PROXY}/logout`, {});
+
+      console.log("response", response.data);
+
+      if (response.data) {
+        setUserData(() => ({
+          loginState: false,
+          token: false,
+          companyName: "",
+          ID: "",
+          password: "",
+          name: "",
+          eMail: "",
+          phoneNumber: "",
+          companyDepartment: "",
+          position: "",
+          note: "",
+          _id: "",
+        }));
+
+        setLoginState(false);
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
     }
   };
 
@@ -76,7 +107,11 @@ function Header({ setDate }: HeaderPropsTY) {
         <Clock setDate={setDate} />
         <section>
           {loginState ? (
-            <Button variant="outline-primary" className="m-1">
+            <Button
+              variant="outline-primary"
+              className="m-1"
+              onClick={handleLogout}
+            >
               로그아웃
             </Button>
           ) : (
