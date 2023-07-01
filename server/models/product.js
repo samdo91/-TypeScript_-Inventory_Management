@@ -1,13 +1,5 @@
 const mongoose = require("mongoose");
 
-const TableItemSchema = mongoose.Schema({
-  productCode: Number,
-  productName: String,
-  stock: Number,
-  wholesalePrice: Number,
-  retailPrice: Number,
-});
-
 const ReceivingEventSchema = mongoose.Schema({
   date: String,
   employee_id: String,
@@ -22,7 +14,7 @@ const ShippingEventSchema = mongoose.Schema({
   totalAmount: Number,
 });
 
-const AddProductSchema = mongoose.Schema({
+const ProductSchema = mongoose.Schema({
   productName: String,
   wholesalePrice: Number,
   retailPrice: Number,
@@ -36,15 +28,6 @@ const AddProductSchema = mongoose.Schema({
   stock: Number,
 });
 
-const ProductSchema = mongoose.Schema({
-  productCode: Number,
-  ...AddProductSchema.obj,
-});
-
-const TableItemModel = mongoose.model("TableItem", TableItemSchema);
 const ProductModel = mongoose.model("Product", ProductSchema);
 
-module.exports = {
-  TableItemModel,
-  ProductModel,
-};
+module.exports = ProductModel;
