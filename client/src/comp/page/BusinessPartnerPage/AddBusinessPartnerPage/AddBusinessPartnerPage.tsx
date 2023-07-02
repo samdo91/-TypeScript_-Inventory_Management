@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
-import { TableItemTY } from "../VendorInformationPage";
+import { TableItemTY } from "../BusinessPartnerPage";
 
 interface VendorTableTY extends TableItemTY {
   eMail: string;
@@ -9,7 +9,7 @@ interface VendorTableTY extends TableItemTY {
   remarks: string;
 }
 
-function AddVendorInformationPage() {
+function AddBusinessPartnerPage() {
   const [currentCode, setCurrentCode] = useState<string>(""); // 거래처번호
   const [currentBusinessPartnerName, setCurrentBusinessPartnerName] =
     useState<string>(""); // 거래처 이름
@@ -108,7 +108,7 @@ function AddVendorInformationPage() {
   );
 }
 
-export default AddVendorInformationPage;
+export default AddBusinessPartnerPage;
 const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Button = styled.button``;

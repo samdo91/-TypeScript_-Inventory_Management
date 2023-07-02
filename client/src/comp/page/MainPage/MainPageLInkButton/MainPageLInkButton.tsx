@@ -16,7 +16,7 @@ function MainPageLInkButton() {
           </div>
         </Button>
       </Link>
-      <Link to="/VendorInformation">
+      <Link to="/BusinessPartner">
         <Button
           variant="primary"
           style={{ height: "150px", width: "450px", margin: "10px" }}

@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import MainPage from "../comp/page/MainPage/MainPage";
 import ItemInformationPage from "../comp/page/ItemInformationPage/ItemInformationPage";
 import AddItemInformationPage from "../comp/page/ItemInformationPage/AddItemInformationPage/AddItemInformationPage";
-import VendorInformationPage from "../comp/page/vendorInformationPage/VendorInformationPage";
-import AddVendorInformationPage from "../comp/page/vendorInformationPage/AddVendorInformationPage/AddVendorInformationPage";
+import BusinessPartnerPage from "../comp/page/vendorInformationPage/BusinessPartnerPage";
+import AddBusinessPartnerPage from "../comp/page/vendorInformationPage/AddBusinessPartnerPage/AddBusinessPartnerPage";
 import SignUpPage from "../comp/page/SignUpPage/SignUpPage";
 import SignUpSuccessPage from "../comp/page/SignUpPage/SignUpSuccessPage";
 export const router = createBrowserRouter([
@@ -20,12 +20,12 @@ export const router = createBrowserRouter([
     element: <AddItemInformationPage />,
   },
   {
-    path: "/VendorInformation",
-    element: <VendorInformationPage />,
+    path: "/BusinessPartner",
+    element: <BusinessPartnerPage />,
   },
   {
-    path: "/AddVendorInformation",
-    element: <AddVendorInformationPage />,
+    path: "/AddBusinessPartner",
+    element: <AddBusinessPartnerPage />,
   },
   {
     path: "/SignUp",

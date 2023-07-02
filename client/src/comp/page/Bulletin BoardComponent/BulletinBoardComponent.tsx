@@ -17,95 +17,97 @@ function BulletinBoardComponent(props: any) {
   };
 
   return (
-    <Container>
+    <div>
       <Title>{title}</Title>
-      <Table>
-        <thead>
-          <tr>
-            {rowKey.map((item: string[]) => {
-              return <th>{item} </th>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((item: any, index: number) => (
-            <tr key={index}>
-              {rowKey.map((value: string) => {
-                return <td key={value}>{item[value]}</td>;
+      <Container>
+        <Table>
+          <thead>
+            <tr>
+              {rowKey.map((item: string[]) => {
+                return <th>{item} </th>;
               })}
             </tr>
-          ))}
-        </tbody>
-      </Table>
-      {dataList.length >= 10 && (
-        <PaginationWrapper>
-          <Pagination>
-            <Pagination.First onClick={() => handlePageChange(1)} />
-            <Pagination.Prev
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            />
-
-            {currentPage > 3 && (
-              <>
-                <Pagination.Item onClick={() => handlePageChange(1)}>
-                  {1}
-                </Pagination.Item>
-                {currentPage > 4 && <Pagination.Ellipsis />}
-              </>
-            )}
-
-            {currentPage > 2 && (
-              <Pagination.Item
-                onClick={() => handlePageChange(currentPage - 2)}
-              >
-                {currentPage - 2}
-              </Pagination.Item>
-            )}
-
-            {currentPage > 1 && (
-              <Pagination.Item
+          </thead>
+          <tbody>
+            {currentItems.map((item: any, index: number) => (
+              <tr key={index}>
+                {rowKey.map((value: string) => {
+                  return <td key={value}>{item[value]}</td>;
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        {dataList.length >= 10 && (
+          <PaginationWrapper>
+            <Pagination>
+              <Pagination.First onClick={() => handlePageChange(1)} />
+              <Pagination.Prev
                 onClick={() => handlePageChange(currentPage - 1)}
-              >
-                {currentPage - 1}
-              </Pagination.Item>
-            )}
+                disabled={currentPage === 1}
+              />
 
-            <Pagination.Item active>{currentPage}</Pagination.Item>
+              {currentPage > 3 && (
+                <>
+                  <Pagination.Item onClick={() => handlePageChange(1)}>
+                    {1}
+                  </Pagination.Item>
+                  {currentPage > 4 && <Pagination.Ellipsis />}
+                </>
+              )}
 
-            {currentPage < totalPages && (
-              <Pagination.Item
+              {currentPage > 2 && (
+                <Pagination.Item
+                  onClick={() => handlePageChange(currentPage - 2)}
+                >
+                  {currentPage - 2}
+                </Pagination.Item>
+              )}
+
+              {currentPage > 1 && (
+                <Pagination.Item
+                  onClick={() => handlePageChange(currentPage - 1)}
+                >
+                  {currentPage - 1}
+                </Pagination.Item>
+              )}
+
+              <Pagination.Item active>{currentPage}</Pagination.Item>
+
+              {currentPage < totalPages && (
+                <Pagination.Item
+                  onClick={() => handlePageChange(currentPage + 1)}
+                >
+                  {currentPage + 1}
+                </Pagination.Item>
+              )}
+
+              {currentPage < totalPages - 1 && (
+                <Pagination.Item
+                  onClick={() => handlePageChange(currentPage + 2)}
+                >
+                  {currentPage + 2}
+                </Pagination.Item>
+              )}
+
+              {currentPage < totalPages - 3 && <Pagination.Ellipsis />}
+
+              {currentPage < totalPages - 2 && (
+                <Pagination.Item onClick={() => handlePageChange(totalPages)}>
+                  {totalPages}
+                </Pagination.Item>
+              )}
+
+              <Pagination.Next
                 onClick={() => handlePageChange(currentPage + 1)}
-              >
-                {currentPage + 1}
-              </Pagination.Item>
-            )}
-
-            {currentPage < totalPages - 1 && (
-              <Pagination.Item
-                onClick={() => handlePageChange(currentPage + 2)}
-              >
-                {currentPage + 2}
-              </Pagination.Item>
-            )}
-
-            {currentPage < totalPages - 3 && <Pagination.Ellipsis />}
-
-            {currentPage < totalPages - 2 && (
-              <Pagination.Item onClick={() => handlePageChange(totalPages)}>
-                {totalPages}
-              </Pagination.Item>
-            )}
-
-            <Pagination.Next
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            />
-            <Pagination.Last onClick={() => handlePageChange(totalPages)} />
-          </Pagination>
-        </PaginationWrapper>
-      )}
-    </Container>
+                disabled={currentPage === totalPages}
+              />
+              <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+            </Pagination>
+          </PaginationWrapper>
+        )}
+      </Container>
+    </div>
   );
 }
 
