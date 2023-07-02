@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   SearchValueTY,
   SearchBarPropsTY,
-} from "../ItemInformationPage/ItemInformationSearching";
+} from "../../SearchingBar/SearchingBar";
 import styled from "@emotion/styled";
 
 function VendorInformationSearching() {

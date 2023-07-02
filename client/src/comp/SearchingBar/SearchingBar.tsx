@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import axios from "axios";
 import React, { useState } from "react";
 
 export type SearchValueTY = string | number;
@@ -8,23 +9,33 @@ export type SearchBarPropsTY = {
   currentValue: SearchValueTY;
 };
 
-function Searching() {
+function SearchingBar(props: any) {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
+
+  /* Theme: 찾으려는 상품이나 거래처 혹은 주제 
+     keyList 찾으려는 key들의 리스트
+     setDataList 찾은 item들을 다시 지정한다.  */
+  const { Theme, keyList, setDataList } = props;
   const [currentSearchValue, setCurrentSearchValue] =
     useState<SearchValueTY>("");
   const [searchCondition, setSearchCondition] = useState<string>("Code");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const searchItem: SearchBarPropsTY = {
-      searchCondition: searchCondition,
-      currentValue: currentSearchValue,
-    };
-    setCurrentSearchValue("");
-    console.log(searchItem);
+  const handleSearching = async () => {
+    const response = await axios.get(`${PROXY}/${Theme}Searching`, {
+      params: {
+        currentSearchValue: currentSearchValue,
+        searchCondition: searchCondition,
+      },
+    });
+    setDataList([...response.data]);
   };
+
   return (
     <SearchingBody>
-      <SearchBar onSubmit={handleSubmit}>
+      <SearchBar>
         <InputSelect
           as="select"
           value={searchCondition}
@@ -32,30 +43,28 @@ function Searching() {
             setSearchCondition(e.target.value);
           }}
         >
-          <option value="Code">Code</option>
-          <option value="Name">Name</option>
-          <option value="Quantity">Quantity</option>
-          <option value="UnitPrice">Unit Price</option>
-          <option value="PurchasePrice">Purchase Price</option>
+          {keyList.map((item: any) => {
+            return <option value={item}>{item}</option>;
+          })}
         </InputSelect>
         <Inputtext
           type="text"
-          placeholder="검색할 품목이나 가격을 기입해주세요."
+          placeholder="검색할 값을 기입해주세요."
           value={currentSearchValue}
           onChange={(e) => {
             setCurrentSearchValue(e.target.value);
           }}
         ></Inputtext>
-        <Button>검색</Button>
+        <Button onClick={handleSearching}>검색</Button>
       </SearchBar>
     </SearchingBody>
   );
 }
 
-export default Searching;
+export default SearchingBar;
 
 const SearchingBody = styled.div``;
-const SearchBar = styled.form``;
+const SearchBar = styled.div``;
 const InputSelect = styled.input``;
 const Inputtext = styled.input``;
 const Button = styled.button``;
