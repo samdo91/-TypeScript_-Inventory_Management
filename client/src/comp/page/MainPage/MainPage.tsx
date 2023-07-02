@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../Header/HeaderPage";
 import styled from "@emotion/styled";
 import MainPageBoard from "./MainPageLInkButton/MainPageLInkButton";
-import BulletinBoard from "./BulletinBoard/BulletinBoard";
+import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 import { Container, Row, Col } from "react-bootstrap";
+import { productTY } from "../../../types/product";
+import axios from "axios";
+
 function MainPage() {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
+  const [productList, setProductList] = useState<productTY[]>([]);
+
+  const recentProducts = async () => {
+    const response = await axios(`${PROXY}/recentProducts`);
+    setProductList([...response.data]);
+  };
+  useEffect(() => {
+    recentProducts();
+  }, []);
+
   return (
     <div>
       <header>
@@ -23,33 +40,37 @@ function MainPage() {
           <Col xs={12} md={8}>
             {/* 우측 영역 */}
             <div style={{ height: "100vh" }}>
-              <BulletinBoard
+              <BulletinBoardComponent
                 tittle="최근 등록 품목"
+                dataList={productList}
                 rowKey={[
-                  "id", // product_id
-                  "productName", // product Name
-                  "wholesalePrice", // 입고가
-                  "retailPrice", // 출고가
-                  "stock", // 재고
+                  "_id",
+                  "productName",
+                  "stock",
+                  "wholesalePrice",
+                  "retailPrice",
                 ]}
               />
-              <BulletinBoard
+              <BulletinBoardComponent
                 tittle="최근 등록 회사"
+                dataList={productList}
                 rowKey={[
-                  "id",
-                  "BusinessPartnerName",
-                  "telephoneNumber",
-                  "credit",
+                  "_id",
+                  "productName",
+                  "stock",
+                  "wholesalePrice",
+                  "retailPrice",
                 ]}
               />
-              <BulletinBoard
-                tittle="최근 입고 품목"
+              <BulletinBoardComponent
+                tittle="최근 등록 입고"
+                dataList={productList}
                 rowKey={[
-                  "id", // 이벤트_id
-                  "productName", // 입고 상품 이름
-                  "BusinessPartnerName",
-                  "date", // 날짜
-                  "receivingStock", // 총액
+                  "_id",
+                  "productName",
+                  "stock",
+                  "wholesalePrice",
+                  "retailPrice",
                 ]}
               />
             </div>
