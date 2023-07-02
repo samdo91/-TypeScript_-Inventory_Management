@@ -3,14 +3,14 @@ import { Container, Table, Pagination } from "react-bootstrap";
 import styled from "@emotion/styled";
 
 function BulletinBoardComponent(props: any) {
-  const { data, rowKey } = props;
+  const { dataList, setDataLIst, rowKey } = props;
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(dataList.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = dataList.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
