@@ -200,6 +200,7 @@ app.post(`/addProduct`, async (req, res) => {
 app.get(`/productList`, async (req, res) => {
   res.json(await Product.find());
 });
+
 app.get("/productSearching", async (req, res) => {
   const { currentSearchValue, searchCondition } = req.query;
 
@@ -210,4 +211,13 @@ app.get("/productSearching", async (req, res) => {
   });
 
   res.json(searchResult);
+});
+
+app.get("/recentProducts", async (req, res) => {
+  try {
+    const recentProducts = await Product.find().sort({ date: -1 }).limit(5);
+    res.json(recentProducts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch recent products" });
+  }
 });
