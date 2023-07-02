@@ -1,59 +1,35 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Searching from "./ItemInformationSearching";
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import { Container, Table, Pagination } from "react-bootstrap";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
-import { TableItemTY } from "../../../types/product";
+import { productTY } from "../../../types/product";
 import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-
-const data: TableItemTY[] = [
-  {
-    productCode: 1,
-    productName: "Item 1",
-    stock: 10,
-    wholesalePrice: 5.99,
-    retailPrice: 4.99,
-  },
-  {
-    productCode: 2,
-    productName: "Item 2",
-    stock: 5,
-    wholesalePrice: 8.99,
-    retailPrice: 7.49,
-  },
-  {
-    productCode: 3,
-    productName: "Item 3",
-    stock: 3,
-    wholesalePrice: 12.99,
-    retailPrice: 11.99,
-  },
-  {
-    productCode: 1,
-    productName: "Item 1",
-    stock: 10,
-    wholesalePrice: 5.99,
-    retailPrice: 4.99,
-  },
-  {
-    productCode: 2,
-    productName: "Item 2",
-    stock: 5,
-    wholesalePrice: 8.99,
-    retailPrice: 7.49,
-  },
-];
+import axios from "axios";
 
 function ItemInformationPage() {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
+  const [productList, setProductList] = useState<productTY[]>([]);
 
   const navigate = useNavigate();
+  const handleProductDataList = async () => {
+    const Response = await axios.get(`${PROXY}/productList`);
+    setProductList([...Response.data]);
+  };
+
+  useEffect(() => {
+    handleProductDataList();
+  }, []);
 
   return (
     <div>
@@ -79,7 +55,7 @@ function ItemInformationPage() {
         <Tittle>품목 정보</Tittle>
         <ItemSection>
           <BulletinBoardComponent
-            data={data}
+            data={productList}
             rowKey={[
               "productCode",
               "productName",
