@@ -197,10 +197,12 @@ app.post(`/addProduct`, async (req, res) => {
   }
 });
 
+// 프로덕트 리스트 전체 가져오기
 app.get(`/productList`, async (req, res) => {
   res.json(await Product.find());
 });
 
+//프로덕트 리스트 중 특정 프로덕트 찾기
 app.get("/productSearching", async (req, res) => {
   const { currentSearchValue, searchCondition } = req.query;
 
@@ -212,7 +214,7 @@ app.get("/productSearching", async (req, res) => {
 
   res.json(searchResult);
 });
-
+// 프로덕트 리스트 중 최신 5개만 가져오기
 app.get("/recentProducts", async (req, res) => {
   try {
     const recentProducts = await Product.find().sort({ date: -1 }).limit(5);
@@ -220,4 +222,9 @@ app.get("/recentProducts", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch recent products" });
   }
+});
+
+// 비지니스 파트너 전체 가져오기
+app.get(`/businessPartnerList`, async (req, res) => {
+  res.json(await businessPartner.find());
 });
