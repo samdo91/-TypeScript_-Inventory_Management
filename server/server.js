@@ -200,3 +200,14 @@ app.post(`/addProduct`, async (req, res) => {
 app.get(`/productList`, async (req, res) => {
   res.json(await Product.find());
 });
+app.get("/productSearching", async (req, res) => {
+  const { currentSearchValue, searchCondition } = req.query;
+
+  console.log(currentSearchValue, searchCondition);
+
+  const searchResult = await Product.find({
+    [searchCondition]: currentSearchValue,
+  });
+
+  res.json(searchResult);
+});

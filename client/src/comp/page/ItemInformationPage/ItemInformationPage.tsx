@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
-import Searching from "./ItemInformationSearching";
+import Searching from "../../SearchingBar/SearchingBar";
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import { Container, Table, Pagination } from "react-bootstrap";
@@ -23,8 +23,9 @@ function ItemInformationPage() {
 
   const navigate = useNavigate();
   const handleProductDataList = async () => {
-    const Response = await axios.get(`${PROXY}/productList`);
-    setProductList([...Response.data]);
+    const response = await axios.get(`${PROXY}/productList`);
+    console.log(response.data);
+    setProductList([...response.data]);
   };
 
   useEffect(() => {
@@ -55,9 +56,10 @@ function ItemInformationPage() {
         <Tittle>품목 정보</Tittle>
         <ItemSection>
           <BulletinBoardComponent
-            data={productList}
+            dataList={productList}
+            setDataList={setProductList}
             rowKey={[
-              "productCode",
+              "_id",
               "productName",
               "stock",
               "wholesalePrice",
@@ -66,7 +68,17 @@ function ItemInformationPage() {
           />
         </ItemSection>
         <SearchingSection>
-          <Searching />
+          <Searching
+            setDataList={setProductList}
+            keyList={[
+              "_id",
+              "productName",
+              "stock",
+              "wholesalePrice",
+              "retailPrice",
+            ]}
+            Theme="product"
+          />
         </SearchingSection>
       </ItemInformationPageBody>
     </div>
