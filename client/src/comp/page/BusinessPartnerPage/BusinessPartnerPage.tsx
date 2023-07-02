@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
-import React from "react";
-import VendorInformationSearching from "./VendorInformationSearching";
+import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
+import SearchingBar from "../../SearchingBar/SearchingBar";
 
 export type TableItemTY = {
   vendorCode: string;
@@ -29,7 +30,7 @@ const data: TableItemTY[] = [
   },
 ];
 
-function VendorInformationPage() {
+function BusinessPartnerPage() {
   return (
     <div>
       <header>
@@ -38,26 +39,27 @@ function VendorInformationPage() {
       <VendorInformationPageBody>
         <HeaderSection>
           <Button>메일전송</Button>
-          <Link to="/AddVendorInformation">
+          <Link to="/AddBusinessPartner">
             <Button>신규업체 등록</Button>
           </Link>
         </HeaderSection>
         <Tittle>거래처 정보</Tittle>
         <VendorSection>
           <BulletinBoardComponent
-            data={data}
+            dataList={}
+            setDataList={}
             rowKey={["vendorCode", "BusinessPartnerName", "credit"]}
           />
         </VendorSection>
         <SearchingSection>
-          <VendorInformationSearching />
+          <SearchingBar />
         </SearchingSection>
       </VendorInformationPageBody>
     </div>
   );
 }
 
-export default VendorInformationPage;
+export default BusinessPartnerPage;
 
 const VendorInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;

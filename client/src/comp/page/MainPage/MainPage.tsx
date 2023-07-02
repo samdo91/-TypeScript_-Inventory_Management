@@ -41,7 +41,7 @@ function MainPage() {
             {/* 우측 영역 */}
             <div style={{ height: "100vh" }}>
               <BulletinBoardComponent
-                tittle="최근 등록 품목"
+                title="최근 등록 품목"
                 dataList={productList}
                 rowKey={[
                   "_id",
@@ -52,7 +52,7 @@ function MainPage() {
                 ]}
               />
               <BulletinBoardComponent
-                tittle="최근 등록 회사"
+                title="최근 등록 회사"
                 dataList={productList}
                 rowKey={[
                   "_id",
@@ -63,7 +63,7 @@ function MainPage() {
                 ]}
               />
               <BulletinBoardComponent
-                tittle="최근 등록 입고"
+                title="최근 등록 입고"
                 dataList={productList}
                 rowKey={[
                   "_id",
