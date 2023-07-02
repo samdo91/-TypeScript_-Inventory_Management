@@ -5,32 +5,32 @@ import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 import SearchingBar from "../../SearchingBar/SearchingBar";
-
+import { BusinessPartnerTY } from "../../../types/BusinessPartner";
+import axios from "axios";
 export type TableItemTY = {
   vendorCode: string;
   BusinessPartnerName: string;
   credit: number;
 };
 
-const data: TableItemTY[] = [
-  {
-    vendorCode: "001",
-    BusinessPartnerName: "Item 1",
-    credit: 2222,
-  },
-  {
-    vendorCode: "002",
-    BusinessPartnerName: "Item 2",
-    credit: 333,
-  },
-  {
-    vendorCode: "003",
-    BusinessPartnerName: "Item 3",
-    credit: 22222,
-  },
-];
-
 function BusinessPartnerPage() {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
+  const [businessPartnerList, setBusinessPartnerList] = useState<
+    BusinessPartnerTY[]
+  >([]);
+
+  const handleBusinessPartnerList = async () => {
+    const response = await axios.get(`${PROXY}/businessPartnerList`);
+    console.log(response.data);
+    setBusinessPartnerList([...response.data]);
+  };
+
+  useEffect(() => {
+    handleBusinessPartnerList();
+  }, []);
   return (
     <div>
       <header>
@@ -46,13 +46,16 @@ function BusinessPartnerPage() {
         <Tittle>거래처 정보</Tittle>
         <VendorSection>
           <BulletinBoardComponent
-            dataList={}
-            setDataList={}
-            rowKey={["vendorCode", "BusinessPartnerName", "credit"]}
+            dataList={businessPartnerList}
+            rowKey={["_id", "BusinessPartnerName", "credit"]}
           />
         </VendorSection>
         <SearchingSection>
-          <SearchingBar />
+          <SearchingBar
+            setDataList={setBusinessPartnerList}
+            keyList={["_id", "BusinessPartnerName", "credit"]}
+            Theme="BusinessPartner"
+          />
         </SearchingSection>
       </VendorInformationPageBody>
     </div>
