@@ -196,3 +196,7 @@ app.post(`/addProduct`, async (req, res) => {
     res.status(422).json(error);
   }
 });
+
+app.get(`/productList`, async (req, res) => {
+  res.json(await Product.find());
+});
