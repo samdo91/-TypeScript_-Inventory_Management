@@ -15,7 +15,7 @@ function NavPage() {
           <Link to="/ItemInformation">
             <Nav.Link href="#contact">품목 정보</Nav.Link>
           </Link>
-          <Link to="/VendorInformation">
+          <Link to="/BusinessPartner">
             <Nav.Link href="#contact">거래처 정보</Nav.Link>
           </Link>
           <Nav.Link href="#contact">입고</Nav.Link>
