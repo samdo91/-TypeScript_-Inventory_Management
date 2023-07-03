@@ -230,6 +230,7 @@ app.get(`/businessPartnerList`, async (req, res) => {
   res.json(await BusinessPartner.find());
 });
 
+//비지니스 파트너 추가하기
 app.post("/addbusinessPartner", async (req, res) => {
   const {
     BusinessPartnerName,
@@ -258,5 +259,30 @@ app.post("/addbusinessPartner", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(422).json(error);
+  }
+});
+
+//비지니스파트너 특정 프로덕트 찾기
+app.get("/businessPartnerSearching", async (req, res) => {
+  const { currentSearchValue, searchCondition } = req.query;
+
+  console.log(currentSearchValue, searchCondition);
+
+  const searchResult = await BusinessPartner.find({
+    [searchCondition]: currentSearchValue,
+  });
+
+  res.json(searchResult);
+});
+
+// 프로덕트 리스트 중 최신 5개만 가져오기
+app.get("/recentBusinessPartner", async (req, res) => {
+  try {
+    const recentBusinessPartner = await BusinessPartner.find()
+      .sort({ date: -1 })
+      .limit(5);
+    res.json(recentBusinessPartner);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch recent products" });
   }
 });
