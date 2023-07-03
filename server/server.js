@@ -12,6 +12,7 @@ const localhost = "127.0.0.1";
 const mongoose = require("mongoose");
 const User = require("./models/user.js");
 const Product = require("./models/product.js");
+const Inbound = require("./models/inbound.js");
 const BusinessPartner = require("./models/businessPartner.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -284,5 +285,62 @@ app.get("/recentBusinessPartner", async (req, res) => {
     res.json(recentBusinessPartner);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch recent products" });
+  }
+});
+
+//입고 시키기
+app.post("/addInbound", async (req, res) => {
+  const { addProductQuantity, date, product_id, employee_id, note } = req.body;
+
+  try {
+    // 스키마에 따라서 새로운 입고 데이터를 생성하고 저장하는 로직을 작성합니다.
+    const inbound = await Inbound.create({
+      addProductQuantity,
+      date,
+      product_id,
+      employee_id,
+      note,
+    });
+
+    // 저장된 입고 데이터를 클라이언트에 응답합니다.
+    res.json(inbound);
+  } catch (error) {
+    // 오류 발생 시 오류 메시지를 클라이언트에 응답합니다.
+    res.status(500).json({ error: "Failed to add inbound data." });
+  }
+});
+
+// 입고 후 프로덕트 데이터 변경
+app.post(`/addReceivingEvent`, async (req, res) => {
+  const { date, product_id, employee_id, addProductQuantity } = req.body;
+
+  try {
+    // 새로운 receiving event를 생성합니다.
+    const newReceivingEvent = {
+      date: date,
+      employee_id: employee_id,
+      addProductQuantity: addProductQuantity,
+    };
+
+    // productId에 해당하는 상품을 조회합니다.
+    const product = await Product.findOne({ _id: product_id });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    // receivingEventList에 새로운 receiving event를 추가합니다.
+    product.receivingEventList.push(newReceivingEvent);
+
+    // 상품의 totalAmountReceived과 stock을 업데이트합니다.
+    product.totalAmountReceived += addProductQuantity;
+    product.stock += addProductQuantity;
+
+    // 상품을 저장합니다.
+    await product.save();
+
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to add receiving event." });
   }
 });
