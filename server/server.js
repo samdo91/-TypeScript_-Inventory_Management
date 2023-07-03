@@ -344,3 +344,20 @@ app.post(`/addReceivingEvent`, async (req, res) => {
     res.status(500).json({ error: "Failed to add receiving event." });
   }
 });
+
+// 전체 입고 이밴트 가져오기
+app.get(`/InboundList`, async (req, res) => {
+  res.json(await Inbound.find());
+});
+
+// 입고 리스트 중 최신 5개만 가져오기
+app.get("/recentInbound", async (req, res) => {
+  try {
+    const recentBusinessPartner = await Inbound.find()
+      .sort({ date: -1 })
+      .limit(5);
+    res.json(recentBusinessPartner);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch recent products" });
+  }
+});
