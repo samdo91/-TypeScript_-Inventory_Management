@@ -11,7 +11,7 @@ export type ReceivingEventTY = {
   addProductQuantity: number; // 오더 품목 수
 };
 export type ShippingEventTY = {
-  date: string; // 날짜
+  date: Date; // 날짜
   businessPartner_id: string; // 주문 거래처
   employee_id: string; // 출고자
   orderedProductQuantity: Number; // 오더 품목 수
