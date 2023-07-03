@@ -3,23 +3,12 @@ import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
-import { InboundTY } from "../../../types/inbound";
+import { AddInboundTY } from "../../../types/inbound";
 import { useAtom } from "jotai";
 import { loginModals, loginStateAtom } from "../../../globalStateManagement";
 import Header from "../../Header/HeaderPage";
 import axios from "axios";
-
-const data: InboundTY[] = [
-  {
-    productCode: 44332,
-    productName: "아무",
-    vendorCode: "거나",
-    vendorName: "먹어",
-    quantity: 232,
-    purchasePrice: 44444,
-    totalAmount: 44444,
-  },
-];
+import SearchingBar from "../../SearchingBar/SearchingBar";
 
 function InboundPage() {
   const navigate = useNavigate();
@@ -29,12 +18,12 @@ function InboundPage() {
       : "/proxy";
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
-  const [inboundList, SetInboundList] = useState([]);
+  const [inboundList, setInboundList] = useState<AddInboundTY[]>([]);
 
   const handleProductDataList = async () => {
-    const response = await axios.get(`${PROXY}/productList`);
+    const response = await axios.get(`${PROXY}/InboundList`);
     console.log(response.data);
-    SetInboundList([...response.data]);
+    setInboundList([...response.data]);
   };
 
   useEffect(() => {
@@ -61,19 +50,31 @@ function InboundPage() {
         </Buttons>
       </HeaderSection>
       <Tittle>거래처 정보</Tittle>
-      <VendorSection>
+      <InboundSection>
         <BulletinBoardComponent
           dataList={inboundList}
           rowKey={[
             "_id",
-            "productName",
-            "stock",
-            "wholesalePrice",
-            "retailPrice",
+            "date",
+            "product_id",
+            "employee_id",
+            "addProductQuantity",
           ]}
         />
-      </VendorSection>
-      <SearchingSection></SearchingSection>
+      </InboundSection>
+      <SearchingSection>
+        <SearchingBar
+          setItemList={setInboundList}
+          keyList={[
+            "_id",
+            "date",
+            "product_id",
+            "employee_id",
+            "addProductQuantity",
+          ]}
+          Theme="product"
+        />
+      </SearchingSection>
     </InboundPageBody>
   );
 }
@@ -83,5 +84,5 @@ const InboundPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Buttons = styled(Button)``;
 const Tittle = styled.title``;
-const VendorSection = styled.div``;
+const InboundSection = styled.div``;
 const SearchingSection = styled.section``;

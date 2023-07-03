@@ -7,6 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { productTY } from "../../../types/product";
 import { BusinessPartnerTY } from "../../../types/BusinessPartner";
 import axios from "axios";
+import { AddInboundTY } from "../../../types/inbound";
 
 function MainPage() {
   const PROXY =
@@ -17,7 +18,7 @@ function MainPage() {
   const [businessPartnerList, setBusinessPartnerList] = useState<
     BusinessPartnerTY[]
   >([]);
-
+  const [inboundList, setInboundList] = useState<AddInboundTY[]>([]);
   const recentProducts = async () => {
     const response = await axios(`${PROXY}/recentProducts`);
     setProductList([...response.data]);
@@ -28,9 +29,16 @@ function MainPage() {
     setBusinessPartnerList([...response.data]);
   };
 
+  const recentInbound = async () => {
+    const response = await axios(`${PROXY}/recentInbound`);
+    console.log(response);
+    setInboundList([...response.data]);
+  };
+
   useEffect(() => {
     recentProducts();
     recentBusinessPartner();
+    recentInbound();
   }, []);
 
   return (
@@ -68,21 +76,20 @@ function MainPage() {
                 rowKey={["_id", "BusinessPartnerName", "credit"]}
               />
               <BulletinBoardComponent
-                title="최근 등록 입고"
-                dataList={productList}
+                title="최근 입고"
+                dataList={inboundList}
                 rowKey={[
                   "_id",
-                  "productName",
-                  "stock",
-                  "wholesalePrice",
-                  "retailPrice",
+                  "date",
+                  "product_id",
+                  "employee_id",
+                  "addProductQuantity",
                 ]}
               />
             </div>
           </Col>
         </Row>
       </Container>
-      MainPage
     </div>
   );
 }
