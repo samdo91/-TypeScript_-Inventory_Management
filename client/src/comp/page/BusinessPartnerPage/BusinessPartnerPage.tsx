@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
-import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
+import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import SearchingBar from "../../SearchingBar/SearchingBar";
 import { BusinessPartnerTY } from "../../../types/BusinessPartner";
 import {
