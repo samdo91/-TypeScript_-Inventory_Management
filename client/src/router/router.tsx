@@ -6,8 +6,8 @@ import BusinessPartnerPage from "../comp/page/BusinessPartnerPage/BusinessPartne
 import AddBusinessPartnerPage from "../comp/page/BusinessPartnerPage/AddBusinessPartnerPage/AddBusinessPartnerPage";
 import SignUpPage from "../comp/page/SignUpPage/SignUpPage";
 import SignUpSuccessPage from "../comp/page/SignUpPage/SignUpSuccessPage";
-import Inboundpage from "../comp/page/Inboundpage/Inboundage";
-import AddInboundpage from "../comp/page/Inboundpage/AddInboundpage/AddInboundpage";
+import Inboundpage from "../comp/page/Inboundpage/InboundPage";
+import AddInboundPage from "../comp/page/Inboundpage/AddInboundPage/AddInboundPage";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
     element: <Inboundpage />,
   },
   {
-    path: "/AddInboundpage",
-    element: <AddInboundpage />,
+    path: "/AddInboundPage",
+    element: <AddInboundPage />,
   },
 ]);

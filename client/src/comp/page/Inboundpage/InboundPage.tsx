@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
+import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import { InboundTY } from "../../../types/inbound";
 import { useAtom } from "jotai";
 import { loginModals, loginStateAtom } from "../../../globalStateManagement";
@@ -20,7 +20,7 @@ const data: InboundTY[] = [
   },
 ];
 
-function Inboundpage() {
+function InboundPage() {
   const navigate = useNavigate();
   const PROXY =
     window.location.hostname === "localhost"
@@ -66,7 +66,7 @@ function Inboundpage() {
   );
 }
 
-export default Inboundpage;
+export default InboundPage;
 const InboundPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Buttons = styled(Button)``;
