@@ -1,17 +1,15 @@
 import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
 import SearchingBar from "../../SearchingBar/SearchingBar";
-
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
-import { productTY } from "../../../types/product";
 import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 
-function ItemInformationPage() {
+function OutboundPage() {
   const navigate = useNavigate();
   const PROXY =
     window.location.hostname === "localhost"
@@ -19,75 +17,65 @@ function ItemInformationPage() {
       : "/proxy";
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
-  const [productList, setProductList] = useState<productTY[]>([]);
 
-  const handleProductDataList = async () => {
-    const response = await axios.get(`${PROXY}/productList`);
-    console.log(response.data);
-    setProductList([...response.data]);
-  };
-
-  useEffect(() => {
-    handleProductDataList();
-  }, []);
+  const [outnboundList, setOutboundList] = useState([]);
 
   return (
     <div>
       <header>
         <Header />
       </header>
-      <ItemInformationPageBody>
+      <OutboundBody>
         <HeaderSection>
-          <Button>메일전송</Button>
-
-          <Button
+          <Buttons>달력</Buttons>
+          <Buttons
             onClick={() => {
               if (loginState) {
-                navigate("/AddItemInformation"); // loginState가 true인 경우 /AddItemInformation로 라우팅
+                navigate("/AddOutboundpage"); // loginState가 true인 경우 /AddInboundpage로 라우팅(고쳐야해)
               } else {
-                setLoginModal(true); // loginState가 false인 경우 setLoginModal(true) 실행
+                setLoginModal(true); // loginState가 false인 경우 setLoginModal(true) 실행(고쳐야해)
               }
             }}
           >
-            신규 품목
-          </Button>
+            신규출고
+          </Buttons>
         </HeaderSection>
-        <Tittle>품목 정보</Tittle>
-        <ItemSection>
+        <Title>출고 정보</Title>
+        <OutboundSection>
           <BulletinBoardComponent
-            dataList={productList}
-            setDataList={setProductList}
+            dataList={outnboundList}
             rowKey={[
               "_id",
-              "productName",
-              "stock",
-              "wholesalePrice",
-              "retailPrice",
+              "date",
+              "product_id",
+              "employee_id",
+              "addProductQuantity",
             ]}
           />
-        </ItemSection>
+        </OutboundSection>
         <SearchingSection>
           <SearchingBar
-            setItemList={setProductList}
+            setItemList={setOutboundList}
             keyList={[
               "_id",
-              "productName",
-              "stock",
-              "wholesalePrice",
-              "retailPrice",
+              "date",
+              "product_id",
+              "employee_id",
+              "addProductQuantity",
             ]}
             Theme="product"
           />
         </SearchingSection>
-      </ItemInformationPageBody>
+      </OutboundBody>
     </div>
   );
 }
 
-export default ItemInformationPage;
+export default OutboundPage;
 
-const ItemInformationPageBody = styled.div``;
+const OutboundBody = styled.div``;
 const HeaderSection = styled.section``;
-const Tittle = styled.h1``;
-const ItemSection = styled.section``;
+const Buttons = styled(Button)``;
+const Title = styled.title``;
 const SearchingSection = styled.section``;
+const OutboundSection = styled.section``;
