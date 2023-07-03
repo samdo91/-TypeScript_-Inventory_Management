@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
-import Searching from "../../SearchingBar/SearchingBar";
+import SearchingBar from "../../SearchingBar/SearchingBar";
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
@@ -67,7 +67,7 @@ function ItemInformationPage() {
           />
         </ItemSection>
         <SearchingSection>
-          <Searching
+          <SearchingBar
             setDataList={setProductList}
             keyList={[
               "_id",

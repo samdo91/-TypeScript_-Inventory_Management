@@ -70,7 +70,21 @@ function AddInboundpage() {
           >
             찾기
           </Buttons>
-          {searchingModal ? <SearchingModal /> : ""}
+          {searchingModal ? (
+            <SearchingModal
+              dataListSearchingKey="recentProducts"
+              title="product Searching"
+              rowKey={[
+                "_id",
+                "productName",
+                "stock",
+                "wholesalePrice",
+                "retailPrice",
+              ]}
+            />
+          ) : (
+            ""
+          )}
         </div>
 
         <InboundBoard />
