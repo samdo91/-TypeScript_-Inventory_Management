@@ -71,7 +71,7 @@ function BusinessPartnerPage() {
           <SearchingBar
             setDataList={setBusinessPartnerList}
             keyList={["_id", "BusinessPartnerName", "credit"]}
-            Theme="BusinessPartner"
+            Theme="businessPartner"
           />
         </SearchingSection>
       </BusinessPartnerBody>

@@ -5,6 +5,7 @@ import MainPageBoard from "./MainPageLInkButton/MainPageLInkButton";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 import { Container, Row, Col } from "react-bootstrap";
 import { productTY } from "../../../types/product";
+import { BusinessPartnerTY } from "../../../types/BusinessPartner";
 import axios from "axios";
 
 function MainPage() {
@@ -13,13 +14,23 @@ function MainPage() {
       ? "http://127.0.0.1:4000"
       : "/proxy";
   const [productList, setProductList] = useState<productTY[]>([]);
+  const [businessPartnerList, setBusinessPartnerList] = useState<
+    BusinessPartnerTY[]
+  >([]);
 
   const recentProducts = async () => {
     const response = await axios(`${PROXY}/recentProducts`);
     setProductList([...response.data]);
   };
+
+  const recentBusinessPartner = async () => {
+    const response = await axios(`${PROXY}/recentBusinessPartner`);
+    setBusinessPartnerList([...response.data]);
+  };
+
   useEffect(() => {
     recentProducts();
+    recentBusinessPartner();
   }, []);
 
   return (
@@ -53,14 +64,8 @@ function MainPage() {
               />
               <BulletinBoardComponent
                 title="최근 등록 회사"
-                dataList={productList}
-                rowKey={[
-                  "_id",
-                  "productName",
-                  "stock",
-                  "wholesalePrice",
-                  "retailPrice",
-                ]}
+                dataList={businessPartnerList}
+                rowKey={["_id", "BusinessPartnerName", "credit"]}
               />
               <BulletinBoardComponent
                 title="최근 등록 입고"
