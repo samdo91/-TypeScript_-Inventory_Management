@@ -6,6 +6,9 @@ import BusinessPartnerPage from "../comp/page/BusinessPartnerPage/BusinessPartne
 import AddBusinessPartnerPage from "../comp/page/BusinessPartnerPage/AddBusinessPartnerPage/AddBusinessPartnerPage";
 import SignUpPage from "../comp/page/SignUpPage/SignUpPage";
 import SignUpSuccessPage from "../comp/page/SignUpPage/SignUpSuccessPage";
+import Inboundpage from "../comp/page/Inboundpage/Inboundage";
+import AddInboundpage from "../comp/page/Inboundpage/AddInboundpage/AddInboundpage";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,5 +37,13 @@ export const router = createBrowserRouter([
   {
     path: "/SignUpSuccess",
     element: <SignUpSuccessPage />,
+  },
+  {
+    path: "/Inboundpage",
+    element: <Inboundpage />,
+  },
+  {
+    path: "/AddInboundpage",
+    element: <AddInboundpage />,
   },
 ]);
