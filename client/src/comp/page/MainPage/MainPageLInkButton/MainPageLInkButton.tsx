@@ -27,14 +27,14 @@ function MainPageLInkButton() {
           </div>
         </Button>
       </Link>
-      <Link to="/">
+      <Link to="/Inboundpage">
         <Button
           variant="primary"
           style={{ height: "150px", width: "450px", margin: "10px" }}
         >
           <div>
             <h3>입고</h3>
-            <p>Button Description</p>
+            <p>이미 저장된 프로덕트에 새 재고를 입고 시킵니다</p>
           </div>
         </Button>
       </Link>

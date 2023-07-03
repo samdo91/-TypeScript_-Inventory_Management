@@ -18,7 +18,7 @@ function NavPage() {
           <Link to="/BusinessPartner">
             <Nav.Link href="#contact">거래처 정보</Nav.Link>
           </Link>
-          <Nav.Link href="#contact">입고</Nav.Link>
+          <Nav.Link href="/Inboundpage">입고</Nav.Link>
           <Nav.Link href="#contact">출고</Nav.Link>
           <Nav.Link href="#contact">손익확인</Nav.Link>
         </Nav>
