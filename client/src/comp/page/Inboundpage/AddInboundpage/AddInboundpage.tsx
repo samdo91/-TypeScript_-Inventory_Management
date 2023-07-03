@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { InboundOutboundTY } from "../InboundOutboundpage";
-
-function AddInboundOutboundpage() {
+import { InboundTY } from "../../../../types/inbound";
+import { Button } from "react-bootstrap";
+function AddInboundpage() {
   const [selectedOption, setSelectedOption] = useState<string>(""); // 라디오
   const [currentCode, setCurrentCode] = useState<number>(0); // 제품번호
   const [currentName, setCurrentName] = useState<string>(""); // 제품 이름
@@ -30,8 +30,8 @@ function AddInboundOutboundpage() {
   return (
     <AddItemInformationPageBody>
       <HeaderSection>
-        <Button>입출고 삭제</Button>
-        <Button onClick={addItem}>저장</Button>
+        <Buttons>입출고 삭제</Buttons>
+        <Buttons onClick={addItem}>저장</Buttons>
         <div>
           <label>
             <input
@@ -116,10 +116,10 @@ function AddInboundOutboundpage() {
   );
 }
 
-export default AddInboundOutboundpage;
+export default AddInboundpage;
 const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
-const Button = styled.button``;
+const Buttons = styled(Button)``;
 const Tittle = styled.title``;
 const ItemSection = styled.section``;
 const Input = styled.input``;
