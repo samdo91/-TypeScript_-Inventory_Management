@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -7,6 +7,7 @@ import { InboundTY } from "../../../types/inbound";
 import { useAtom } from "jotai";
 import { loginModals, loginStateAtom } from "../../../globalStateManagement";
 import Header from "../../Header/HeaderPage";
+import axios from "axios";
 
 const data: InboundTY[] = [
   {
@@ -29,6 +30,17 @@ function InboundPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
   const [inboundList, SetInboundList] = useState([]);
+
+  const handleProductDataList = async () => {
+    const response = await axios.get(`${PROXY}/productList`);
+    console.log(response.data);
+    SetInboundList([...response.data]);
+  };
+
+  useEffect(() => {
+    handleProductDataList();
+  }, []);
+
   return (
     <InboundPageBody>
       <header>

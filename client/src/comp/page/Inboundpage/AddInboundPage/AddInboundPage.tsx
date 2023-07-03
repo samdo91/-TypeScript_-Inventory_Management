@@ -8,11 +8,17 @@ import {
   searchingModalAtom,
 } from "../../../../globalStateManagement/index";
 import { useAtom } from "jotai";
-import InboundBoard from "../InboundBoard/InboundBoard";
-import { productTY } from "../../../../types/product";
+
+import { ReceivingEventTY, productTY } from "../../../../types/product";
 import SearchingModal from "../../../SearchingModal/SearchingModal";
+import axios from "axios";
+import { AddInboundTY } from "../../../../types/inbound";
 
 function AddInboundpage() {
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
   const [currentNote, setCurrentNote] = useState<string>(""); // 비고
   const [currentQuantity, setCurrentQuantity] = useState<number>(0); // 입고수량
 
@@ -22,14 +28,57 @@ function AddInboundpage() {
   const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom);
   const [date, setDate] = useState<Date>(new Date()); //시간
 
-  const addItem = () => {
-    const NewItemInformation = {
-      addProductQuantity: currentQuantity, // 오더 품목 수
-      date: date,
-      product_id: productData[0].productCode,
-      employee_id: userData._id, // 입고자
-      note: currentNote,
-    };
+  const addInbound = async () => {
+    try {
+      if (currentNote === "") {
+        throw new Error("Please enter a note.");
+      }
+
+      if (isNaN(currentQuantity) || currentQuantity <= 0) {
+        throw new Error("Please enter a valid quantity.");
+      }
+
+      const NewInboundInformation: AddInboundTY = {
+        addProductQuantity: currentQuantity, // 오더 품목 수
+        date: date,
+        product_id: productData[0].productCode,
+        employee_id: userData._id, // 입고자
+        note: currentNote,
+      };
+
+      const ReceivingEvent = {
+        date: date, // 날짜
+        product_id: productData[0].productCode,
+        employee_id: userData._id, // 입고자
+        addProductQuantity: currentQuantity, // 오더 품목 수
+      };
+
+      const response = await axios.post(
+        `${PROXY}/addInbound`,
+        NewInboundInformation
+      );
+
+      const ReceiviRsponse = await axios.post(
+        `${PROXY}/addReceivingEvent`,
+        ReceivingEvent
+      );
+      console.log(ReceiviRsponse.data);
+
+      // Reset the input fields
+      setCurrentNote("");
+      setCurrentQuantity(0);
+    } catch (error: any) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        alert(`Error: ${error.response.status} - ${error.response.data}`);
+      } else if (error.request) {
+        // The request was made but no response was received
+        alert("Error: No response from the server.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        alert(`Error: ${error.message}`);
+      }
+    }
   };
 
   return (
@@ -108,8 +157,6 @@ function AddInboundpage() {
             ""
           )}
         </div>
-
-        <InboundBoard />
       </ProcuctSection>
 
       <ItemSection>
@@ -139,8 +186,8 @@ function AddInboundpage() {
         </InputFieldWrapper>
       </ItemSection>
       <InputSection>
-        <Buttons>입출고 삭제</Buttons>
-        <Buttons onClick={addItem}>저장</Buttons>
+        <Buttons>입고 삭제</Buttons>
+        <Buttons onClick={addInbound}>입고</Buttons>
       </InputSection>
     </AddItemInformationPageBody>
   );

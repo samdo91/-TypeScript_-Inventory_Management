@@ -34,5 +34,5 @@ export type AddProductTY = {
 };
 
 export type productTY = AddProductTY & {
-  productCode: number; // 품목 id
+  productCode: string; // 품목 id
 };
