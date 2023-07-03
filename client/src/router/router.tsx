@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import MainPage from "../comp/page/MainPage/MainPage";
 import ItemInformationPage from "../comp/page/ItemInformationPage/ItemInformationPage";
 import AddItemInformationPage from "../comp/page/ItemInformationPage/AddItemInformationPage/AddItemInformationPage";
-import BusinessPartnerPage from "../comp/page/vendorInformationPage/BusinessPartnerPage";
-import AddBusinessPartnerPage from "../comp/page/vendorInformationPage/AddBusinessPartnerPage/AddBusinessPartnerPage";
+import BusinessPartnerPage from "../comp/page/BusinessPartnerPage/BusinessPartnerPage";
+import AddBusinessPartnerPage from "../comp/page/BusinessPartnerPage/AddBusinessPartnerPage/AddBusinessPartnerPage";
 import SignUpPage from "../comp/page/SignUpPage/SignUpPage";
 import SignUpSuccessPage from "../comp/page/SignUpPage/SignUpSuccessPage";
 export const router = createBrowserRouter([

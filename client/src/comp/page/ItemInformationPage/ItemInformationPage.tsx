@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Searching from "../../SearchingBar/SearchingBar";
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
-import { Container, Table, Pagination } from "react-bootstrap";
 import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
 import { productTY } from "../../../types/product";
 import { useAtom } from "jotai";

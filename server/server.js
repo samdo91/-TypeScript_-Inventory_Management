@@ -12,6 +12,7 @@ const localhost = "127.0.0.1";
 const mongoose = require("mongoose");
 const User = require("./models/user.js");
 const Product = require("./models/product.js");
+const BusinessPartner = require("./models/businessPartner.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -226,5 +227,36 @@ app.get("/recentProducts", async (req, res) => {
 
 // 비지니스 파트너 전체 가져오기
 app.get(`/businessPartnerList`, async (req, res) => {
-  res.json(await businessPartner.find());
+  res.json(await BusinessPartner.find());
+});
+
+app.post("/addbusinessPartner", async (req, res) => {
+  const {
+    BusinessPartnerName,
+    credit,
+    eMail,
+    nete,
+    owner,
+    telephoneNumber,
+    manager,
+  } = req.body;
+  try {
+    // 스키마에 따라서 새로운 거래처를 생성하고 저장하는 로직을 작성합니다.
+    const businessPartner = await BusinessPartner.create({
+      BusinessPartnerName,
+      credit,
+      eMail,
+      nete,
+      owner,
+      telephoneNumber,
+      manager,
+    });
+
+    console.log(businessPartner); // 생성된 거래처 데이터 출력
+
+    res.json(true);
+  } catch (error) {
+    console.error(error);
+    res.status(422).json(error);
+  }
 });
