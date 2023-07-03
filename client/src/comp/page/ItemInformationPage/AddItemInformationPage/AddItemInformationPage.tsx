@@ -119,7 +119,7 @@ function AddItemInformationPage() {
   return (
     <div>
       <div>
-        <Header />
+        <Header setDate={setDate} />
       </div>
       <AddItemInformationPageBody>
         <HeaderSection>
