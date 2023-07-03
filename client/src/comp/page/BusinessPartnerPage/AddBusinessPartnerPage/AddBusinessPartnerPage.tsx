@@ -1,78 +1,125 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-
-import { TableItemTY } from "../BusinessPartnerPage";
-
-interface VendorTableTY extends TableItemTY {
-  eMail: string;
-  businessName: string;
-  remarks: string;
-}
+import { AddBusinessPartnerTY } from "../../../../types/BusinessPartner";
+import { useAtom } from "jotai";
+import { userDataAtom } from "../../../../globalStateManagement";
+import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+import Header from "../../../Header/HeaderPage";
 
 function AddBusinessPartnerPage() {
-  const [currentCode, setCurrentCode] = useState<string>(""); // 거래처번호
+  const PROXY =
+    window.location.hostname === "localhost"
+      ? "http://127.0.0.1:4000"
+      : "/proxy";
+  const [userData, setUserData] = useAtom(userDataAtom);
+
+  const [currentTelephoneNumber, setCurrentTelephoneNumber] =
+    useState<string>(""); // 거래처번호
   const [currentBusinessPartnerName, setCurrentBusinessPartnerName] =
     useState<string>(""); // 거래처 이름
-  const [currentCredit, setCurrentCredit] = useState<number>(0); //줄 돈
-  const [currentBusinessName, setCurrentBusinessName] = useState<string>(""); // 사업주
-  const [currentRemarks, setCurrentRemarks] = useState<string>(""); //비고
+  const [currentOwner, setCurrentOwner] = useState<string>(""); // 사업주
+  const [currentNote, setCurrentNote] = useState<string>(""); //비고
   const [currentEMail, setCurrentEMail] = useState<string>(""); //이메일
-  const addVendor = () => {
-    const NewItemInformation: VendorTableTY = {
-      vendorCode: currentCode,
+
+  const sendFieldWarnings = () => {
+    if (!currentBusinessPartnerName) {
+      window.alert("거래처 이름이 비어 있습니다.");
+      throw new Error("FieldValidationError");
+    }
+    if (!currentEMail) {
+      window.alert("이메일이 비어 있습니다.");
+      throw new Error("FieldValidationError");
+    }
+    if (!currentNote) {
+      window.alert("비고가 비어 있습니다.");
+      throw new Error("FieldValidationError");
+    }
+    if (!currentOwner) {
+      window.alert("소유자가 비어 있습니다.");
+      throw new Error("FieldValidationError");
+    }
+    if (!currentTelephoneNumber) {
+      window.alert("거래처 번호가 비어 있습니다.");
+      throw new Error("FieldValidationError");
+    }
+  };
+
+  const addBusinessPartner = async () => {
+    try {
+      sendFieldWarnings();
+    } catch (error: any) {
+      if (error.message === "FieldValidationError") {
+        return; // 필드 경고가 발생한 경우 함수 종료
+      } else {
+        throw error; // 다른 예외가 발생한 경우 에러 전파
+      }
+    }
+
+    const NewItemInformation = {
       BusinessPartnerName: currentBusinessPartnerName,
-      credit: currentCredit,
+      credit: 0,
       eMail: currentEMail,
-      remarks: currentRemarks,
-      businessName: currentBusinessName,
+      nete: currentNote,
+      owner: currentOwner,
+      telephoneNumber: currentTelephoneNumber,
+      manager: userData._id,
     };
 
-    console.log(NewItemInformation);
+    try {
+      const response = await axios.post(
+        `${PROXY}/addbusinessPartner`,
+        NewItemInformation
+      );
+
+      console.log(response.data); // 서버 응답 데이터 출력
+
+      setCurrentBusinessPartnerName("");
+      setCurrentEMail("");
+      setCurrentNote("");
+      setCurrentOwner("");
+      setCurrentTelephoneNumber("");
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <AddItemInformationPageBody>
+      <div>
+        <Header />
+      </div>
       <HeaderSection>
-        <Button>품목삭제</Button>
-        <Button onClick={addVendor}>거래처추가</Button>
+        <Buttons>품목삭제</Buttons>
+        <Buttons onClick={addBusinessPartner}>거래처추가</Buttons>
         <Tittle>신규 품목 정보</Tittle>
       </HeaderSection>
       <ItemSection>
-        <div>
-          <div>code</div>
-          <Input
+        <InputFieldWrapper>
+          <div>거래처 이름</div>
+          <InputField
             type="text"
-            placeholder=" 거래처 id 입력"
-            value={currentCode}
-            onChange={(e) => {
-              setCurrentCode(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <div>name</div>
-          <Input
-            type="text"
-            placeholder=" 거래처 이름 입력"
+            placeholder="거래처 이름 입력"
             value={currentBusinessPartnerName}
             onChange={(e) => {
               setCurrentBusinessPartnerName(e.target.value);
             }}
           />
-        </div>
-        <div>
-          <div>businessName</div>
-          <Input
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <div>Owner</div>
+          <InputField
             type="text"
-            placeholder=" 사업주"
-            value={currentBusinessName}
+            placeholder="사업주"
+            value={currentOwner}
             onChange={(e) => {
-              setCurrentBusinessName(e.target.value);
+              setCurrentOwner(e.target.value);
             }}
           />
-        </div>
-        <div>
+        </InputFieldWrapper>
+        <InputFieldWrapper>
           <div>이메일</div>
-          <Input
+          <InputField
             type="text"
             placeholder="이메일"
             value={currentEMail}
@@ -80,29 +127,29 @@ function AddBusinessPartnerPage() {
               setCurrentEMail(e.target.value);
             }}
           />
-        </div>
-        <div>
-          <div>remarks</div>
-          <Input
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <div>거래처 번호</div>
+          <InputField
             type="text"
-            placeholder=" 기타/비고"
-            value={currentRemarks}
+            placeholder="거래처 번호 입력"
+            value={currentTelephoneNumber}
             onChange={(e) => {
-              setCurrentRemarks(e.target.value);
+              setCurrentTelephoneNumber(e.target.value);
             }}
           />
-        </div>
-        <div>
-          <div>transaction Amount</div>
-          <Input
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <div>note</div>
+          <InputField
             type="text"
-            placeholder="transaction Amount"
-            value={currentCredit}
+            placeholder="기타/비고"
+            value={currentNote}
             onChange={(e) => {
-              setCurrentCredit(parseInt(e.target.value));
+              setCurrentNote(e.target.value);
             }}
           />
-        </div>
+        </InputFieldWrapper>
       </ItemSection>
     </AddItemInformationPageBody>
   );
@@ -111,7 +158,16 @@ function AddBusinessPartnerPage() {
 export default AddBusinessPartnerPage;
 const AddItemInformationPageBody = styled.div``;
 const HeaderSection = styled.section``;
-const Button = styled.button``;
+const Buttons = styled(Button)``;
 const Tittle = styled.title``;
 const ItemSection = styled.section``;
-const Input = styled.input``;
+const InputField = styled(Form.Control)`
+  width: 300px;
+  margin: 0 auto;
+`;
+const InputFieldWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+`;

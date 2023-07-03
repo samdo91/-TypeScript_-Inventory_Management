@@ -1,10 +1,10 @@
 export type AddBusinessPartnerTY = {
-  BusinessPartnerName: "string";
-  owner: "string";
-  email: "string";
-  telephoneNumber: "string";
-  manager: "string";
-  credit: 0;
+  BusinessPartnerName: String;
+  owner: string;
+  eMail: string;
+  telephoneNumber: string;
+  manager: string;
+  credit: number;
   nete: string;
 };
 
