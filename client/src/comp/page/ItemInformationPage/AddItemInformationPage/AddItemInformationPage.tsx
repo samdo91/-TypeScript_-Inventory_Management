@@ -11,6 +11,7 @@ import Header from "../../../Header/HeaderPage";
 import { useAtom } from "jotai";
 import { userDataAtom } from "../../../../globalStateManagement";
 import axios from "axios";
+
 function AddItemInformationPage() {
   const PROXY =
     window.location.hostname === "localhost"
@@ -117,9 +118,9 @@ function AddItemInformationPage() {
 
   return (
     <div>
-      <header>
-        <Header setDate={setDate} />
-      </header>
+      <div>
+        <Header />
+      </div>
       <AddItemInformationPageBody>
         <HeaderSection>
           <Buttons>품목삭제</Buttons>
