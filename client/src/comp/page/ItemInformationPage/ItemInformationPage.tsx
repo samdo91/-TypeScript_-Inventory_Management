@@ -68,7 +68,7 @@ function ItemInformationPage() {
         </ItemSection>
         <SearchingSection>
           <SearchingBar
-            setDataList={setProductList}
+            setItemList={setProductList}
             keyList={[
               "_id",
               "productName",
