@@ -8,6 +8,8 @@ import SignUpPage from "../comp/page/SignUpPage/SignUpPage";
 import SignUpSuccessPage from "../comp/page/SignUpPage/SignUpSuccessPage";
 import Inboundpage from "../comp/page/Inboundpage/InboundPage";
 import AddInboundPage from "../comp/page/Inboundpage/AddInboundPage/AddInboundPage";
+import OutboundPage from "../comp/page/OutboundPage/OutboundPage";
+import AddOutboundPage from "../comp/page/OutboundPage/AddOutboundPage/AddOutboundPage";
 
 export const router = createBrowserRouter([
   {
@@ -45,5 +47,13 @@ export const router = createBrowserRouter([
   {
     path: "/AddInboundPage",
     element: <AddInboundPage />,
+  },
+  {
+    path: "/OutboundPage ",
+    element: <OutboundPage />,
+  },
+  {
+    path: "/AddOutboundPage",
+    element: <AddOutboundPage />,
   },
 ]);

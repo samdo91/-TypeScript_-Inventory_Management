@@ -40,16 +40,16 @@ function InboundPage() {
         <Buttons
           onClick={() => {
             if (loginState) {
-              navigate("/AddInboundpage"); // loginState가 true인 경우 /AddBusinessPartner로 라우팅
+              navigate("/AddInboundpage"); // loginState가 true인 경우 /AddInboundpage로 라우팅
             } else {
               setLoginModal(true); // loginState가 false인 경우 setLoginModal(true) 실행
             }
           }}
         >
-          신규입출고
+          신규입고
         </Buttons>
       </HeaderSection>
-      <Tittle>거래처 정보</Tittle>
+      <Title>입고정보</Title>
       <InboundSection>
         <BulletinBoardComponent
           dataList={inboundList}
@@ -83,6 +83,6 @@ export default InboundPage;
 const InboundPageBody = styled.div``;
 const HeaderSection = styled.section``;
 const Buttons = styled(Button)``;
-const Tittle = styled.title``;
+const Title = styled.title``;
 const InboundSection = styled.div``;
 const SearchingSection = styled.section``;
