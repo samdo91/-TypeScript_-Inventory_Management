@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { InboundTY } from "../../../../types/inbound";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import Header from "../../../Header/HeaderPage";
 import {
   loginStateAtom,
@@ -70,8 +70,41 @@ function AddInboundpage() {
           >
             찾기
           </Buttons>
+
+          {productData.length > 0 ? (
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Product Code</th>
+                  <th>Product Name</th>
+                  <th>Wholesale Price</th>
+                  <th>Retail Price</th>
+                  <th>Date</th>
+                  <th>Note</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{productData[0].productCode}</td>
+                  <td>{productData[0].productName}</td>
+                  <td>{productData[0].wholesalePrice}</td>
+                  <td>{productData[0].retailPrice}</td>
+                  <td>
+                    {productData[0].date ? productData[0].date.toString() : ""}
+                  </td>
+                  <td>{productData[0].note}</td>
+                  <td>{productData[0].stock}</td>
+                </tr>
+              </tbody>
+            </Table>
+          ) : (
+            ""
+          )}
+
           {searchingModal ? (
             <SearchingModal
+              setDataList={setProductData}
               dataListSearchingKey="recentProducts"
               title="product Searching"
               rowKey={[

@@ -11,19 +11,34 @@ function SearchingModal(props: any) {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const { title, rowKey, dataListSearchingKey } = props;
-  const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom);
-  const [dataList, setDataList] = useState<any>("");
+
+  /*     title : 말 그대로 컴포넌트나 표의 이름
+         rowKey: 표의 key를 말한다.
+         dataListSearchingKey DB에서 가져올 엔드 포인트
+         setDataList : 최종적으로 가져올 아이템을 넣을 곳
+         selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
+         */
+  const { title, rowKey, dataListSearchingKey, setDataList } = props;
+
+  const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom); // 모달이 열렸는지 닫혔는지
+  const [itemList, setItemList] = useState<any>(""); // 초기에 useEffect로 가져오는 아이템리스트
+  const [selectItem, setSelectItem] = useState<any>(null); //BulletinBoardComponent에서 selectMode로 선택한 아이템이 저장됨
 
   const handleDataList = async () => {
     const response = await axios(`${PROXY}/${dataListSearchingKey}`);
+    console.log(response.data);
 
-    setDataList([...response.data]);
+    setItemList([...response.data]);
   };
 
   useEffect(() => {
     handleDataList();
   }, []);
+
+  const handleSave = () => {
+    setDataList([{ productCode: selectItem._id, ...selectItem }]);
+    setSearchingModal(false);
+  };
 
   const handleModalClose = () => {
     setSearchingModal(false);
@@ -37,18 +52,21 @@ function SearchingModal(props: any) {
         </Modal.Header>
 
         <Modal.Body>
-          {dataList ? (
+          {itemList ? (
             <BulletinBoardComponent
+              selectMode={true}
               title={title}
-              dataList={dataList}
+              dataList={itemList}
               rowKey={rowKey}
+              selectItem={selectItem}
+              setSelectItem={setSelectItem}
             />
           ) : (
             ""
           )}
 
           <SearchingBar
-            setDataList={setDataList}
+            setDataList={setItemList}
             keyList={[
               "_id",
               "productName",
@@ -64,7 +82,7 @@ function SearchingModal(props: any) {
           <Button variant="secondary" onClick={handleModalClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleModalClose}>
+          <Button variant="primary" onClick={handleSave}>
             Save Changes
           </Button>
         </Modal.Footer>

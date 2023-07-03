@@ -1,11 +1,21 @@
 import React, { useState } from "react";
-import { Container, Table, Pagination } from "react-bootstrap";
+import { Container, Table, Pagination, Row, Col } from "react-bootstrap";
 import styled from "@emotion/styled";
 
 function BulletinBoardComponent(props: any) {
-  const { dataList, setDataList, rowKey, title } = props;
+  /*     title : 말 그대로 컴포넌트나 표의 이름
+         rowKey: 표의 key를 말한다.
+         dataList: 말그대로 데이터 리스트 이걸로 페이지네이션을 만든다.
+         setDataList : 최종적으로 가져올 아이템을 넣을 곳
+         selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
+         selectItem,: 선택한 아이템 값이 들어있다. 없어도 된다. 
+         setSelectItem : 선택된 아이템의 값을 변경
+         */
+  const { dataList, rowKey, title, selectItem, setSelectItem, selectMode } =
+    props;
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1); //페이지네이션을 위한 유즈스테이트
+
   const itemsPerPage = 10;
   const totalPages = Math.ceil(dataList.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -16,28 +26,59 @@ function BulletinBoardComponent(props: any) {
     setCurrentPage(pageNumber);
   };
 
+  const handleItemClick = (item: any) => {
+    console.log(item);
+    setSelectItem(item);
+  };
+
   return (
     <div>
       <Title>{title}</Title>
       <Container>
-        <Table>
-          <thead>
-            <tr>
-              {rowKey.map((item: string[]) => {
-                return <th>{item} </th>;
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((item: any, index: number) => (
-              <tr key={index}>
-                {rowKey.map((value: string) => {
-                  return <td key={value}>{item[value]}</td>;
+        {selectMode ? (
+          <Table>
+            <thead>
+              <tr>
+                {rowKey.map((item: string[]) => {
+                  return <th>{item} </th>;
                 })}
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {currentItems.map((item: any, index: number) => (
+                <tr key={index}>
+                  {rowKey.map((value: string) => {
+                    return (
+                      <td key={value} onClick={() => handleItemClick(item)}>
+                        {item[value]}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          <Table>
+            <thead>
+              <tr>
+                {rowKey.map((item: string[]) => {
+                  return <th>{item} </th>;
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {currentItems.map((item: any, index: number) => (
+                <tr key={index}>
+                  {rowKey.map((value: string) => {
+                    return <td key={value}>{item[value]}</td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+
         {dataList.length >= 10 && (
           <PaginationWrapper>
             <Pagination>
@@ -106,6 +147,18 @@ function BulletinBoardComponent(props: any) {
             </Pagination>
           </PaginationWrapper>
         )}
+        {selectMode ? (
+          <SelectItemSection>
+            <Row>
+              <Col>
+                <div>선택된 아이템</div>
+                {selectItem && <div>{selectItem.productName}</div>}
+              </Col>
+            </Row>
+          </SelectItemSection>
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );
@@ -121,4 +174,11 @@ const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
+`;
+
+const SelectItemSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 `;
