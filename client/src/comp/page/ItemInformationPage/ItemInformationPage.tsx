@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Searching from "../../SearchingBar/SearchingBar";
 import { Link } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
-import BulletinBoardComponent from "../Bulletin BoardComponent/BulletinBoardComponent";
+import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import { productTY } from "../../../types/product";
 import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
