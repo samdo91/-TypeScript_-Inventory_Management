@@ -21,6 +21,16 @@ function OutboundPage() {
 
   const [outnboundList, setOutboundList] = useState<OutboundsTY[]>([]); //출고 리스트
 
+  // const handleBusinessPartnerList = async () => {
+  //   const response = await axios.get(`${PROXY}/OutnboundList`);
+  //   console.log(response.data);
+  //   setOutboundList([...response.data]);
+  // };
+
+  // useEffect(() => {
+  //   handleBusinessPartnerList();
+  // }, []);
+
   return (
     <div>
       <header>
@@ -49,8 +59,9 @@ function OutboundPage() {
               "_id",
               "date",
               "product_id",
-              "employee_id",
-              "addProductQuantity",
+              "BusinessPartner_id",
+              "stockOutboundQuantity",
+              "totalAmount",
             ]}
           />
         </OutboundSection>
@@ -61,8 +72,9 @@ function OutboundPage() {
               "_id",
               "date",
               "product_id",
-              "employee_id",
-              "addProductQuantity",
+              "BusinessPartner_id",
+              "stockOutboundQuantity",
+              "totalAmount",
             ]}
             Theme="product"
           />
