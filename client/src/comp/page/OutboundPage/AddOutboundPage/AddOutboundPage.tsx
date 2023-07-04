@@ -9,9 +9,9 @@ import {
 } from "../../../../globalStateManagement/index";
 import { useAtom } from "jotai";
 import SearchingModal from "../../../SearchingModal/SearchingModal";
-import { productTY } from "../../../../types/product";
-import { AddInboundTY } from "../../../../types/inbound";
+import { productTY, ShippingEventTY } from "../../../../types/product";
 import { BusinessPartnerTY } from "../../../../types/businessPartner";
+import { OutboundsTY } from "../../../../types/outbound";
 
 function AddOutboundPage() {
   const PROXY =
@@ -43,7 +43,60 @@ function AddOutboundPage() {
     }
   }, [currentStockOutboundQuantity, productData]);
 
-  const OutInbound = () => {};
+  const addOutbound = async () => {
+    try {
+      if (!currentNote || currentNote === "") {
+        throw new Error("note는 필수 입력 사항입니다.");
+      }
+
+      if (currentStockOutboundQuantity === 0) {
+        throw new Error("stockOutboundQuantity는 필수 입력 사항입니다.");
+      }
+
+      const outboundItem: OutboundsTY = {
+        note: currentNote,
+        totalAmount: currentTotalAmount,
+        date: date,
+        product_id: productData[0].productCode,
+        BusinessPartner_id: businessPartnerData[0]._id,
+        stockOutboundQuantity: currentStockOutboundQuantity,
+      };
+
+      const shippingEvent: ShippingEventTY = {
+        date: date,
+        businessPartner_id: businessPartnerData[0]._id,
+        product_id: productData[0].productCode,
+        employee_id: userData._id,
+        stockOutboundQuantity: currentStockOutboundQuantity,
+        totalAmount: currentTotalAmount,
+      };
+
+      const response = await axios.post(`${PROXY}/addOutbound`, outboundItem);
+
+      if (response.data) {
+        const ShippingRsponse = await axios.post(
+          `${PROXY}/addShippingEvent`,
+          shippingEvent
+        );
+      }
+
+      // 처리된 후에 원하는 작업 수행
+      console.log(response.data);
+
+      // 초기화 수행
+      setCurrentNote("");
+      setCurrentStockOutboundQuantity(0);
+      setBusinessPartnerData([]);
+      setProductData([]);
+      // 다른 필요한 초기화 작업 추가...
+    } catch (error: any) {
+      // 오류 발생 시 예외 처리
+      console.error("오류 발생:", error);
+      alert(error.message);
+      return; // 함수 실행 중지
+    }
+  };
+
   return (
     <AddItemInformationPageBody>
       <HeaderSection>
@@ -229,8 +282,8 @@ function AddOutboundPage() {
         </InputFieldWrapper>
       </ItemSection>
       <InputSection>
-        <Buttons>입고 삭제</Buttons>
-        <Buttons onClick={OutInbound}>입고</Buttons>
+        <Buttons>출고 삭제</Buttons>
+        <Buttons onClick={addOutbound}>출고</Buttons>
       </InputSection>
     </AddItemInformationPageBody>
   );

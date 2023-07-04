@@ -21,15 +21,15 @@ function OutboundPage() {
 
   const [outnboundList, setOutboundList] = useState<OutboundsTY[]>([]); //출고 리스트
 
-  // const handleBusinessPartnerList = async () => {
-  //   const response = await axios.get(`${PROXY}/OutnboundList`);
-  //   console.log(response.data);
-  //   setOutboundList([...response.data]);
-  // };
+  const handleBusinessPartnerList = async () => {
+    const response = await axios.get(`${PROXY}/OutboundList`);
+    console.log(response.data);
+    setOutboundList([...response.data]);
+  };
 
-  // useEffect(() => {
-  //   handleBusinessPartnerList();
-  // }, []);
+  useEffect(() => {
+    handleBusinessPartnerList();
+  }, []);
 
   return (
     <div>
