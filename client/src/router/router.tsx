@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
     element: <AddInboundPage />,
   },
   {
-    path: "/OutboundPage ",
+    path: "/OutboundPage",
     element: <OutboundPage />,
   },
   {
