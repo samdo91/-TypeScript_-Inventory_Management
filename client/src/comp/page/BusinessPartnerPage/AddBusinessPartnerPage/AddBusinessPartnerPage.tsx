@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { AddBusinessPartnerTY } from "../../../../types/BusinessPartner";
+import { AddBusinessPartnerTY } from "../../../../types/businessPartner";
 import { useAtom } from "jotai";
 import { userDataAtom } from "../../../../globalStateManagement";
 import { Form, Button } from "react-bootstrap";
