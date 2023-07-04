@@ -363,7 +363,104 @@ app.get("/recentInbound", async (req, res) => {
   }
 });
 
-// 전체 입고 이밴트 가져오기
-app.get(`/OutnboundList`, async (req, res) => {
+// 전체 출고 이밴트 가져오기
+app.get(`/OutboundList`, async (req, res) => {
   res.json(await Outbound.find());
+});
+// 출고 저장
+app.post("/addOutbound", async (req, res) => {
+  try {
+    const {
+      note,
+      totalAmount,
+      date,
+      product_id,
+      BusinessPartner_id,
+      stockOutboundQuantity,
+    } = req.body;
+
+    if (
+      !note ||
+      !totalAmount ||
+      !date ||
+      !product_id ||
+      !BusinessPartner_id ||
+      stockOutboundQuantity === undefined
+    ) {
+      return res.status(400).json({ error: "필수 필드가 누락되었습니다." });
+    }
+
+    const outbound = await Outbound.create({
+      note,
+      totalAmount,
+      date,
+      product_id,
+      BusinessPartner_id,
+      stockOutboundQuantity,
+    });
+
+    return res.json(outbound);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: "Outbound 추가 중 오류가 발생했습니다." });
+  }
+});
+
+//출고 이밴트 성공 후 그 데이터를 기반으로 product를 변경함
+app.post("/addShippingEvent", async (req, res) => {
+  const {
+    date,
+    businessPartner_id,
+    employee_id,
+    stockOutboundQuantity,
+    totalAmount,
+    product_id,
+  } = req.body;
+
+  try {
+    // 새로운 shipping event를 생성합니다.
+    const newShippingEvent = {
+      date: date,
+      businessPartner_id: businessPartner_id,
+      employee_id: employee_id,
+      stockOutboundQuantity: stockOutboundQuantity,
+      totalAmount: totalAmount,
+      product_id: product_id,
+    };
+
+    // productId에 해당하는 상품을 조회합니다.
+    const product = await Product.findOne({ _id: product_id });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    // shippingEventList에 새로운 shipping event를 추가합니다.
+    product.shippingEventList.push(newShippingEvent);
+
+    // 상품의 stock과 totalAmountShipped를 업데이트합니다.
+    product.stock -= stockOutboundQuantity;
+    product.totalAmountShipped += totalAmount;
+
+    // 상품을 저장합니다.
+    await product.save();
+
+    const businessPartner = await BusinessPartner.findOne({
+      _id: businessPartner_id,
+    });
+
+    if (!businessPartner) {
+      return res.status(404).json({ error: "Business partner not found." });
+    }
+
+    businessPartner.credit += totalAmount;
+
+    // 비지니스 파트너를 저장합니다.
+    await businessPartner.save();
+
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to add shipping event." });
+  }
 });
