@@ -1,9 +1,8 @@
 export type OutboundsTY = {
-  product_id: string;
-  BusinessPartner_id: string;
+  note: string;
   totalAmount: number;
   date: Date;
-
+  product_id: string;
+  BusinessPartner_id: string;
   stockOutboundQuantity: number;
-  note: string;
 };
