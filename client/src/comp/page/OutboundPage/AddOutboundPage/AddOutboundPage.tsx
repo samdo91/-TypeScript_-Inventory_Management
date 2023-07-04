@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "@emotion/styled";
-import { Button, Form, Table } from "react-bootstrap";
+import { Button, Form, Table, Container, Row, Col } from "react-bootstrap";
 import Header from "../../../Header/HeaderPage";
 import {
   userDataAtom,
@@ -20,9 +20,11 @@ function AddOutboundPage() {
       : "/proxy";
   const [date, setDate] = useState<Date>(new Date()); //시간
   const [currentNote, setCurrentNote] = useState<string>(""); // 비고
-
-  const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [userData, setUseData] = useAtom(userDataAtom); // 로그인 되어 있는 데이터
+  const [currentStockOutboundQuantity, setCurrentStockOutboundQuantity] =
+    useState<number>(0); // 출고 수량
+  const [currentTotalAmount, setCurrentTotalAmount] = useState<number>(0); // 계산 되어 나온 총액
+
   const [searchingProductModal, setSearchingProductModal] =
     useState<boolean>(false); // 프로덕트 서치 모달 켜고 끄끼
   const [productData, setProductData] = useState<productTY[]>([]); // 모달로 찾아온 프로덕트를 저장
@@ -31,8 +33,17 @@ function AddOutboundPage() {
     useState<boolean>(false); // 비지니스파트너 서치 모달 켜고 끄끼
   const [businessPartnerData, setBusinessPartnerData] = useState<
     BusinessPartnerTY[]
-  >([]); // 모달로 찾아온 프로덕트를 저장
+  >([]); // 모달로 찾아온 비지니스 파트너를 저장
 
+  useEffect(() => {
+    if (productData.length > 0) {
+      setCurrentTotalAmount(
+        productData[0].retailPrice * currentStockOutboundQuantity
+      );
+    }
+  }, [currentStockOutboundQuantity, productData]);
+
+  const OutInbound = () => {};
   return (
     <AddItemInformationPageBody>
       <HeaderSection>
@@ -175,19 +186,35 @@ function AddOutboundPage() {
         </div>
       </ProcuctSection>
 
-      {/* <ItemSection>
+      <ItemSection>
         <InputFieldWrapper>
-          <div>주문수량</div>
+          <div>출하수량</div>
           <InputField
             type="text"
-            placeholder="주문 수량"
-            value={currentQuantity}
+            placeholder="출하 수량"
+            value={currentStockOutboundQuantity}
             onChange={(e) => {
               const value = e.target.value;
-              setCurrentQuantity(value === "" ? 0 : parseInt(value));
+              const parsedValue = value === "" ? 0 : parseInt(value);
+
+              if (parsedValue > productData[0].stock) {
+                alert("재고보다 출고 수량이 많습니다.");
+              } else {
+                setCurrentStockOutboundQuantity(parsedValue);
+                setCurrentTotalAmount(parsedValue);
+              }
             }}
           />
         </InputFieldWrapper>
+        <Container>
+          <Row>
+            <Col>
+              <div>총액</div>
+              <div>{currentTotalAmount.toLocaleString()}</div>
+            </Col>
+          </Row>
+        </Container>
+
         <InputFieldWrapper>
           <div>상품 비고</div>
           <InputField
@@ -203,8 +230,8 @@ function AddOutboundPage() {
       </ItemSection>
       <InputSection>
         <Buttons>입고 삭제</Buttons>
-        <Buttons onClick={addInbound}>입고</Buttons>
-      </InputSection> */}
+        <Buttons onClick={OutInbound}>입고</Buttons>
+      </InputSection>
     </AddItemInformationPageBody>
   );
 }
