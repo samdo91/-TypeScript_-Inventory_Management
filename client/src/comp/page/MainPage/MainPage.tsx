@@ -69,11 +69,13 @@ function MainPage() {
                   "wholesalePrice",
                   "retailPrice",
                 ]}
+                itemField="productName"
               />
               <BulletinBoardComponent
                 title="최근 등록 회사"
                 dataList={businessPartnerList}
                 rowKey={["_id", "BusinessPartnerName", "credit"]}
+                itemField={"BusinessPartnerName"}
               />
               <BulletinBoardComponent
                 title="최근 입고"
