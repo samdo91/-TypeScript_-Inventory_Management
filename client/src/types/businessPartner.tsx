@@ -9,5 +9,5 @@ export type AddBusinessPartnerTY = {
 };
 
 export type BusinessPartnerTY = AddBusinessPartnerTY & {
-  businessPartner_id: string; // 등록하며 만들어진 비지니스 파트너의 고유 idD
+  _id: string; // 등록하며 만들어진 비지니스 파트너의 고유 idD
 };

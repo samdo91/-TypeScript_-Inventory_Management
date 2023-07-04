@@ -23,11 +23,12 @@ function AddInboundpage() {
   const [currentQuantity, setCurrentQuantity] = useState<number>(0); // 입고수량
 
   const [productData, setProductData] = useState<productTY[]>([]);
-  const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
+
   const [userData, setUseData] = useAtom(userDataAtom);
   const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom);
   const [date, setDate] = useState<Date>(new Date()); //시간
-
+  const [searchingProductModal, setSearchingProductModal] =
+    useState<boolean>(false); // 프로덕트 서치 모달 켜고 끄끼
   const addInbound = async () => {
     try {
       if (currentNote === "") {
@@ -103,7 +104,7 @@ function AddInboundpage() {
           </InputFieldWrapper>
           <Buttons
             onClick={() => {
-              setSearchingModal(true);
+              setSearchingProductModal(true);
             }}
           >
             찾기
@@ -140,7 +141,7 @@ function AddInboundpage() {
             ""
           )}
 
-          {searchingModal ? (
+          {searchingProductModal ? (
             <SearchingModal
               setDataList={setProductData}
               dataListSearchingKey="recentProducts"
@@ -152,6 +153,9 @@ function AddInboundpage() {
                 "wholesalePrice",
                 "retailPrice",
               ]}
+              searchingModal={searchingProductModal}
+              setSearchingModal={setSearchingProductModal}
+              itemField="productName"
             />
           ) : (
             ""
@@ -216,4 +220,3 @@ const InputFieldWrapper = styled.div`
   margin: 10px;
 `;
 const ProcuctSection = styled.section``;
-const Input = styled.input``;
