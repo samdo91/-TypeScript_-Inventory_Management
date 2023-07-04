@@ -16,11 +16,25 @@ function SearchingModal(props: any) {
          rowKey: 표의 key를 말한다.
          dataListSearchingKey DB에서 가져올 엔드 포인트
          setDataList : 최종적으로 가져올 아이템을 넣을 곳
-         selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
-         */
-  const { title, rowKey, dataListSearchingKey, setDataList } = props;
+         Theme: 서치용 
 
-  const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom); // 모달이 열렸는지 닫혔는지
+
+        selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
+        searchingModal= 모달 커고 끄기 
+        setSearchingModal=모달 켜고 끄기
+        itemfield: 선택된 아이템 보여줄 요소
+         */
+  const {
+    title,
+    rowKey,
+    dataListSearchingKey,
+    setDataList,
+    searchingModal,
+    setSearchingModal,
+    Theme,
+    itemField,
+  } = props;
+
   const [itemList, setItemList] = useState<any>(""); // 초기에 useEffect로 가져오는 아이템리스트
   const [selectItem, setSelectItem] = useState<any>(null); //BulletinBoardComponent에서 selectMode로 선택한 아이템이 저장됨
 
@@ -60,6 +74,7 @@ function SearchingModal(props: any) {
               rowKey={rowKey}
               selectItem={selectItem}
               setSelectItem={setSelectItem}
+              itemField={itemField}
             />
           ) : (
             ""
@@ -67,14 +82,8 @@ function SearchingModal(props: any) {
 
           <SearchingBar
             setDataList={setItemList}
-            keyList={[
-              "_id",
-              "productName",
-              "stock",
-              "wholesalePrice",
-              "retailPrice",
-            ]}
-            Theme="product"
+            keyList={rowKey}
+            Theme={Theme}
           />
         </Modal.Body>
 
