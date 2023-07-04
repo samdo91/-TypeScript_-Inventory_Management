@@ -6,13 +6,23 @@ function BulletinBoardComponent(props: any) {
   /*     title : 말 그대로 컴포넌트나 표의 이름
          rowKey: 표의 key를 말한다.
          dataList: 말그대로 데이터 리스트 이걸로 페이지네이션을 만든다.
-         setDataList : 최종적으로 가져올 아이템을 넣을 곳
+
+    ======================이후 셀렉트 모드에서만 사용된다.==================
          selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
-         selectItem,: 선택한 아이템 값이 들어있다. 없어도 된다. 
+         setDataList : 최종적으로 가져올 아이템을 넣을 곳
+         selectItem,: 선택한 아이템 값이 들어있다. 
          setSelectItem : 선택된 아이템의 값을 변경
+         itemfield: 선택된 아이템 보여줄 요소
          */
-  const { dataList, rowKey, title, selectItem, setSelectItem, selectMode } =
-    props;
+  const {
+    dataList,
+    rowKey,
+    title,
+    selectItem,
+    setSelectItem,
+    selectMode,
+    itemField,
+  } = props;
 
   const [currentPage, setCurrentPage] = useState<number>(1); //페이지네이션을 위한 유즈스테이트
 
@@ -152,7 +162,7 @@ function BulletinBoardComponent(props: any) {
             <Row>
               <Col>
                 <div>선택된 아이템</div>
-                {selectItem && <div>{selectItem.productName}</div>}
+                {selectItem && <div>{selectItem[itemField]}</div>}
               </Col>
             </Row>
           </SelectItemSection>

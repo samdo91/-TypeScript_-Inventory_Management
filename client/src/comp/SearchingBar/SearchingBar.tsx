@@ -18,7 +18,7 @@ function SearchingBar(props: any) {
   /* Theme: 찾으려는 상품이나 거래처 혹은 주제 
      keyList 찾으려는 key들의 리스트
      setDataList 찾은 item들을 다시 지정한다.  */
-  const { Theme, keyList, setItemList } = props;
+  const { Theme, keyList, setDataList } = props;
   const [currentSearchValue, setCurrentSearchValue] =
     useState<SearchValueTY>("");
   const [searchCondition, setSearchCondition] = useState<string>("Code");
@@ -30,7 +30,7 @@ function SearchingBar(props: any) {
         searchCondition: searchCondition,
       },
     });
-    setItemList([...response.data]);
+    setDataList([...response.data]);
   };
 
   return (
