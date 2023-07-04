@@ -45,7 +45,7 @@ function MainPageLInkButton() {
         >
           <div>
             <h3>출고</h3>
-            <p>Button Description</p>
+            <p>비지니스 파트너에서 들어온 오더로 프로덕트를 출고 시킵니다.</p>
           </div>
         </Button>
       </Link>
