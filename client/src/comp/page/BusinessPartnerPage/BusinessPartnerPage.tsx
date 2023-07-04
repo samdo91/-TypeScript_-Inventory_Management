@@ -65,6 +65,7 @@ function BusinessPartnerPage() {
           <BulletinBoardComponent
             dataList={businessPartnerList}
             rowKey={["_id", "BusinessPartnerName", "credit"]}
+            itemField={"BusinessPartnerName"}
           />
         </BusinessPartnerSection>
         <SearchingSection>

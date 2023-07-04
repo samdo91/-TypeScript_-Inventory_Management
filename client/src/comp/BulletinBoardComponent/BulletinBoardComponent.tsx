@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { Container, Table, Pagination, Row, Col } from "react-bootstrap";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 function BulletinBoardComponent(props: any) {
-  /*     title : 말 그대로 컴포넌트나 표의 이름
-         rowKey: 표의 key를 말한다.
-         dataList: 말그대로 데이터 리스트 이걸로 페이지네이션을 만든다.
-
-    ======================이후 셀렉트 모드에서만 사용된다.==================
-         selectMode : BulletinBoardComponent 컴포넌트를 셀렉트모드로 만든다. 
-         setDataList : 최종적으로 가져올 아이템을 넣을 곳
-         selectItem,: 선택한 아이템 값이 들어있다. 
-         setSelectItem : 선택된 아이템의 값을 변경
-         itemfield: 선택된 아이템 보여줄 요소
-         */
   const {
     dataList,
     rowKey,
@@ -24,8 +14,7 @@ function BulletinBoardComponent(props: any) {
     itemField,
   } = props;
 
-  const [currentPage, setCurrentPage] = useState<number>(1); //페이지네이션을 위한 유즈스테이트
-
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(dataList.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -72,17 +61,21 @@ function BulletinBoardComponent(props: any) {
           <Table>
             <thead>
               <tr>
-                {rowKey.map((item: string[]) => {
-                  return <th>{item} </th>;
-                })}
+                {rowKey.map((item: string) => (
+                  <th key={item}>{item}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {currentItems.map((item: any, index: number) => (
                 <tr key={index}>
-                  {rowKey.map((value: string) => {
-                    return <td key={value}>{item[value]}</td>;
-                  })}
+                  {rowKey.map((value: string) => (
+                    <td key={value}>
+                      <Link to={`/${itemField}/${item[itemField]}`}>
+                        {item[value]}
+                      </Link>
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
