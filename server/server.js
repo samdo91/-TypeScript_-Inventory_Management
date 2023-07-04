@@ -14,6 +14,7 @@ const User = require("./models/user.js");
 const Product = require("./models/product.js");
 const Inbound = require("./models/inbound.js");
 const BusinessPartner = require("./models/businessPartner.js");
+const Outbound = require(`./models/outbound.js`);
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -360,4 +361,9 @@ app.get("/recentInbound", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch recent products" });
   }
+});
+
+// 전체 입고 이밴트 가져오기
+app.get(`/OutnboundList`, async (req, res) => {
+  res.json(await Outbound.find());
 });
