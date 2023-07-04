@@ -64,6 +64,7 @@ function ItemInformationPage() {
               "wholesalePrice",
               "retailPrice",
             ]}
+            itemField="productName"
           />
         </ItemSection>
         <SearchingSection>
