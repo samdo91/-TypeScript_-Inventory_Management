@@ -5,7 +5,7 @@ import MainPageBoard from "./MainPageLInkButton/MainPageLInkButton";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import { Container, Row, Col } from "react-bootstrap";
 import { productTY } from "../../../types/product";
-import { BusinessPartnerTY } from "../../../types/BusinessPartner";
+import { BusinessPartnerTY } from "../../../types/businessPartner";
 import axios from "axios";
 import { AddInboundTY } from "../../../types/inbound";
 
