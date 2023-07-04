@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import SearchingBar from "../../SearchingBar/SearchingBar";
-import { BusinessPartnerTY } from "../../../types/BusinessPartner";
+import { BusinessPartnerTY } from "../../../types/businessPartner";
 import {
   loginStateAtom,
   loginModals,

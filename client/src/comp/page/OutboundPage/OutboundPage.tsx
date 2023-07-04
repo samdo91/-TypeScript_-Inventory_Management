@@ -7,6 +7,7 @@ import { useAtom } from "jotai";
 import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { OutboundsTY } from "../../../types/outbound";
 import axios from "axios";
 
 function OutboundPage() {
@@ -18,7 +19,7 @@ function OutboundPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
 
-  const [outnboundList, setOutboundList] = useState([]);
+  const [outnboundList, setOutboundList] = useState<OutboundsTY[]>([]); //출고 리스트
 
   return (
     <div>
