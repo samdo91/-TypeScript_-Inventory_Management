@@ -13,7 +13,7 @@ function SignUpSuccessPage() {
   return (
     <SignUpSuccessBody>
       <div>
-        로그인을 축하드립니다. 아래의 버튼을 눌러 메인페이지로 돌아가시거나
+        회원가입을 축하드립니다. 아래의 버튼을 눌러 메인페이지로 돌아가시거나
         로그인해주세요.
       </div>
       <Link to="/">
