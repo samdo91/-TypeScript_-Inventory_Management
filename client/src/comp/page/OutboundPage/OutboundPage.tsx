@@ -23,8 +23,14 @@ function OutboundPage() {
 
   const handleBusinessPartnerList = async () => {
     const response = await axios.get(`${PROXY}/OutboundList`);
-    console.log(response.data);
-    setOutboundList([...response.data]);
+    const updatedList = response.data.map((item: any) => {
+      const { _id, ...rest } = item;
+      return {
+        outbound_id: _id,
+        ...rest,
+      };
+    });
+    setOutboundList(updatedList);
   };
 
   useEffect(() => {
@@ -56,20 +62,21 @@ function OutboundPage() {
           <BulletinBoardComponent
             dataList={outnboundList}
             rowKey={[
-              "_id",
+              "outbound_id",
               "date",
               "product_id",
               "BusinessPartner_id",
               "stockOutboundQuantity",
               "totalAmount",
             ]}
+            itemField="outbound_id"
           />
         </OutboundSection>
         <SearchingSection>
           <SearchingBar
             setItemList={setOutboundList}
             keyList={[
-              "_id",
+              "outbound_id",
               "date",
               "product_id",
               "BusinessPartner_id",

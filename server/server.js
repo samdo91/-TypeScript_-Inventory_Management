@@ -476,3 +476,16 @@ app.post("/addShippingEvent", async (req, res) => {
     res.status(500).json({ error: "Failed to add shipping event." });
   }
 });
+
+// 특정 출고 이밴트 찾기
+app.get("/OutboundSearching", async (req, res) => {
+  const { currentSearchValue, searchCondition } = req.query;
+
+  console.log(currentSearchValue, searchCondition);
+
+  const searchResult = await Outbound.find({
+    [searchCondition]: currentSearchValue,
+  });
+
+  res.json(searchResult);
+});

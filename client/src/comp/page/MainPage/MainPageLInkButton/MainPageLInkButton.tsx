@@ -38,7 +38,7 @@ function MainPageLInkButton() {
           </div>
         </Button>
       </Link>
-      <Link to="/">
+      <Link to="/OutboundPage">
         <Button
           variant="primary"
           style={{ height: "150px", width: "450px", margin: "10px" }}
