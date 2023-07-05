@@ -6,3 +6,7 @@ export type OutboundsTY = {
   BusinessPartner_id: string;
   stockOutboundQuantity: number;
 };
+
+export type OutboundTY = OutboundsTY & {
+  outbound_id: string;
+};

@@ -13,6 +13,7 @@ import AddOutboundPage from "../comp/page/OutboundPage/AddOutboundPage/AddOutbou
 import DetailBusinessPartnerPage from "../comp/page/BusinessPartnerPage/DetailBusinessPartnerPage/DetailBusinessPartnerPage";
 import DetailItemInformationPage from "../comp/page/ItemInformationPage/DetailItemInformationPage/DetailItemInformationPage";
 import DetailInboundPage from "../comp/page/Inboundpage/DetailInboundPage/DetailInboundPage";
+import DetailOutboundPage from "../comp/page/OutboundPage/DetailOutboundPage/DetailOutboundPage";
 
 export const router = createBrowserRouter([
   {
@@ -71,5 +72,9 @@ export const router = createBrowserRouter([
   {
     path: "/inbound_id/:inbound_id",
     element: <DetailInboundPage />,
+  },
+  {
+    path: "/outbound_id/:outbound_id",
+    element: <DetailOutboundPage />,
   },
 ]);
