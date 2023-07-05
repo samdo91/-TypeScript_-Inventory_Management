@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
-import { AddInboundTY } from "../../../types/inbound";
+import { InboundTY } from "../../../types/inbound";
 import { useAtom } from "jotai";
 import { loginModals, loginStateAtom } from "../../../globalStateManagement";
 import Header from "../../Header/HeaderPage";
@@ -18,16 +18,30 @@ function InboundPage() {
       : "/proxy";
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
-  const [inboundList, setInboundList] = useState<AddInboundTY[]>([]);
+  const [inboundList, setInboundList] = useState<InboundTY[]>([]);
 
   const handleProductDataList = async () => {
-    const response = await axios.get(`${PROXY}/InboundList`);
-    console.log(response.data);
-    setInboundList([...response.data]);
+    try {
+      const response = await axios.get(`${PROXY}/InboundList`);
+      const updatedList = response.data.map((item: any) => {
+        const { _id, ...rest } = item;
+        return {
+          inbound_id: _id,
+          ...rest,
+        };
+      });
+      setInboundList(updatedList);
+      console.log("inboundList", inboundList);
+    } catch (error) {
+      // 오류 처리 로직 추가
+      console.error("Error fetching inbound data:", error);
+    }
   };
 
   useEffect(() => {
-    handleProductDataList();
+    handleProductDataList().then(() => {
+      console.log("inboundList", inboundList);
+    });
   }, []);
 
   return (
@@ -54,25 +68,26 @@ function InboundPage() {
         <BulletinBoardComponent
           dataList={inboundList}
           rowKey={[
-            "_id",
+            "inbound_id",
             "date",
             "product_id",
             "employee_id",
             "addProductQuantity",
           ]}
+          itemField="inbound_id"
         />
       </InboundSection>
       <SearchingSection>
         <SearchingBar
           setItemList={setInboundList}
           keyList={[
-            "_id",
+            "inbound_id",
             "date",
             "product_id",
             "employee_id",
             "addProductQuantity",
           ]}
-          Theme="product"
+          Theme="inbound"
         />
       </SearchingSection>
     </InboundPageBody>

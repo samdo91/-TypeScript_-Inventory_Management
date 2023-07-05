@@ -346,6 +346,18 @@ app.post(`/addReceivingEvent`, async (req, res) => {
   }
 });
 
+// 특정 입고 이밴트 찾기
+app.get("/inboundSearching", async (req, res) => {
+  const { currentSearchValue, searchCondition } = req.query;
+
+  console.log(currentSearchValue, searchCondition);
+
+  const searchResult = await Inbound.find({
+    [searchCondition]: currentSearchValue,
+  });
+
+  res.json(searchResult);
+});
 // 전체 입고 이밴트 가져오기
 app.get(`/InboundList`, async (req, res) => {
   res.json(await Inbound.find());

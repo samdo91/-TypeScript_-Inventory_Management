@@ -32,7 +32,14 @@ function MainPage() {
   const recentInbound = async () => {
     const response = await axios(`${PROXY}/recentInbound`);
     console.log(response);
-    setInboundList([...response.data]);
+    const updatedList = response.data.map((item: any) => {
+      const { _id, ...rest } = item;
+      return {
+        inbound_id: _id,
+        ...rest,
+      };
+    });
+    setInboundList(updatedList);
   };
 
   useEffect(() => {
@@ -81,12 +88,13 @@ function MainPage() {
                 title="최근 입고"
                 dataList={inboundList}
                 rowKey={[
-                  "_id",
+                  "inbound_id",
                   "date",
                   "product_id",
                   "employee_id",
                   "addProductQuantity",
                 ]}
+                itemField="inbound_id"
               />
             </div>
           </Col>
