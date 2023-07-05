@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const AddInboundSchema = new mongoose.Schema({
+const AddInboundSchema = mongoose.Schema({
   addProductQuantity: { type: Number, required: true },
   date: { type: Date, required: true },
   product_id: { type: String, required: true },
@@ -8,6 +8,6 @@ const AddInboundSchema = new mongoose.Schema({
   note: { type: String, required: true },
 });
 
-const Inbound = mongoose.model("Inbound", AddInboundSchema);
+const InboundModel = mongoose.model("Inbound", AddInboundSchema);
 
-module.exports = Inbound;
+module.exports = InboundModel;
