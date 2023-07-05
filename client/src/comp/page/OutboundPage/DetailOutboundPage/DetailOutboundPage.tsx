@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { OutboundTY } from "../../../../types/outbound";
+import Header from "../../../Header/HeaderPage";
+import { Table } from "react-bootstrap";
+import styled from "@emotion/styled";
 function DetailOutboundPage() {
   const PROXY =
     window.location.hostname === "localhost"
@@ -41,8 +44,57 @@ function DetailOutboundPage() {
 
   return (
     <div>
-      <h1>_id: {outboundData[0]?.outbound_id}</h1>
+      <header>
+        <Header />
+      </header>
+      <PageTitle>출고 페이지</PageTitle>
+      <TableContainer>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Outbound ID</th>
+              <th>Date</th>
+              <th>Product ID</th>
+              <th>Business Partner ID</th>
+              <th>Stock Outbound Quantity</th>
+              <th>Total Amount</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {outboundData.map((item, index) => (
+              <tr key={item.outbound_id}>
+                <td>{index + 1}</td>
+                <td>{item.outbound_id}</td>
+                <td>{item.date.toString()}</td>
+                <td>{item.product_id}</td>
+                <td>{item.BusinessPartner_id}</td>
+                <td>{item.stockOutboundQuantity}</td>
+                <td>{item.totalAmount}</td>
+                <td>{item.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
 export default DetailOutboundPage;
+const TableContainer = styled.div`
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+`;
+
+const PageTitle = styled.div`
+  font-size: 40px;
+`;
