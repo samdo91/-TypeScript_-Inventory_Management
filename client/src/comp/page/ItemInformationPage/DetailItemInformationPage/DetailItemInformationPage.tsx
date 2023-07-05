@@ -5,6 +5,7 @@ import { productTY } from "../../../../types/product";
 import Header from "../../../Header/HeaderPage";
 import { Table } from "react-bootstrap";
 import styled from "@emotion/styled";
+import { formatTime } from "../../../../store/functionIndex";
 
 function DetailItemInformationPage() {
   const PROXY =
@@ -66,9 +67,9 @@ function DetailItemInformationPage() {
                 <td>{index + 1}</td>
                 <td>{product.productName}</td>
                 <td>{product.productCode}</td>
-                <td>{product.wholesalePrice}</td>
-                <td>{product.retailPrice}</td>
-                <td>{product.firstStock}</td>
+                <td>{product.wholesalePrice.toLocaleString()}</td>
+                <td>{product.retailPrice.toLocaleString()}</td>
+                <td>{product.firstStock.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
@@ -85,11 +86,11 @@ function DetailItemInformationPage() {
           <tbody>
             {productData.map((product, index) => (
               <tr key={product.productCode}>
-                <td>{product.date.toString()}</td>
+                <td>{formatTime(new Date(product.date))}</td>
                 <td>{product.warehouseManager}</td>
-                <td>{product.totalAmountReceived}</td>
-                <td>{product.totalAmountShipped}</td>
-                <td>{product.stock}</td>
+                <td>{product.totalAmountReceived.toLocaleString()}</td>
+                <td>{product.totalAmountShipped.toLocaleString()}</td>
+                <td>{product.stock.toLocaleString()}</td>
                 <td>{product.note}</td>
               </tr>
             ))}

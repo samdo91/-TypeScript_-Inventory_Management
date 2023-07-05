@@ -99,9 +99,13 @@ function Header({ setDate }: HeaderPropsTY) {
           <CompanyName>회사이름</CompanyName>
         )}
         {loginState ? (
-          <MyName>{userData.name}</MyName>
+          <div>
+            <MyName>{userData.name}</MyName>
+            <MyName>{userData.companyDepartment}</MyName>
+            <MyName>{userData.position}</MyName>
+          </div>
         ) : (
-          <MyName>내이름 </MyName>
+          <MyName>사원명 </MyName>
         )}
 
         <Clock setDate={setDate} />

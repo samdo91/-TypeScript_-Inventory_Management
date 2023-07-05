@@ -8,6 +8,7 @@ import { loginStateAtom, loginModals } from "../../../globalStateManagement";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { OutboundsTY } from "../../../types/outbound";
+
 import axios from "axios";
 
 function OutboundPage() {
