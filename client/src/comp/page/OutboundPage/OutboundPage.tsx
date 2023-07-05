@@ -74,7 +74,7 @@ function OutboundPage() {
         </OutboundSection>
         <SearchingSection>
           <SearchingBar
-            setItemList={setOutboundList}
+            setDataList={setOutboundList}
             keyList={[
               "outbound_id",
               "date",
