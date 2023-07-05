@@ -56,7 +56,6 @@ function ItemInformationPage() {
         <ItemSection>
           <BulletinBoardComponent
             dataList={productList}
-            setDataList={setProductList}
             rowKey={[
               "_id",
               "productName",
@@ -69,7 +68,7 @@ function ItemInformationPage() {
         </ItemSection>
         <SearchingSection>
           <SearchingBar
-            setItemList={setProductList}
+            setDataList={setProductList}
             keyList={[
               "_id",
               "productName",
