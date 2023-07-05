@@ -5,6 +5,7 @@ import { InboundTY } from "../../../../types/inbound";
 import Header from "../../../Header/HeaderPage";
 import { Table } from "react-bootstrap";
 import styled from "@emotion/styled";
+import { formatTime } from "../../../../store/functionIndex";
 
 function DetailInboundPage() {
   const PROXY =
@@ -71,8 +72,8 @@ function DetailInboundPage() {
               <tr key={item.inbound_id}>
                 <td>{index + 1}</td>
                 <td>{item.inbound_id}</td>
-                <td>{item.addProductQuantity}</td>
-                <td>{item.date.toString()}</td>
+                <td>{item.addProductQuantity.toLocaleString()}</td>
+                <td>{formatTime(new Date(item.date))}</td>
                 <td>{item.product_id}</td>
                 <td>{item.employee_id}</td>
                 <td>{item.note}</td>
