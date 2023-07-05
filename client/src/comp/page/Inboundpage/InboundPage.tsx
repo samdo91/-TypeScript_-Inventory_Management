@@ -79,7 +79,7 @@ function InboundPage() {
       </InboundSection>
       <SearchingSection>
         <SearchingBar
-          setItemList={setInboundList}
+          setDataList={setInboundList}
           keyList={[
             "inbound_id",
             "date",
