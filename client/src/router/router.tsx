@@ -12,6 +12,7 @@ import OutboundPage from "../comp/page/OutboundPage/OutboundPage";
 import AddOutboundPage from "../comp/page/OutboundPage/AddOutboundPage/AddOutboundPage";
 import DetailBusinessPartnerPage from "../comp/page/BusinessPartnerPage/DetailBusinessPartnerPage/DetailBusinessPartnerPage";
 import DetailItemInformationPage from "../comp/page/ItemInformationPage/DetailItemInformationPage/DetailItemInformationPage";
+import DetailInboundPage from "../comp/page/Inboundpage/DetailInboundPage/DetailInboundPage";
 
 export const router = createBrowserRouter([
   {
@@ -66,5 +67,9 @@ export const router = createBrowserRouter([
   {
     path: "/productName/:productName",
     element: <DetailItemInformationPage />,
+  },
+  {
+    path: "/inbound_id/:inbound_id",
+    element: <DetailInboundPage />,
   },
 ]);
