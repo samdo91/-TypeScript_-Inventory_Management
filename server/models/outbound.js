@@ -9,6 +9,6 @@ const OutboundSchema = mongoose.Schema({
   stockOutboundQuantity: { type: Number, required: true },
 });
 
-const Outbound = mongoose.model("Outbound", OutboundSchema);
+const OutboundModle = mongoose.model("Outbound", OutboundSchema);
 
-module.exports = Outbound;
+module.exports = OutboundModle;
