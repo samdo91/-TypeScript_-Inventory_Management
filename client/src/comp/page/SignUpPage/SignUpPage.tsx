@@ -32,7 +32,7 @@ function SignUpPage() {
       return false;
     }
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setConfirmPassword("");
       alert("확인 패스워드가 패스워드와 다릅니다.");
       return false;

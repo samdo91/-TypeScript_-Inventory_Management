@@ -3,10 +3,7 @@ import axios from "axios";
 import styled from "@emotion/styled";
 import { Button, Form, Table, Container, Row, Col } from "react-bootstrap";
 import Header from "../../../Header/HeaderPage";
-import {
-  userDataAtom,
-  loginModals,
-} from "../../../../globalStateManagement/index";
+import { userDataAtom } from "../../../../globalStateManagement/index";
 import { useAtom } from "jotai";
 import SearchingModal from "../../../SearchingModal/SearchingModal";
 import { productTY, ShippingEventTY } from "../../../../types/product";
@@ -20,7 +17,7 @@ function AddOutboundPage() {
       : "/proxy";
   const [date, setDate] = useState<Date>(new Date()); //시간
   const [currentNote, setCurrentNote] = useState<string>(""); // 비고
-  const [userData, setUseData] = useAtom(userDataAtom); // 로그인 되어 있는 데이터
+  const [userData] = useAtom(userDataAtom); // 로그인 되어 있는 데이터
   const [currentStockOutboundQuantity, setCurrentStockOutboundQuantity] =
     useState<number>(0); // 출고 수량
   const [currentTotalAmount, setCurrentTotalAmount] = useState<number>(0); // 계산 되어 나온 총액
@@ -78,6 +75,7 @@ function AddOutboundPage() {
           `${PROXY}/addShippingEvent`,
           shippingEvent
         );
+        console.log(ShippingRsponse);
       }
 
       // 처리된 후에 원하는 작업 수행
