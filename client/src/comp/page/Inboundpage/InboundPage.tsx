@@ -40,7 +40,8 @@ function InboundPage() {
     };
 
     fetchData();
-  }, []);
+  }, [PROXY]);
+
   return (
     <InboundPageBody>
       <header>

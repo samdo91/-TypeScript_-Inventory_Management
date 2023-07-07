@@ -36,7 +36,7 @@ function OutboundPage() {
 
   useEffect(() => {
     handleBusinessPartnerList();
-  }, []);
+  }, [handleBusinessPartnerList]);
 
   return (
     <div>
