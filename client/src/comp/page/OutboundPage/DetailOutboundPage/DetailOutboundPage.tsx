@@ -38,7 +38,7 @@ function DetailOutboundPage() {
     } catch (error) {
       console.error("Failed to fetch inbound data:", error);
     }
-  }, [outbound_id, setOutboundData]);
+  }, []);
 
   useEffect(() => {
     outboundDataSearch();

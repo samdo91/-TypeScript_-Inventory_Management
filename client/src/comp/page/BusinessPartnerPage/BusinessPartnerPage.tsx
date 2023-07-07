@@ -35,11 +35,12 @@ function BusinessPartnerPage() {
     const response = await axios.get(`${PROXY}/businessPartnerList`);
     console.log(response.data);
     setBusinessPartnerList([...response.data]);
-  }, [setBusinessPartnerList]);
+  }, [PROXY, setBusinessPartnerList]);
 
   useEffect(() => {
     handleBusinessPartnerList();
   }, [handleBusinessPartnerList]);
+
   return (
     <div>
       <header>
