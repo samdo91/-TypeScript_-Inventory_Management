@@ -19,7 +19,7 @@ function LoginPage() {
   const [ID, setID] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [userData, setUserData] = useAtom(userDataAtom);
-  const [loginState, setLoginState] = useAtom(loginStateAtom);
+  const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인이 되어있는지 안되어 있는지
   const handleClose = () => setLoginModal(false); //모달 창 닫기 함수
 
   const PROXY =
