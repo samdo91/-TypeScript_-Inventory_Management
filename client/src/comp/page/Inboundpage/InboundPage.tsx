@@ -33,7 +33,6 @@ function InboundPage() {
       setInboundList(updatedList);
       console.log("inboundList", inboundList);
     } catch (error) {
-      // 오류 처리 로직 추가
       console.error("Error fetching inbound data:", error);
     }
   };
