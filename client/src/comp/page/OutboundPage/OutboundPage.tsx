@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchingBar from "../../SearchingBar/SearchingBar";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
@@ -22,7 +22,7 @@ function OutboundPage() {
 
   const [outnboundList, setOutboundList] = useState<OutboundsTY[]>([]); //출고 리스트
 
-  const handleBusinessPartnerList = async () => {
+  const handleBusinessPartnerList = useCallback(async () => {
     const response = await axios.get(`${PROXY}/OutboundList`);
     const updatedList = response.data.map((item: any) => {
       const { _id, ...rest } = item;
@@ -32,11 +32,11 @@ function OutboundPage() {
       };
     });
     setOutboundList(updatedList);
-  };
+  }, [setOutboundList]);
 
   useEffect(() => {
     handleBusinessPartnerList();
-  }, [handleBusinessPartnerList]);
+  }, []);
 
   return (
     <div>

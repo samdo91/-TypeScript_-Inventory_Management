@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
@@ -31,15 +31,15 @@ function BusinessPartnerPage() {
     BusinessPartnerTY[]
   >([]);
 
-  const handleBusinessPartnerList = async () => {
+  const handleBusinessPartnerList = useCallback(async () => {
     const response = await axios.get(`${PROXY}/businessPartnerList`);
     console.log(response.data);
     setBusinessPartnerList([...response.data]);
-  };
+  }, [setBusinessPartnerList]);
 
   useEffect(() => {
     handleBusinessPartnerList();
-  }, []);
+  }, [handleBusinessPartnerList]);
   return (
     <div>
       <header>

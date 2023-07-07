@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { InboundTY } from "../../../../types/inbound";
@@ -17,7 +17,7 @@ function DetailInboundPage() {
 
   const { inbound_id } = useParams<{ inbound_id: string }>();
 
-  const inboundDataSearch = async () => {
+  const inboundDataSearch = useCallback(async () => {
     try {
       const response = await axios.get(`${PROXY}/inboundSearching`, {
         params: {
@@ -40,11 +40,11 @@ function DetailInboundPage() {
     } catch (error) {
       console.error("Failed to fetch inbound data:", error);
     }
-  };
+  }, [inbound_id, setInboundData]);
 
   useEffect(() => {
     inboundDataSearch();
-  }, []); // 'inboundDataSearch'를 의존성 배열에서 제거
+  }, [inboundDataSearch]);
 
   return (
     <div>
