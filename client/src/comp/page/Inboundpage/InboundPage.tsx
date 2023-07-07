@@ -16,8 +16,8 @@ function InboundPage() {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
-  const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
+  const [, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
+  const [loginState] = useAtom(loginStateAtom); //로그인 상태
   const [inboundList, setInboundList] = useState<InboundTY[]>([]);
 
 

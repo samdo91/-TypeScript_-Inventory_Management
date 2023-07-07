@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { OutboundTY } from "../../../../types/outbound";
@@ -16,7 +16,7 @@ function DetailOutboundPage() {
 
   const { outbound_id } = useParams<{ outbound_id: string }>();
 
-  const outboundDataSearch = async () => {
+  const outboundDataSearch = useCallback(async () => {
     try {
       const response = await axios.get(`${PROXY}/OutboundSearching`, {
         params: {
@@ -38,7 +38,7 @@ function DetailOutboundPage() {
     } catch (error) {
       console.error("Failed to fetch inbound data:", error);
     }
-  };
+  }, [outbound_id, setOutboundData]);
 
   useEffect(() => {
     outboundDataSearch();

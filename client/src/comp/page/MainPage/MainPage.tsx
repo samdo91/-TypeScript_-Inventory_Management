@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../Header/HeaderPage";
 import styled from "@emotion/styled";
 import MainPageBoard from "./MainPageLInkButton/MainPageLInkButton";
@@ -19,17 +19,17 @@ function MainPage() {
     BusinessPartnerTY[]
   >([]);
   const [inboundList, setInboundList] = useState<AddInboundTY[]>([]);
-  const recentProducts = async () => {
+  const recentProducts = useCallback(async () => {
     const response = await axios(`${PROXY}/recentProducts`);
     setProductList([...response.data]);
-  };
+  }, [setProductList]);
 
-  const recentBusinessPartner = async () => {
+  const recentBusinessPartner = useCallback(async () => {
     const response = await axios(`${PROXY}/recentBusinessPartner`);
     setBusinessPartnerList([...response.data]);
-  };
+  }, [setBusinessPartnerList]);
 
-  const recentInbound = async () => {
+  const recentInbound = useCallback(async () => {
     const response = await axios(`${PROXY}/recentInbound`);
     console.log(response);
     const updatedList = response.data.map((item: any) => {
@@ -40,7 +40,7 @@ function MainPage() {
       };
     });
     setInboundList(updatedList);
-  };
+  }, [setInboundList]);
 
   useEffect(() => {
     recentProducts();

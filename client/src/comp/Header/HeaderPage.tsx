@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, Dispatch, SetStateAction } from "react";
+import React, { useEffect, Dispatch, SetStateAction, useCallback } from "react";
 import NavPage from "./NavPage";
 import LoginPage from "../page/LoginPage/LoginPage";
 import { useAtom } from "jotai";
@@ -31,27 +31,6 @@ function Header({ setDate }: HeaderPropsTY) {
       ? "http://127.0.0.1:4000"
       : "/proxy";
 
-  //쿠키가 있나 없나 검증하며 있다면 쿠키를 불러온다.
-  const logincookie = async () => {
-    try {
-      const response = await axios.post(`${PROXY}/profile`, {});
-
-      if (response.data === false) {
-        return;
-      } else {
-        setUserData((prevUserData) => ({
-          ...prevUserData,
-          loginState: true,
-          token: true,
-          ...response.data,
-        }));
-        setLoginState(true);
-      }
-    } catch (error) {
-      console.error("Failed to fetch profile:", error);
-    }
-  };
-
   const handleLogout = async () => {
     try {
       const response = await axios.post(`${PROXY}/logout`, {});
@@ -80,6 +59,26 @@ function Header({ setDate }: HeaderPropsTY) {
       console.error("Logout failed:", error);
     }
   };
+  //쿠키가 있나 없나 검증하며 있다면 쿠키를 불러온다.
+  const logincookie = useCallback(async () => {
+    try {
+      const response = await axios.post(`${PROXY}/profile`, {});
+
+      if (response.data === false) {
+        return;
+      } else {
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          loginState: true,
+          token: true,
+          ...response.data,
+        }));
+        setLoginState(true);
+      }
+    } catch (error) {
+      console.error("Failed to fetch profile:", error);
+    }
+  }, [setUserData, setLoginState]);
 
   useEffect(() => {
     if (!userData.token) {

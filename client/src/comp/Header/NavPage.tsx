@@ -1,10 +1,6 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 
-type NavigationProps = {
-  // Props 타입 정의 (필요한 경우 추가)
-};
-
 function NavPage() {
   return (
     <Navbar bg="light" expand="lg" style={{ width: "1900px" }}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { productTY } from "../../../../types/product";
@@ -17,7 +17,7 @@ function DetailItemInformationPage() {
 
   const { productName } = useParams<{ productName: string }>();
 
-  const productDataSearch = async () => {
+  const productDataSearch = useCallback(async () => {
     try {
       const response = await axios.get(`${PROXY}/productSearching`, {
         params: {
@@ -36,11 +36,12 @@ function DetailItemInformationPage() {
     } catch (error) {
       console.error("Failed to fetch business partner data:", error);
     }
-  };
+  }, [productName, setProductData]);
 
   useEffect(() => {
     productDataSearch();
   }, [productDataSearch]);
+
   return (
     <div>
       <header>

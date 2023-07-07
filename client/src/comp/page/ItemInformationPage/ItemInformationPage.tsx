@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchingBar from "../../SearchingBar/SearchingBar";
 
 import Header from "../../Header/HeaderPage";
@@ -21,11 +21,11 @@ function ItemInformationPage() {
   const [loginState] = useAtom(loginStateAtom); //로그인 상태
   const [productList, setProductList] = useState<productTY[]>([]);
 
-  const handleProductDataList = async () => {
+  const handleProductDataList = useCallback(async () => {
     const response = await axios.get(`${PROXY}/productList`);
     console.log(response.data);
     setProductList([...response.data]);
-  };
+  }, [setProductList]);
 
   useEffect(() => {
     handleProductDataList();
