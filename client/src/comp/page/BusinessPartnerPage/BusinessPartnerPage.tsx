@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../Header/HeaderPage";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import SearchingBar from "../../SearchingBar/SearchingBar";
@@ -24,8 +24,8 @@ function BusinessPartnerPage() {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
-  const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
+  const [, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
+  const [loginState] = useAtom(loginStateAtom); //로그인 상태
 
   const [businessPartnerList, setBusinessPartnerList] = useState<
     BusinessPartnerTY[]

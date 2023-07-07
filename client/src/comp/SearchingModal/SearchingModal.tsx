@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { searchingModalAtom } from "../../globalStateManagement/index";
-import { useAtom } from "jotai";
 import BulletinBoardComponent from "../BulletinBoardComponent/BulletinBoardComponent";
 import axios from "axios";
 import SearchingBar from "../SearchingBar/SearchingBar";
@@ -38,16 +36,16 @@ function SearchingModal(props: any) {
   const [itemList, setItemList] = useState<any>(""); // 초기에 useEffect로 가져오는 아이템리스트
   const [selectItem, setSelectItem] = useState<any>(null); //BulletinBoardComponent에서 selectMode로 선택한 아이템이 저장됨
 
-  const handleDataList = async () => {
+  const handleDataList = useCallback(async () => {
     const response = await axios(`${PROXY}/${dataListSearchingKey}`);
     console.log(response.data);
 
     setItemList([...response.data]);
-  };
+  }, [PROXY, dataListSearchingKey]);
 
   useEffect(() => {
     handleDataList();
-  }, []);
+  }, [handleDataList]);
 
   const handleSave = () => {
     setDataList([{ productCode: selectItem._id, ...selectItem }]);

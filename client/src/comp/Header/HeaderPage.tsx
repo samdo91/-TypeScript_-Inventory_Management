@@ -85,7 +85,7 @@ function Header({ setDate }: HeaderPropsTY) {
     if (!userData.token) {
       logincookie();
     }
-  }, []);
+  }, [userData.token, logincookie]);
 
   return (
     <HeaderBody>

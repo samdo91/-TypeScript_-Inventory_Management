@@ -31,21 +31,18 @@ function AddItemInformationPage() {
   const [currentWarehouseManager, setCurrentWarehouseManager] =
     useState<string>(""); // 입고자 id
 
-  const [currentReceivingEventList, setCurrentReceivingEventList] = useState<
-    ReceivingEventTY[]
-  >([]); // 입고 이밴트
-  const [currentShippingEventList, setCurrentShippingEventList] = useState<
-    ShippingEventTY[]
-  >([]); // 출고 이밴트
-  const [currentTotalAmountReceived, setCurrentTotalAmountReceived] =
-    useState<number>(0); // 총입고량
-  const [currentTotalAmountShipped, setCurrentTotalAmountShipped] =
-    useState<number>(0); // 총출고량
-  const [currentStock, setCurrentStock] = useState<number>(0); //제품 수량
+  const [currentShippingEventList] = useState<ShippingEventTY[]>([]); // 출고 이밴트
 
+  const [currentTotalAmountShipped] = useState<number>(0); // 총출고량
+  // const [currentStock, setCurrentStock] = useState<number>(0); //제품 수량
+  // const [currentTotalAmountReceived, setCurrentTotalAmountReceived] =
+  //   useState<number>(0); // 총입고량
+  // const [currentReceivingEventList, setCurrentReceivingEventList] = useState<
+  //   ReceivingEventTY[]
+  // >([]); // 입고 이밴트
   useEffect(() => {
     setCurrentWarehouseManager(userData._id);
-  }, []);
+  }, [userData._id]);
 
   const handleException = (): void => {
     if (!currentProductName) {
