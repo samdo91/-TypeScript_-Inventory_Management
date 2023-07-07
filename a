@@ -1,0 +1,921 @@
+[33mcommit b9100608dd886c31ce807d8b88a8ea5e4f3ab3ab[m[33m ([m[1;36mHEAD -> [m[1;32mProxy[m[33m)[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jul 7 20:24:20 2023 +0900
+
+    리드미 수정 밑 배포를 위한 수정
+
+[33mcommit 808e9c003efc25894041a539de4f65bd2fcef45a[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jul 7 20:22:08 2023 +0900
+
+    리드미 수정 밑 배포를 위한 수정
+
+[33mcommit 2dc1a609ea442d910cf88f4bfe794330c39e8777[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 14:58:23 2023 +0900
+
+    Create node.js.yml
+
+[33mcommit cace6cf6246ecdc54e758f5e2542dddebce899b6[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 14:58:00 2023 +0900
+
+    Delete .github/workflows directory
+
+[33mcommit 1086b058386db517f70a32590bbbd5d6d97d8f21[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 03:01:09 2023 +0900
+
+    Create node.js.yml
+
+[33mcommit afdbb69b047b9a317385b66edc479261d8d0a40e[m
+Merge: 55703b3 93a43a7
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 02:16:27 2023 +0900
+
+    Merge pull request #54 from samdo91/Proxy
+    
+    .env 삭제
+
+[33mcommit 93a43a7be8e82528406e1a2fbebc8af9b49bf404[m[33m ([m[1;31morigin/Proxy[m[33m)[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jul 6 02:15:51 2023 +0900
+
+    .env 삭제
+
+[33mcommit 55703b348cf2be1afef2a38619928c8eb27d9d92[m
+Merge: dc495fe 6717fd4
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 02:14:06 2023 +0900
+
+    Merge pull request #53 from samdo91/Proxy
+    
+    라우팅 이후 처리 다듬음
+
+[33mcommit 6717fd4c7e632267284450df4172daa6b0926dce[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jul 6 02:12:44 2023 +0900
+
+    라우팅 이후 처리 다듬음
+
+[33mcommit dc495fe6f172382461e3850e8c183c56b4db8184[m
+Merge: 59f299f 897638a
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jul 6 02:08:48 2023 +0900
+
+    Merge pull request #52 from samdo91/Proxy
+    
+    라우팅 다듬음
+
+[33mcommit 897638a393068d2e3558acd48c04026e1bdec9b6[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jul 6 02:07:06 2023 +0900
+
+    라우팅 다듬음
+
+[33mcommit 59f299fbc1aa31adb2790996b58506b53a1ca077[m
+Merge: 37cb063 a0a7375
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 23:15:48 2023 +0900
+
+    Merge pull request #51 from samdo91/Proxy
+    
+    페이지 다듬음
+
+[33mcommit a0a7375d7cdbfb7b17c3f0eb906f8bc255aec81a[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 23:14:22 2023 +0900
+
+    페이지 다듬음
+
+[33mcommit 37cb0633ff3778992673897d8e28c2144fc7d8a0[m
+Merge: 1b209d1 f03bbe7
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 22:34:33 2023 +0900
+
+    Merge pull request #50 from samdo91/Proxy
+    
+    출고  디테일 페이지 만듬
+
+[33mcommit f03bbe775b13e8cd34c905cb3df56cdb782ea37d[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 22:33:51 2023 +0900
+
+    출고  디테일 페이지 만듬
+
+[33mcommit 1b209d100a2c87295edcd698e931ab231bcfb699[m
+Merge: 7a1eecb c0b6d7d
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 22:23:56 2023 +0900
+
+    Merge pull request #49 from samdo91/Proxy
+    
+    입고 디테일 페이지 만듬
+
+[33mcommit c0b6d7d996e59e85539184f67ed1090e5c728138[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 22:23:02 2023 +0900
+
+    입고 디테일 페이지 만듬
+
+[33mcommit 7a1eecb50a48dc570418218622ce470449959ec1[m
+Merge: 7144686 cf8e59f
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 18:00:35 2023 +0900
+
+    Merge pull request #48 from samdo91/Proxy
+    
+    Proxy
+
+[33mcommit cf8e59f9358326d4eaf4d820b71bb248799ad471[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 17:58:22 2023 +0900
+
+    서치바 고침
+
+[33mcommit 559a82acd99032380ea96144892b4a614565ae5e[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 17:16:12 2023 +0900
+
+    디테일 품목 페이지 완성
+
+[33mcommit 7144686548a7d755b2fb01b2d0bb814605b0da28[m
+Merge: 07627e3 413e4ea
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 14:26:30 2023 +0900
+
+    Merge pull request #47 from samdo91/Proxy
+    
+    DetailOutboundPage지 만들었다
+
+[33mcommit 413e4ea47bccc8347e63e532dca484bb93087783[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 14:25:53 2023 +0900
+
+    DetailOutboundPage지 만들었다
+
+[33mcommit 07627e3d6695ae43daaefa7f87f5695fef7f7cd6[m
+Merge: c8b2702 5dce93e
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 13:26:20 2023 +0900
+
+    Merge pull request #46 from samdo91/Proxy
+    
+    DetailinboundPage지 만들었다
+
+[33mcommit 5dce93ec8d444171b0c8735c28674e8c30467b9f[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 13:25:38 2023 +0900
+
+    DetailinboundPage지 만들었다
+
+[33mcommit c8b270215316a8adf3ba01e6d5d0c59be02f15eb[m
+Merge: 536b359 0bc707f
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 04:29:48 2023 +0900
+
+    Merge pull request #45 from samdo91/Proxy
+    
+    메인페이지 다듬었다.
+
+[33mcommit 0bc707f1e69fce5bb03579dfa2c748fe654592e2[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 04:29:05 2023 +0900
+
+    메인페이지 다듬었다.
+
+[33mcommit 536b3597571d7e554391110d38c0676d01e73b3e[m
+Merge: ade7e6e cd2df07
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 04:22:59 2023 +0900
+
+    Merge pull request #44 from samdo91/Proxy
+    
+    메인페이지를 디테일페이지와 연결
+
+[33mcommit cd2df071255f53e97c58765471681e3b6b68147b[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 04:22:20 2023 +0900
+
+    메인페이지를 디테일페이지와 연결
+
+[33mcommit ade7e6e0f6559c24ace1894490f031da9f743a10[m
+Merge: 76935a5 0c5acd1
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jul 5 04:20:33 2023 +0900
+
+    Merge pull request #43 from samdo91/Proxy
+    
+    디테일페이지를 만들었다
+
+[33mcommit 0c5acd1bc749093282799e1351a1f48673b6b017[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Wed Jul 5 04:19:49 2023 +0900
+
+    디테일페이지를 만들었다
+
+[33mcommit 76935a5481306967e61bc67e3607e345fbf407bc[m
+Merge: 9c99f76 ce4a224
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 19:04:56 2023 +0900
+
+    Merge pull request #42 from samdo91/Proxy
+    
+    add출고페이지 완성
+
+[33mcommit ce4a224067ba9d050a88e3953a030c40bcf0a133[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 19:04:30 2023 +0900
+
+    add출고페이지 완성
+
+[33mcommit 9c99f76e6627d935c687ce036fa548f10a3985c4[m
+Merge: 681ddfb 04d4e0b
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 17:53:56 2023 +0900
+
+    Merge pull request #41 from samdo91/Proxy
+    
+    출고 페이지 인풋State 완성 이후 server연결을 만들어야한다
+
+[33mcommit 04d4e0b3c95beecefa4b3ca478f351ea18f9f5cb[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 17:53:30 2023 +0900
+
+    출고 페이지 인풋State 완성 이후 server연결을 만들어야한다
+
+[33mcommit 681ddfbd46a5175e854c8048e572a66dd62bd233[m
+Merge: 2f40a13 a2064b1
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 15:22:26 2023 +0900
+
+    Merge pull request #40 from samdo91/Proxy
+    
+    출고 페이지 절반 만듬
+
+[33mcommit a2064b19d0e7a6ac230dab60c4359bd22017e8f9[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 15:18:20 2023 +0900
+
+    출고 페이지 절반 만듬
+
+[33mcommit 2f40a13fc9688b4a02cce44a6460b2f407ad233a[m
+Merge: dfa8e95 aa506de
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 13:50:21 2023 +0900
+
+    Merge pull request #39 from samdo91/Proxy
+    
+    Proxy
+
+[33mcommit aa506dedcc86d55a27b72c78a344ddd62a8ac948[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 13:49:48 2023 +0900
+
+    outbound Page 만듬
+
+[33mcommit 4c3d68bd44a1b80fa0c4075f46904aa5bb07bb97[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 13:30:57 2023 +0900
+
+    outbound 타입, 스키마 타입 만듬
+
+[33mcommit dfa8e95059f67f0ee4a644efd385f5b36ef845b5[m
+Merge: e12f92c 952eeff
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 03:40:40 2023 +0900
+
+    Merge pull request #38 from samdo91/Proxy
+    
+    OutboundPage 만듬 기초 작업만 server를 다음어야한다.
+
+[33mcommit 952eeff54b56f01f9cc8a0b3d0db63219d82aeae[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 03:40:08 2023 +0900
+
+    OutboundPage 만듬 기초 작업만 server를 다음어야한다.
+
+[33mcommit e12f92c9f076eea54d6562d32cc98f2842ec7bd3[m
+Merge: 3e070bb 68269c8
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 02:44:07 2023 +0900
+
+    Merge pull request #37 from samdo91/Proxy
+    
+    메인 페이지 입고창 다등음
+
+[33mcommit 68269c8da4b6474d3e3fdb678c722c5dffe624db[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 02:43:38 2023 +0900
+
+    메인 페이지 입고창 다등음
+
+[33mcommit 3e070bb353692a20a9c3602dbf7d29f1e56f1e83[m
+Merge: b69e29f e87b593
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 02:22:24 2023 +0900
+
+    Merge pull request #36 from samdo91/Proxy
+    
+    입고 페이지 완성
+
+[33mcommit e87b59349bc6ba9702cc2f79624a9bcffe1f4e34[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 02:21:55 2023 +0900
+
+    입고 페이지 완성
+
+[33mcommit b69e29fd74ead775dfc889cac97f805085c1b4e6[m
+Merge: 6852c3c bd54952
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 01:13:25 2023 +0900
+
+    Merge pull request #35 from samdo91/Proxy
+    
+    신규입고 페이지 거의 다 만듬 서버에서 연결해 줘야함
+
+[33mcommit bd549529b371cd1867650675583fbabc7e24af1e[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 01:12:29 2023 +0900
+
+    신규입고 페이지 거의 다 만듬 서버에서 연결해 줘야함
+
+[33mcommit 6852c3cbdb872aeac3d6559bdb8706223ceb1fa0[m
+Merge: 4e8512a 80cea5c
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jul 4 00:35:00 2023 +0900
+
+    Merge pull request #34 from samdo91/Proxy
+    
+    서치 모달 완벽 구현 이제 입고 페이지를 만들자
+
+[33mcommit 80cea5cc80da58d4c8b505bb4f99d87244b22642[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jul 4 00:34:35 2023 +0900
+
+    서치 모달 완벽 구현 이제 입고 페이지를 만들자
+
+[33mcommit 4e8512a80965010252dfccaea1e6de6605d25334[m
+Merge: 0427576 f57f97f
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 20:37:41 2023 +0900
+
+    Merge pull request #33 from samdo91/Proxy
+    
+    서치모달 중간 점검
+
+[33mcommit f57f97fd095ed5e357feb4177ef6e3336f649a1c[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 20:37:08 2023 +0900
+
+    서치모달 중간 점검
+
+[33mcommit 04275765cb64c4577b5233ea41d84703eddb0faf[m
+Merge: aa9dd11 c2465af
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 20:09:08 2023 +0900
+
+    Merge pull request #32 from samdo91/Proxy
+    
+    서치모달 만들기
+
+[33mcommit c2465af92e271e26e6a72e59e1086b244f8faf25[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 20:08:47 2023 +0900
+
+    서치모달 만들기
+
+[33mcommit aa9dd1173a8b417cad8346f7953c1b69c9aa015b[m
+Merge: 1991a06 4c0b063
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 15:58:36 2023 +0900
+
+    Merge pull request #31 from samdo91/Proxy
+    
+    입고 페이지 만듬
+
+[33mcommit 4c0b063564e7296767726ee1a49eb13746e686ef[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 15:58:01 2023 +0900
+
+    입고 페이지 만듬
+
+[33mcommit 1991a06de3a824d6dd0efe67cc1c70b71c9479ce[m
+Merge: 844cd2f 0ecc3a4
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 15:22:05 2023 +0900
+
+    Merge pull request #30 from samdo91/Proxy
+    
+    비지니스 파트너페이지 완성
+
+[33mcommit 0ecc3a469544fdf7900ffdf6a0a85cb056a59ff7[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 15:21:23 2023 +0900
+
+    비지니스 파트너페이지 완성
+
+[33mcommit 844cd2fb5fdcc115db3443e7b3cb5f864eb09b16[m
+Merge: 99a9426 349b293
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 14:55:17 2023 +0900
+
+    Merge pull request #29 from samdo91/Proxy
+    
+    비지니스 파트너 DB와 연결 완료
+
+[33mcommit 349b293d05b41ae4bed9c4cbfe2744b0315cce38[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 14:54:50 2023 +0900
+
+    비지니스 파트너 DB와 연결 완료
+
+[33mcommit 99a942638b06a5b4846f026b4adefa9142b2223c[m
+Merge: 2dc38c5 1998607
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 02:00:37 2023 +0900
+
+    Merge pull request #28 from samdo91/Proxy
+    
+    스키마 완성
+
+[33mcommit 1998607ff1c17b57ef37dea42933db93d0fcd0b1[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 01:59:57 2023 +0900
+
+    스키마 완성
+
+[33mcommit 2dc38c5e65fff590857ea809ad69726884f8a7f9[m
+Merge: 7f72796 a2b1718
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 01:50:27 2023 +0900
+
+    Merge pull request #27 from samdo91/Proxy
+    
+    BusinessPartnerPage 기본설정 완료. 서치바, 보드 완성
+
+[33mcommit a2b17189a417de72a12ee12b20d40c2bbec4f19e[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 01:49:54 2023 +0900
+
+    BusinessPartnerPage 기본설정 완료. 서치바, 보드 완성
+
+[33mcommit 7f72796a039364fb6d66a509b605306290796471[m
+Merge: 5a20c7e 19e166f
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 01:32:27 2023 +0900
+
+    Merge pull request #26 from samdo91/Proxy
+    
+    BusinessPartner 폴더, 파일 네임 변경
+
+[33mcommit 19e166f19391ea1261a2a8cd28a07e2732c3502c[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 01:31:54 2023 +0900
+
+    BusinessPartner 폴더, 파일 네임 변경
+
+[33mcommit 5a20c7e1d82462a0a90cc12a4a9444604b0c3de6[m
+Merge: 44a34aa 226027e
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 01:17:56 2023 +0900
+
+    Merge pull request #25 from samdo91/Proxy
+    
+    페이지네이션 손봄, 메인페이지 고침
+
+[33mcommit 226027e3ecc565d2a242dd7fa43ff8c976522ce6[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 01:10:32 2023 +0900
+
+    페이지네이션 손봄, 메인페이지 고침
+
+[33mcommit 44a34aa4f9391494e69219b45f11d783d5432e6b[m
+Merge: 2ff2502 f7b410d
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Mon Jul 3 00:45:46 2023 +0900
+
+    Merge pull request #24 from samdo91/Proxy
+    
+    지속 사용가능한 서치바 완성
+
+[33mcommit f7b410df6c5bdb4e48e6fd35e279984ded384dca[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jul 3 00:45:07 2023 +0900
+
+    지속 사용가능한 서치바 완성
+
+[33mcommit 2ff2502b0ce0ba2e6b3c47c96e2c9515da3a4db4[m
+Merge: 591a455 a1bf347
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sun Jul 2 23:55:44 2023 +0900
+
+    Merge pull request #23 from samdo91/Proxy
+    
+    프로덕트 리스트 불러오기 기능
+
+[33mcommit a1bf34711c768f34d4690605529e2b0a3b19ad77[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sun Jul 2 23:55:18 2023 +0900
+
+    프로덕트 리스트 불러오기 기능
+
+[33mcommit 591a455ec4c6c513d36c1a4910a4aff70effbaf4[m
+Merge: 8907f9e cb41c09
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sun Jul 2 06:28:57 2023 +0900
+
+    Merge pull request #22 from samdo91/Proxy
+    
+    add프로덕트 함수 등록 후 초기화
+
+[33mcommit cb41c0940602978bc4bed6d84a1750f3572811b5[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sun Jul 2 06:28:10 2023 +0900
+
+    add프로덕트 함수 등록 후 초기화
+
+[33mcommit 8907f9e6450b1d78eb641126a6105b73ba943e1f[m
+Merge: 66386d4 750acbd
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sun Jul 2 06:22:03 2023 +0900
+
+    Merge pull request #21 from samdo91/Proxy
+    
+    Proxy
+
+[33mcommit 750acbdf48d2c6aae011aafa0dcf5e413639f00e[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sun Jul 2 06:21:39 2023 +0900
+
+    add프로덕트에 note 만듬, 예외처리 만듬
+
+[33mcommit 97f81e8052e32df0a0f8cd938efed1c6679c44c1[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sun Jul 2 05:52:32 2023 +0900
+
+    프로덕트를에 저장  데이터베이스 만듬
+
+[33mcommit 66386d45ba0b6af44669aa3d42dd78ec6c3e12fc[m
+Merge: 9aeec97 fd331b9
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jul 1 23:23:24 2023 +0900
+
+    Merge pull request #20 from samdo91/Proxy
+    
+    버튼수정
+
+[33mcommit fd331b927adfbcb57c43e0022bc2196aa26eb2f1[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jul 1 23:22:53 2023 +0900
+
+    버튼수정
+
+[33mcommit 9aeec97308f8958ae025e2549cc625291b57dc94[m
+Merge: 33590df 24d8213
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jul 1 23:15:54 2023 +0900
+
+    Merge pull request #19 from samdo91/Proxy
+    
+    addprodut 페이지 다듬음
+
+[33mcommit 24d8213022056fe8d3170e0ff8d092d59f7f8190[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jul 1 23:15:27 2023 +0900
+
+    addprodut 페이지 다듬음
+
+[33mcommit 33590df6a6d55875e41a7d059c4f12069f133382[m
+Merge: a384cfa 9841590
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jul 1 21:48:13 2023 +0900
+
+    Merge pull request #18 from samdo91/Proxy
+    
+    로그 아웃 기능 만들고 토큰을 이용한 로그인 기능 손봄
+
+[33mcommit 984159026d6f0a5365e02ea9906c3442b0cf79c0[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jul 1 21:47:28 2023 +0900
+
+    로그 아웃 기능 만들고 토큰을 이용한 로그인 기능 손봄
+
+[33mcommit a384cfaed7e146c19c837d470e22f16073ee3573[m
+Merge: 1b975f2 9d5d0f6
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jul 1 21:15:04 2023 +0900
+
+    Merge pull request #17 from samdo91/Proxy
+    
+    로그인데이터  type 수정 완료 _ID 추가
+
+[33mcommit 9d5d0f6ad801f25cbf529537c9d4ad9490f1b2b7[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jul 1 21:14:34 2023 +0900
+
+    로그인데이터  type 수정 완료 _ID 추가
+
+[33mcommit 1b975f2ae4aec62417da47df9976149d645fc124[m
+Merge: ecb17b4 8ed1f77
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jul 1 20:56:13 2023 +0900
+
+    Merge pull request #16 from samdo91/Proxy
+    
+    Header 고침
+
+[33mcommit 8ed1f77aafd61cb3f701e622609381b0f2b9ee32[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jul 1 20:55:34 2023 +0900
+
+    Header 고침
+
+[33mcommit ecb17b44584c6643d3c4b84d9c57fae1dc474733[m
+Merge: de344cf df4e110
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 30 16:42:27 2023 +0900
+
+    Merge pull request #15 from samdo91/Proxy
+    
+    addProductPage 시계 만들고 헤더 nav손봄
+
+[33mcommit df4e110fd3e32ae75950b254c18c0824442f746f[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 30 16:41:54 2023 +0900
+
+    addProductPage 시계 만들고 헤더 nav손봄
+
+[33mcommit de344cfa5d95d71769651c5bdf5c3a66ad374c46[m
+Merge: 8c6ca41 25ef391
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 30 14:59:37 2023 +0900
+
+    Merge pull request #14 from samdo91/Proxy
+    
+    addProductPage 구현 중 기본 useState부분까지만 만듬
+
+[33mcommit 25ef391abef107cc45fa687729516fe2d8739f52[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 30 14:59:08 2023 +0900
+
+    addProductPage 구현 중 기본 useState부분까지만 만듬
+
+[33mcommit 8c6ca4102d15810c1a4a2233d5844cdfa726c8bc[m
+Merge: da2e8f6 2de026d
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 30 05:26:28 2023 +0900
+
+    Merge pull request #13 from samdo91/Proxy
+    
+    addProductPage 다듬음
+
+[33mcommit 2de026d2cb27facc1a84ee6dd00cfe84e6703f38[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 30 05:25:28 2023 +0900
+
+    addProductPage 다듬음
+
+[33mcommit da2e8f65667ce0cdba566b30c5b387ca1f90fe36[m
+Merge: 29b97bc f3f2fa4
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 30 04:57:20 2023 +0900
+
+    Merge pull request #12 from samdo91/Proxy
+    
+    프로덕트, 거래처  페이지 네이션  완성
+
+[33mcommit f3f2fa4b55b74eab6d31b27415997d6036188612[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 30 04:56:32 2023 +0900
+
+    프로덕트, 거래처  페이지 네이션  완성
+
+[33mcommit 29b97bcba2167316ca59c0bad95ebb32645940ed[m
+Merge: 0ba5f57 652de76
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 30 03:32:31 2023 +0900
+
+    Merge pull request #11 from samdo91/Proxy
+    
+    메인페이지 완성 porduct 페이지 만든 페이지네이션
+
+[33mcommit 652de76a3e93312762877352ffa4cd4b56a694a8[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 30 03:31:57 2023 +0900
+
+    메인페이지 완성 porduct 페이지 만든 페이지네이션
+
+[33mcommit 0ba5f5781dac3cb8a122efec6ff38c0c2783b725[m
+Merge: 5ce4fa6 ab79303
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jun 29 21:48:30 2023 +0900
+
+    Merge pull request #10 from samdo91/Proxy
+    
+    메인 페이지 버튼 만듬, 이후 공지 남길 페이지 만들어야함
+
+[33mcommit ab79303844fec091318ed7e9394383d0b8907ac1[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jun 29 21:47:28 2023 +0900
+
+    메인 페이지 버튼 만듬, 이후 공지 남길 페이지 만들어야함
+
+[33mcommit 5ce4fa6d1cf25bb1c905f8efba160a3c5b440124[m
+Merge: 6fb9f60 e2e0c25
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jun 29 20:21:33 2023 +0900
+
+    Merge pull request #9 from samdo91/Proxy
+    
+    로그인 서버 구축 완료
+
+[33mcommit e2e0c255809e450276cfdce0b56663a34ec2cd07[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jun 29 20:20:54 2023 +0900
+
+    로그인 서버 구축 완료
+
+[33mcommit 6fb9f607fc1019906edf836b6e3aec0232ab2003[m
+Merge: 54d9453 ec4911c
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jun 29 19:28:29 2023 +0900
+
+    Merge pull request #8 from samdo91/Proxy
+    
+    프록시 구축
+
+[33mcommit ec4911c157bae2539405efc604ef0ee17907d383[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Thu Jun 29 19:23:59 2023 +0900
+
+    프록시 구축
+
+[33mcommit 54d94536ba35c441e84906e6b05b4521ac5e3a18[m
+Merge: 65a3a5a 4ef87a6
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jun 24 02:10:09 2023 +0900
+
+    Merge pull request #7 from samdo91/swagger
+    
+    Swagger
+
+[33mcommit 4ef87a61c0044e900ddaee6e9387197a758bb9e2[m[33m ([m[1;31morigin/swagger[m[33m, [m[1;32mswagger[m[33m)[m
+Merge: 49ed4f1 65a3a5a
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jun 24 01:40:07 2023 +0900
+
+    기본적인 서버와 swagger만들다. ui 와 연결함
+
+[33mcommit 49ed4f1d70e4ce2b0cfc77a6127470a56d264799[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sat Jun 24 01:33:08 2023 +0900
+
+    기본적인 서버와 swagger만들었다
+
+[33mcommit 65a3a5a653372ac365bfad3e104ddbc2d3225d0d[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jun 22 02:50:20 2023 +0900
+
+    Update README.md
+
+[33mcommit 4be3d931ee0d8f9299e6fd917ad9fbc1a384fcf3[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Thu Jun 22 02:49:58 2023 +0900
+
+    Update README.md
+
+[33mcommit ebd1f2bbd10e2e3ee5a1c306552cea2d4fac4fd5[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Wed Jun 21 01:49:49 2023 +0900
+
+    Update README.md
+
+[33mcommit 8e53066be43982ae2b7b59a8f7b806b277b61014[m
+Merge: 873b1c3 da0de03
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jun 20 15:14:36 2023 +0900
+
+    Merge pull request #5 from samdo91/master
+    
+    Master
+
+[33mcommit da0de0377212479e82726b112eee0eaa672a1281[m
+Merge: bbfeee6 873b1c3
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jun 20 15:14:29 2023 +0900
+
+    Merge branch 'main' into master
+
+[33mcommit 873b1c31603eee3ca73a5f126b149f11d4f62542[m[33m ([m[1;32mmain[m[33m)[m
+Merge: bb9118e 815f556
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jun 20 15:03:58 2023 +0900
+
+    main과 master 통합
+
+[33mcommit bbfeee657f7388281db83314683b26de96e2fd41[m
+Merge: 815f556 5a9ac88
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jun 20 14:47:43 2023 +0900
+
+    Merge pull request #4 from samdo91/CheckPlanningStatement
+    
+    CheckPlanningStatement
+
+[33mcommit 5a9ac88b16f51f73e44bfef4c040bad30c9ad3f7[m[33m ([m[1;31morigin/CheckPlanningStatement[m[33m, [m[1;32mCheckPlanningStatement[m[33m)[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Tue Jun 20 14:44:20 2023 +0900
+
+    CheckPlanningStatement
+
+[33mcommit 815f5564b1f0e719f0baec168761631ed4b2a101[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 0258718 0d24f66
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jun 20 10:27:12 2023 +0900
+
+    Merge pull request #3 from samdo91/proposal
+    
+    기획서 수정을 요망함
+
+[33mcommit 0d24f6635a0ec22bcbf6e8b197186ff15e65d177[m
+Merge: 3496482 0258718
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Tue Jun 20 00:02:52 2023 +0900
+
+    Merge branch 'master' into proposal
+
+[33mcommit 3496482c87d2c9545675b4c53e872c159a61298d[m[33m ([m[1;31morigin/proposal[m[33m)[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Mon Jun 19 23:53:41 2023 +0900
+
+    기획성 90P
+
+[33mcommit 0258718f92c1534c6456c2d8462ab66f0facf80b[m
+Author: vajraExplosion <136786089+vajraExplosion@users.noreply.github.com>
+Date:   Sun Jun 18 01:06:26 2023 +0900
+
+    Update README.md
+
+[33mcommit 26ed454538e2b48986071e258437f4ba696eaf5d[m
+Author: vajraExplosion <136786089+vajraExplosion@users.noreply.github.com>
+Date:   Sun Jun 18 01:05:06 2023 +0900
+
+    Create README.md
+
+[33mcommit ede3aa2d9be94eaf59ce99ec5ad28efadfe99d7f[m
+Merge: a496cd0 64b7fb6
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sun Jun 18 00:53:47 2023 +0900
+
+    Merge pull request #2 from samdo91/FeatureSpecification
+    
+    기능명세서
+
+[33mcommit 64b7fb68f34b7b79962addb76aaa59f893696b87[m[33m ([m[1;31morigin/FeatureSpecification[m[33m, [m[1;32mFeatureSpecification[m[33m)[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Sun Jun 18 00:44:53 2023 +0900
+
+    기능명세서
+
+[33mcommit bb9118e8ad5174977eb004dec29acd37f98bb60c[m[33m ([m[1;32mnew_branch[m[33m)[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Sat Jun 17 23:26:51 2023 +0900
+
+    Update README.md
+
+[33mcommit a496cd071c415c035a0d08715fd5c0b20f18a745[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 16 16:33:41 2023 +0900
+
+    초기 셋팅을 다시 만들었다.
+
+[33mcommit 2d6ee5f148f7a751cbb5e39ecbbe46a6b4468289[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 16 15:50:46 2023 +0900
+
+    초기 셋팅 완료로그인 폴더부터 만들었다.
+
+[33mcommit 776346121a9706d4abb8e67cc89e7ec586bf4d18[m
+Author: samdo91 <[fkdlzkfka@naver.com]>
+Date:   Fri Jun 16 15:28:29 2023 +0900
+
+    Commit message
+
+[33mcommit 40a79de8878c6062450615487dbea25d7c7cad6a[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 16 15:16:31 2023 +0900
+
+    Update README.md
+
+[33mcommit f3b11fe697789b754913f0ccd05e0e91f151d84a[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 16 15:16:16 2023 +0900
+
+    Update README.md
+
+[33mcommit fa95f869cf53d670b344e8c1adcf39507674b352[m
+Author: samdo91 <102779069+samdo91@users.noreply.github.com>
+Date:   Fri Jun 16 15:13:22 2023 +0900
+
+    Initial commit
