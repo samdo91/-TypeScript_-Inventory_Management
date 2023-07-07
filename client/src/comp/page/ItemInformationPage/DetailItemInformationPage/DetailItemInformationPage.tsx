@@ -40,7 +40,7 @@ function DetailItemInformationPage() {
 
   useEffect(() => {
     productDataSearch();
-  }, []);
+  }, [productDataSearch]);
   return (
     <div>
       <header>

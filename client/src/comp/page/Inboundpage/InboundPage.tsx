@@ -20,28 +20,26 @@ function InboundPage() {
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
   const [inboundList, setInboundList] = useState<InboundTY[]>([]);
 
-  const handleProductDataList = async () => {
-    try {
-      const response = await axios.get(`${PROXY}/InboundList`);
-      const updatedList = response.data.map((item: any) => {
-        const { _id, ...rest } = item;
-        return {
-          inbound_id: _id,
-          ...rest,
-        };
-      });
-      setInboundList(updatedList);
-      console.log("inboundList", inboundList);
-    } catch (error) {
-
-      console.error("Error fetching inbound data:", error);
-    }
-  };
 
   useEffect(() => {
-    handleProductDataList().then(() => {
-      console.log("inboundList", inboundList);
-    });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${PROXY}/InboundList`);
+        const updatedList = response.data.map((item: any) => {
+          const { _id, ...rest } = item;
+          return {
+            inbound_id: _id,
+            ...rest,
+          };
+        });
+        setInboundList(updatedList);
+        console.log("inboundList", updatedList);
+      } catch (error) {
+        console.error("Error fetching inbound data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (

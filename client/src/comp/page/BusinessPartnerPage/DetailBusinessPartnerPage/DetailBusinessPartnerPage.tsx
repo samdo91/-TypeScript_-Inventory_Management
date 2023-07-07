@@ -5,6 +5,7 @@ import { BusinessPartnerTY } from "../../../../types/businessPartner";
 import Header from "../../../Header/HeaderPage";
 import { Table } from "react-bootstrap";
 import styled from "@emotion/styled";
+
 function DetailBusinessPartnerPage() {
   const PROXY =
     window.location.hostname === "localhost"
@@ -17,32 +18,32 @@ function DetailBusinessPartnerPage() {
 
   const { BusinessPartnerName } = useParams<{ BusinessPartnerName: string }>();
 
-  const businessPartnerDataSearch = async () => {
-    try {
-      const response = await axios.get(`${PROXY}/businessPartnerSearching`, {
-        params: {
-          currentSearchValue: BusinessPartnerName,
-          searchCondition: "BusinessPartnerName",
-        },
-      });
-
-      const updatedList = response.data.map((item: any) => {
-        const { _id, ...rest } = item;
-        return {
-          _id: _id,
-          ...rest,
-        };
-      });
-      console.log(updatedList);
-      setBusinessPartnerData(updatedList);
-    } catch (error) {
-      console.error("Failed to fetch business partner data:", error);
-    }
-  };
-
   useEffect(() => {
+    const businessPartnerDataSearch = async () => {
+      try {
+        const response = await axios.get(`${PROXY}/businessPartnerSearching`, {
+          params: {
+            currentSearchValue: BusinessPartnerName,
+            searchCondition: "BusinessPartnerName",
+          },
+        });
+
+        const updatedList = response.data.map((item: any) => {
+          const { _id, ...rest } = item;
+          return {
+            _id: _id,
+            ...rest,
+          };
+        });
+        console.log(updatedList);
+        setBusinessPartnerData(updatedList);
+      } catch (error) {
+        console.error("Failed to fetch business partner data:", error);
+      }
+    };
+
     businessPartnerDataSearch();
-  }, []);
+  }, [BusinessPartnerName, PROXY]);
 
   return (
     <div>
@@ -89,6 +90,7 @@ function DetailBusinessPartnerPage() {
 }
 
 export default DetailBusinessPartnerPage;
+
 const TableContainer = styled.div`
   max-width: 100%;
   overflow-x: auto;

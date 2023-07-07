@@ -44,7 +44,7 @@ function DetailInboundPage() {
 
   useEffect(() => {
     inboundDataSearch();
-  }, []);
+  }, []); // 'inboundDataSearch'를 의존성 배열에서 제거
 
   return (
     <div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { AddBusinessPartnerTY } from "../../../../types/businessPartner";
 import { useAtom } from "jotai";
 import { userDataAtom } from "../../../../globalStateManagement";
 import { Form, Button } from "react-bootstrap";
@@ -12,7 +11,7 @@ function AddBusinessPartnerPage() {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const [userData, setUserData] = useAtom(userDataAtom);
+  const [userData] = useAtom(userDataAtom);
 
   const [currentTelephoneNumber, setCurrentTelephoneNumber] =
     useState<string>(""); // 거래처번호

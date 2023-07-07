@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 type NavigationProps = {
   // Props 타입 정의 (필요한 경우 추가)

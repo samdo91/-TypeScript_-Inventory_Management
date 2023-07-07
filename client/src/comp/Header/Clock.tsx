@@ -18,7 +18,7 @@ function Clock({ setDate }: ClockProps) {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [setDate]);
 
   const year = time.getFullYear().toString().padStart(4, "0");
   const month = (time.getMonth() + 1).toString().padStart(2, "0");

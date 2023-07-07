@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import MainPage from "./comp/page/MainPage/MainPage";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/router";
 import "./App.css";

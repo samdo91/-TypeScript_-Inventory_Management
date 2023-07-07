@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Button, Form, Table } from "react-bootstrap";
 import Header from "../../../Header/HeaderPage";
-import {
-  userDataAtom,
-  loginModals,
-  searchingModalAtom,
-} from "../../../../globalStateManagement/index";
+import { userDataAtom } from "../../../../globalStateManagement/index";
 import { useAtom } from "jotai";
-
-import { ReceivingEventTY, productTY } from "../../../../types/product";
+import { productTY } from "../../../../types/product";
 import SearchingModal from "../../../SearchingModal/SearchingModal";
 import axios from "axios";
 import { AddInboundTY } from "../../../../types/inbound";
@@ -24,8 +19,8 @@ function AddInboundpage() {
 
   const [productData, setProductData] = useState<productTY[]>([]);
 
-  const [userData, setUseData] = useAtom(userDataAtom);
-  const [searchingModal, setSearchingModal] = useAtom(searchingModalAtom);
+  const [userData] = useAtom(userDataAtom);
+
   const [date, setDate] = useState<Date>(new Date()); //시간
   const [searchingProductModal, setSearchingProductModal] =
     useState<boolean>(false); // 프로덕트 서치 모달 켜고 끄끼
@@ -58,6 +53,7 @@ function AddInboundpage() {
         `${PROXY}/addInbound`,
         NewInboundInformation
       );
+      console.log(response.data);
 
       const ReceiviRsponse = await axios.post(
         `${PROXY}/addReceivingEvent`,
