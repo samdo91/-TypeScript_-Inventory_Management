@@ -32,7 +32,7 @@ function OutboundPage() {
       };
     });
     setOutboundList(updatedList);
-  }, [setOutboundList]);
+  }, [PROXY, setOutboundList]);
 
   useEffect(() => {
     handleBusinessPartnerList();

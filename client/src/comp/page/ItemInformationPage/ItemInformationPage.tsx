@@ -25,7 +25,7 @@ function ItemInformationPage() {
     const response = await axios.get(`${PROXY}/productList`);
     console.log(response.data);
     setProductList([...response.data]);
-  }, [setProductList]);
+  }, [PROXY, setProductList]);
 
   useEffect(() => {
     handleProductDataList();

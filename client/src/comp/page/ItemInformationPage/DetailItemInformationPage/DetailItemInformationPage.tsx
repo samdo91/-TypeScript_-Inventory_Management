@@ -36,7 +36,7 @@ function DetailItemInformationPage() {
     } catch (error) {
       console.error("Failed to fetch business partner data:", error);
     }
-  }, [productName, setProductData]);
+  }, [productName, setProductData, PROXY]);
 
   useEffect(() => {
     productDataSearch();

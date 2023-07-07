@@ -41,7 +41,6 @@ function InboundPage() {
 
     fetchData();
   }, []);
-
   return (
     <InboundPageBody>
       <header>

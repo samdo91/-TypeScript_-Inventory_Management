@@ -19,15 +19,16 @@ function MainPage() {
     BusinessPartnerTY[]
   >([]);
   const [inboundList, setInboundList] = useState<AddInboundTY[]>([]);
+
   const recentProducts = useCallback(async () => {
     const response = await axios(`${PROXY}/recentProducts`);
     setProductList([...response.data]);
-  }, [setProductList]);
+  }, [PROXY, setProductList]);
 
   const recentBusinessPartner = useCallback(async () => {
     const response = await axios(`${PROXY}/recentBusinessPartner`);
     setBusinessPartnerList([...response.data]);
-  }, [setBusinessPartnerList]);
+  }, [PROXY, setBusinessPartnerList]);
 
   const recentInbound = useCallback(async () => {
     const response = await axios(`${PROXY}/recentInbound`);
@@ -40,7 +41,7 @@ function MainPage() {
       };
     });
     setInboundList(updatedList);
-  }, [setInboundList]);
+  }, [PROXY, setInboundList]);
 
   useEffect(() => {
     recentProducts();

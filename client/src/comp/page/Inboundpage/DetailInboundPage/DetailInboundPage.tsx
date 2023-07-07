@@ -40,7 +40,7 @@ function DetailInboundPage() {
     } catch (error) {
       console.error("Failed to fetch inbound data:", error);
     }
-  }, [inbound_id, setInboundData]);
+  }, [inbound_id, setInboundData, PROXY, inboundData]);
 
   useEffect(() => {
     inboundDataSearch();
