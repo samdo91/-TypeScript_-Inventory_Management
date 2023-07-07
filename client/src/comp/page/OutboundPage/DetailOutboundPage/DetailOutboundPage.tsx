@@ -42,7 +42,7 @@ function DetailOutboundPage() {
 
   useEffect(() => {
     outboundDataSearch();
-  }, []);
+  }, [outboundDataSearch]);
 
   return (
     <div>

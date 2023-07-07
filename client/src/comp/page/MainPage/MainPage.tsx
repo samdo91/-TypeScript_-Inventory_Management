@@ -46,8 +46,7 @@ function MainPage() {
     recentProducts();
     recentBusinessPartner();
     recentInbound();
-  }, []);
-
+  }, [recentProducts, recentBusinessPartner, recentInbound]);
   return (
     <div>
       <header>
