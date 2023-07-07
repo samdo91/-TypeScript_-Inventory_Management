@@ -78,7 +78,7 @@ function Header({ setDate }: HeaderPropsTY) {
     } catch (error) {
       console.error("Failed to fetch profile:", error);
     }
-  }, [setUserData, setLoginState]);
+  }, [PROXY, setUserData, setLoginState]);
 
   useEffect(() => {
     if (!userData.token) {
