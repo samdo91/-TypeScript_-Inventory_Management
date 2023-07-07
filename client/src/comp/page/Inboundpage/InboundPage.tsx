@@ -33,6 +33,7 @@ function InboundPage() {
       setInboundList(updatedList);
       console.log("inboundList", inboundList);
     } catch (error) {
+
       console.error("Error fetching inbound data:", error);
     }
   };
