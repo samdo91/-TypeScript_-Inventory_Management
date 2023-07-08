@@ -18,7 +18,7 @@ function LoginPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals);
   const [ID, setID] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [userData, setUserData] = useAtom(userDataAtom);
+  const [userData, setUserData] = useAtom(userDataAtom); //로그인 데이더 저장
   const [, setLoginState] = useAtom(loginStateAtom); //로그인이 되어있는지 안되어 있는지
   const handleClose = () => setLoginModal(false); //모달 창 닫기 함수
 
