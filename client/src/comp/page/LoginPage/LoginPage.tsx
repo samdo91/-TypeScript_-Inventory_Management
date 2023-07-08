@@ -6,9 +6,9 @@ import {
   userDataAtom,
   loginStateAtom,
 } from "../../../globalStateManagement";
-
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 export type LoginDataTY = {
   ID: string;
   password: string;
