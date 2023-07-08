@@ -177,6 +177,7 @@ function AddInboundpage() {
           <InputField
             type="text"
             placeholder="상품 비고, 특이사항을 적어주세요"
+
             value={currentNote}
             onChange={(e) => {
               const value = e.target.value;
