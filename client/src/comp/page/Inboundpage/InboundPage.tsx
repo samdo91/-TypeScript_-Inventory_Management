@@ -20,6 +20,7 @@ function InboundPage() {
   const [loginState] = useAtom(loginStateAtom); //로그인 상태
   const [inboundList, setInboundList] = useState<InboundTY[]>([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
