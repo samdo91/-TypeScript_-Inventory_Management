@@ -17,7 +17,7 @@ function AddInboundpage() {
   const [currentNote, setCurrentNote] = useState<string>(""); // 비고
   const [currentQuantity, setCurrentQuantity] = useState<number>(0); // 입고수량
 
-  const [productData, setProductData] = useState<productTY[]>([]);
+  const [productData, setProductData] = useState<productTY[]>([]); // 최종적으로 프로덕트 데이터가 들어감
 
   const [userData] = useAtom(userDataAtom);
 

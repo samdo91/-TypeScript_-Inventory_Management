@@ -19,7 +19,7 @@ type HeaderPropsTY = {
 
 function Header({ setDate }: HeaderPropsTY) {
   const [loginModal, setLoginModal] = useAtom(loginModals); // 로그인 모달 불러오기
-  const [userData, setUserData] = useAtom(userDataAtom);
+  const [userData, setUserData] = useAtom(userDataAtom); // 로긔인 데이터
   const [loginState, setLoginState] = useAtom(loginStateAtom); //로그인 상태
 
   const handleLoginModal = () => {
