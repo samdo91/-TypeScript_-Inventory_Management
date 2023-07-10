@@ -17,7 +17,8 @@ export type LoginDataTY = {
 function LoginPage() {
   const [loginModal, setLoginModal] = useAtom(loginModals);
   const [ID, setID] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+
+  const [password, setPassword] = useState<string>(""); //서버로 보낼 페스워드
 
   const [userData, setUserData] = useAtom(userDataAtom); //로그인 데이더 저장
 
