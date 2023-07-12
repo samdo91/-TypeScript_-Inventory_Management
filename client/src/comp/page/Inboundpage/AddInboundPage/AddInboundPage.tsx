@@ -19,7 +19,7 @@ function AddInboundpage() {
 
   const [productData, setProductData] = useState<productTY[]>([]); // 최종적으로 프로덕트 데이터가 들어감
 
-  const [userData] = useAtom(userDataAtom);
+  const [userData] = useAtom(userDataAtom); // 유저 데이터 저장 근데 set은 안씀
 
   const [date, setDate] = useState<Date>(new Date()); //시간
   const [searchingProductModal, setSearchingProductModal] =
@@ -177,7 +177,6 @@ function AddInboundpage() {
           <InputField
             type="text"
             placeholder="상품 비고, 특이사항을 적어주세요"
-
             value={currentNote}
             onChange={(e) => {
               const value = e.target.value;
