@@ -12,7 +12,7 @@ function DetailOutboundPage() {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const [outboundData, setOutboundData] = useState<OutboundTY[]>([]);
+  const [outboundData, setOutboundData] = useState<OutboundTY[]>([]); // 데이터가 최종적으로
 
   const { outbound_id } = useParams<{ outbound_id: string }>();
 
