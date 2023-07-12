@@ -58,8 +58,8 @@ function DetailBusinessPartnerPage() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Business Partner id</th>
-              <th>Business Partner Name</th>
+              <th>BusinessPartner id</th>
+              <th>BusinessPartner Name</th>
               <th>Owner</th>
               <th>Email</th>
               <th>Telephone Number</th>
