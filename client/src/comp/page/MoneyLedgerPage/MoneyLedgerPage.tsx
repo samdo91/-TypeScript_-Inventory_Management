@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../Header/HeaderPage";
 import styled from "@emotion/styled";
-import MainPageBoard from "./MainPageLInkButton/MainPageLInkButton";
 import BulletinBoardComponent from "../../BulletinBoardComponent/BulletinBoardComponent";
 import { Container, Row, Col } from "react-bootstrap";
 import { productTY } from "../../../types/product";
@@ -9,7 +8,7 @@ import { BusinessPartnerTY } from "../../../types/businessPartner";
 import axios from "axios";
 import { AddInboundTY } from "../../../types/inbound";
 
-function MainPage() {
+function MoneyLedgerPage() {
   const PROXY =
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
@@ -50,60 +49,57 @@ function MainPage() {
   }, [recentProducts, recentBusinessPartner, recentInbound]);
   return (
     <div>
-      <header>
-        <Header />
-      </header>
-      <Container>
-        <Row>
-          <Col xs={12} md={4}>
-            {/* 좌측 영역 */}
-            <div style={{ height: "100vh" }}>
-              <MainPageBody>
-                <MainPageBoard />
-              </MainPageBody>
-            </div>
-          </Col>
-          <Col xs={12} md={8}>
-            {/* 우측 영역 */}
-            <div style={{ height: "100vh" }}>
-              <BulletinBoardComponent
-                title="최근 등록 품목"
-                dataList={productList}
-                rowKey={[
-                  "_id",
-                  "productName",
-                  "stock",
-                  "wholesalePrice",
-                  "retailPrice",
-                ]}
-                itemField="productName"
-              />
-              <BulletinBoardComponent
-                title="최근 등록 회사"
-                dataList={businessPartnerList}
-                rowKey={["_id", "BusinessPartnerName", "credit"]}
-                itemField={"BusinessPartnerName"}
-              />
-              <BulletinBoardComponent
-                title="최근 입고"
-                dataList={inboundList}
-                rowKey={[
-                  "inbound_id",
-                  "date",
-                  "product_id",
-                  "employee_id",
-                  "addProductQuantity",
-                ]}
-                itemField="inbound_id"
-              />
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      {" "}
+      <div>
+        <header>
+          <Header />
+        </header>
+        <Container>
+          <Row>
+            <Col xs={12} md={4}>
+              {/* 좌측 영역 */}
+              <div style={{ height: "100vh" }}></div>
+            </Col>
+            <Col xs={12} md={8}>
+              {/* 우측 영역 */}
+              <div style={{ height: "100vh" }}>
+                <BulletinBoardComponent
+                  title="최근 등록 품목"
+                  dataList={productList}
+                  rowKey={[
+                    "_id",
+                    "productName",
+                    "stock",
+                    "wholesalePrice",
+                    "retailPrice",
+                  ]}
+                  itemField="productName"
+                />
+                <BulletinBoardComponent
+                  title="최근 등록 회사"
+                  dataList={businessPartnerList}
+                  rowKey={["_id", "BusinessPartnerName", "credit"]}
+                  itemField={"BusinessPartnerName"}
+                />
+                <BulletinBoardComponent
+                  title="최근 입고"
+                  dataList={inboundList}
+                  rowKey={[
+                    "inbound_id",
+                    "date",
+                    "product_id",
+                    "employee_id",
+                    "addProductQuantity",
+                  ]}
+                  itemField="inbound_id"
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
 
-export default MainPage;
-
-const MainPageBody = styled.body``;
+export default MoneyLedgerPage;
