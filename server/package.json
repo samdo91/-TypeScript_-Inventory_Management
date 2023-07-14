@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "node dist",
+    "build": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "api-docs": "swagger-cli bundle ./swagger/openapi.yaml --outfile build/swagger.yaml --type yaml",
     "predev": "npm run api-docs",
