@@ -130,11 +130,6 @@ app.post(`/profile`, (req, res) => {
   }
 });
 
-const PORT = 4000 || process.env.PORT;
-app.listen(PORT, localhost, () => {
-  console.log(`${localhost} ${PORT} 연결 완료`);
-});
-
 //토큰의 유무를 검사하는 함수
 function verifyToken(token) {
   try {
@@ -488,4 +483,11 @@ app.get("/OutboundSearching", async (req, res) => {
   });
 
   res.json(searchResult);
+});
+
+const PORT = process.env.PORT || 4000;
+const HOST = "43.202.51.207"; // 원격 서버의 공인 IP 주소로 변경
+
+app.listen(PORT, HOST, () => {
+  console.log(`서버가 ${HOST}:${PORT} 에서 실행 중입니다.`);
 });
