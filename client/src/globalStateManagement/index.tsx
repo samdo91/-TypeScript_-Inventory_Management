@@ -7,6 +7,7 @@ export const loginModals = atom<boolean>(false);
 // 로그인이 되어 있는 지 안되고 있는지
 export const loginStateAtom = atom<boolean>(false);
 
+//서치용 모달이 켜지나 안켜지나
 export const searchingModalAtom = atom<boolean>(false);
 
 // 유저데이터가 저장된다.
