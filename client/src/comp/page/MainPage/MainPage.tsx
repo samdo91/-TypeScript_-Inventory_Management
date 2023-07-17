@@ -14,7 +14,7 @@ function MainPage() {
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:4000"
       : "/proxy";
-  const [productList, setProductList] = useState<productTY[]>([]);
+  const [productList, setProductList] = useState<productTY[]>([]); //프로덕트 찾기 모달이랑 연결
   const [businessPartnerList, setBusinessPartnerList] = useState<
     BusinessPartnerTY[]
   >([]);
@@ -48,17 +48,24 @@ function MainPage() {
     recentBusinessPartner();
     recentInbound();
   }, [recentProducts, recentBusinessPartner, recentInbound]);
-
   return (
-    <MainContainer>
+    <div>
       <header>
         <Header />
       </header>
       <Container>
         <Row>
-          {/* 우측 영역 (최근 등록 품목, 최근 등록 회사, 최근 입고) */}
-          <Col md={8}>
-            <MainContent>
+          <Col xs={12} md={4}>
+            {/* 좌측 영역 */}
+            <div style={{ height: "100vh" }}>
+              <MainPageBody>
+                <MainPageBoard />
+              </MainPageBody>
+            </div>
+          </Col>
+          <Col xs={12} md={8}>
+            {/* 우측 영역 */}
+            <div style={{ height: "100vh" }}>
               <BulletinBoardComponent
                 title="최근 등록 품목"
                 dataList={productList}
@@ -89,31 +96,14 @@ function MainPage() {
                 ]}
                 itemField="inbound_id"
               />
-            </MainContent>
-          </Col>
-          {/* 좌측 영역 (메인 페이지 버튼 등) */}
-          <Col md={4}>
-            <MainPageBody>
-              <MainPageBoard />
-            </MainPageBody>
+            </div>
           </Col>
         </Row>
       </Container>
-    </MainContainer>
+    </div>
   );
 }
 
 export default MainPage;
-
-const MainContainer = styled.div`
-  padding-top: 20px;
-`;
-
-const MainContent = styled.div`
-  height: 100vh;
-  @media (max-width: 768px) {
-    height: auto;
-  }
-`;
 
 const MainPageBody = styled.body``;
